@@ -7,8 +7,20 @@ This is an [R Markdown](http://rmarkdown.rstudio.com) Notebook. When you execute
 
 Try executing this chunk by clicking the *Run* button within the chunk or by placing your cursor inside it and pressing *Ctrl+Shift+Enter*. 
 
+##Importe les données
+
 ```{r}
-plot(cars)
+df_employee_survey_data <- read.csv('C://Users//louis//Documents//COURS EMSE//Année 5 - Ingé 3//ESME//R//Projet//archive//employee_survey_data.csv')
+df_general_data<- read.csv('C://Users//louis//Documents//COURS EMSE//Année 5 - Ingé 3//ESME//R//Projet//archive//general_data.csv')
+df_in_time<- read.csv('C://Users//louis//Documents//COURS EMSE//Année 5 - Ingé 3//ESME//R//Projet//archive//in_time.csv')
+df_manager_survey_data<- read.csv('C://Users//louis//Documents//COURS EMSE//Année 5 - Ingé 3//ESME//R//Projet//archive//manager_survey_data.csv')
+df_out_time<- read.csv('C://Users//louis//Documents//COURS EMSE//Année 5 - Ingé 3//ESME//R//Projet//archive//out_time.csv')
+```
+
+```{r}
+
+head(df_employee_data)
+
 ```
 
 Add a new chunk by clicking the *Insert Chunk* button on the toolbar or by pressing *Ctrl+Alt+I*.
