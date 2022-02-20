@@ -1,6 +1,9 @@
 ---
 title: "R Notebook"
-output: html_notebook
+output:
+  pdf_document: default
+  html_document:
+    df_print: paged
 ---
 
 This is an [R Markdown](http://rmarkdown.rstudio.com) Notebook. When you execute code within the notebook, the results appear beneath the code. 
@@ -53,5 +56,30 @@ When you save the notebook, an HTML file containing the code and output will be 
 ```{r}
 colSums(is.na(df_manager_survey_data))
 ```
+#Remplacement des données Manquantes par la Moyenne 
+###Afin de ne pas fausser notre jeux de données en supprimant simplement les lignes incomplètes nous allons remplacer les Na par la moyenne. 
+```{r}
+#duplique le dataframe afin d'effectuer nos essaie 
+df_test <- df_general_data
+df_test$NumCompaniesWorked[is.na(df_test$NumCompaniesWorked)] <- mean(df_test$NumCompaniesWorked, na.rm = TRUE)
+# na.rm =TRUE : retire les Na du calcul de la moyenne 
+colSums(is.na(df_test))
+
+```
+
+
+```{r}
+#Colonne NumCompaniesWorked
+df_general_data$NumCompaniesWorked[is.na(df_general_data$NumCompaniesWorked)] <- mean(df_test$NumCompaniesWorked, na.rm = TRUE)
+
+#Colonne TotalWorkingYears
+
+df_general_data$TotalWorkingYears[is.na(df_general_data$TotalWorkingYears)] <- mean(df_test$TotalWorkingYears, na.rm = TRUE)
+
+any(is.na(df_general_data))
+
+```
+
+
 
 The preview shows you a rendered HTML copy of the contents of the editor. Consequently, unlike *Knit*, *Preview* does not run any R code chunks. Instead, the output of the chunk when it was last run in the editor is displayed.
