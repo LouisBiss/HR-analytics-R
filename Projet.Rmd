@@ -22,9 +22,36 @@ df_out_time<- read.csv('C://Users//louis//Documents//COURS EMSE//Année 5 - Ing�
 head(df_employee_data)
 
 ```
+#Traitement des données 
 
+##Vérifie s'il y a des valeurs manquantes 
+
+#Premier dataframe : df_employee_survey_data
+
+```{r}
+
+colSums(is.na(df_employee_survey_data))
+
+
+```
+#Second dataframe : df_general_data
 Add a new chunk by clicking the *Insert Chunk* button on the toolbar or by pressing *Ctrl+Alt+I*.
+```{r}
+colSums(is.na(df_general_data))
 
+```
+#Troisième : In_time & Out_time Dataframe
+
+```{r}
+#A cause de l'immense quantité de données présente on ne peut pas juste afficher les colonnes avec le nombre de Na. Cela serait ilisible. 
+
+any(is.na(df_in_time))
+any(is.na(df_out_time))
+```
+#Quatrième : df_manager_survey_data
 When you save the notebook, an HTML file containing the code and output will be saved alongside it (click the *Preview* button or press *Ctrl+Shift+K* to preview the HTML file).
+```{r}
+colSums(is.na(df_manager_survey_data))
+```
 
 The preview shows you a rendered HTML copy of the contents of the editor. Consequently, unlike *Knit*, *Preview* does not run any R code chunks. Instead, the output of the chunk when it was last run in the editor is displayed.
