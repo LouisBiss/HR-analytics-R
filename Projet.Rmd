@@ -88,7 +88,41 @@ any(is.na(df_general_data))
 data <- prop.table(table(df_general_data['Attrition']))*100   #affiche porucentage 
 
 
-barplot (data , space =1.0,main="Attrition")
+barplot (data , space =1.0,
+         main="Attrition",  #Nom graph
+         ylim=c(0,100))     #échelle des ordonnées
+              
+
+```
+#Analyse Salaire
+
+#Répartitions des salaires
+```{r}
+boxplot(df_general_data$MonthlyIncome,
+        main = 'Box Plot: Salaire',
+        xlab="salaire mensuel ($)")
+
+
+boxplot(df_general_data$MonthlyIncome ~ df_general_data$Department, 
+        main='salire en fonction du déârtement',
+        ylab="salaire mensuel ($)",
+        xlab="Département")
+
+
+boxplot(df_general_data$MonthlyIncome ~ df_general_data$JobRole,
+        las=2,   #légende à la verticale
+        main='Salaire en fonction du poste',
+        ylab="salaire mensuel ($)",
+        xlab="Postes")
+
+
+
+
+```
+
+
+##Revenue en fonction du post 
+```{r}
 
 ```
 

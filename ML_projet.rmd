@@ -1,0 +1,181 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+
+```{r}
+# Importation des librairies
+library(dplyr)
+library(tidyr)
+library(ggplot2)
+library(lubridate)
+```
+
+
+```{r}
+# Lecture des csv
+# 1
+employee_survey <- read.table('/Users/sheidamohammadi/Documents/ECOLE/INGE_3/R/archive-2/employee_survey_data.csv', header = TRUE, sep = ",")
+
+# 2
+general <- read.table('/Users/sheidamohammadi/Documents/ECOLE/INGE_3/R/archive-2/general_data.csv', header = TRUE, sep = ",")
+
+# 3
+in_time <- read.table('/Users/sheidamohammadi/Documents/ECOLE/INGE_3/R/archive-2/in_time.csv', header = TRUE, sep = ",")
+
+# 4
+out_time <- read.table('/Users/sheidamohammadi/Documents/ECOLE/INGE_3/R/archive-2/out_time.csv', header = TRUE, sep = ",")
+
+# 5
+manager_survey <- read.table('/Users/sheidamohammadi/Documents/ECOLE/INGE_3/R/archive-2/manager_survey_data.csv', header = TRUE, sep = ",")
+```
+
+
+```{r} 
+#on join les 3 dataframes
+employe_general <- employee_survey %>%
+  inner_join(general, by = c("EmployeeID" = "EmployeeID"))
+
+employe_manager_general <- employe_general %>%
+  inner_join(manager_survey, by = c("EmployeeID" = "EmployeeID"))
+
+```
+
+
+```{r}
+# Observations et visualisation des variables
+
+colSums(is.na(employe_manager_general))
+
+# Pour la colonne EnvironnementSatisfaction, on remplace par la médiane
+
+employe_manager_general$EnvironmentSatisfaction[is.na(employe_manager_general$EnvironmentSatisfaction)] <- median(employe_manager_general$EnvironmentSatisfaction, na.rm = TRUE)
+
+# Pour la colonne WorkLifeBalance, on remplace par la médiane
+
+employe_manager_general$WorkLifeBalance[is.na(employe_manager_general$WorkLifeBalance)] <- median(employe_manager_general$WorkLifeBalance, na.rm = TRUE)
+
+# Pour la colonne JobSatisfaction, on remplace par la médiane
+
+employe_manager_general$JobSatisfaction[is.na(employe_manager_general$JobSatisfaction)] <- median(employe_manager_general$JobSatisfaction, na.rm = TRUE)
+
+# Pour la colonne TotalWorkingYears, on remplace par la moyenne
+
+employe_manager_general$TotalWorkingYears[is.na(employe_manager_general$TotalWorkingYears)] <- mean(employe_manager_general$TotalWorkingYears, na.rm = TRUE)
+
+# Pour la colonne NumCompaniesWorked, on remplace par la moyenne
+
+employe_manager_general$NumCompaniesWorked[is.na(employe_manager_general$NumCompaniesWorked)] <- mean(employe_manager_general$NumCompaniesWorked, na.rm = TRUE)
+
+colSums(is.na(employe_manager_general))
+```
+
+```{r}
+summary(employe_manager_general)
+```
+
+On remplace les valeurs qualitatives par des valeurs quantitatives pour que pouvoir utiliser les modèles de ML
+```{r}
+# On affiche les différentes valeurs quali pour pouvoir les remplacer
+
+table(employe_manager_general$Gender)
+table(employe_manager_general$Attrition)
+table(employe_manager_general$BusinessTravel)
+table(employe_manager_general$Department)
+table(employe_manager_general$EducationField)
+table(employe_manager_general$JobRole)
+table(employe_manager_general$MaritalStatus)
+table(employe_manager_general$Over18)
+```
+```{r}
+library(dplyr)
+library(plyr)
+```
+
+```{r}
+
+employe_manager_general$Gender <- mapvalues(employe_manager_general$Gender, 
+          from=c('Female', 'Male'), 
+          to=c(1,0))
+employe_manager_general$Attrition <- mapvalues(employe_manager_general$Attrition, 
+          from=c('No', 'Yes'), 
+          to=c(1,0))
+employe_manager_general$BusinessTravel <- mapvalues(employe_manager_general$BusinessTravel, 
+          from=c('Non-Travel', 'Travel_Frequently','Travel_Rarely'), 
+          to=c(1,2,3))
+employe_manager_general$Department <- mapvalues(employe_manager_general$Department, 
+          from=c('Human Resources', 'Research & Development','Sales'), 
+          to=c(1,2,3))
+
+employe_manager_general$EducationField <- mapvalues(employe_manager_general$EducationField, 
+          from=c('Human Resources', 'Life Sciences', 'Marketing', 'Medical', 'Other', 'Technical Degree'), 
+          to=c(1,2,3,4,5,6))
+employe_manager_general$JobRole <- mapvalues(employe_manager_general$JobRole, 
+          from=c('Healthcare Representative', 'Human Resources','Laboratory Technician','Manager','Manufacturing Director','Research Director','Research Scientist','Sales Executive','Sales Representative'), 
+          to=c(1,2,3,4,5,6,7,8,9))
+employe_manager_general$MaritalStatus <- mapvalues(employe_manager_general$MaritalStatus, 
+          from=c('Divorced', 'Married','Single'), 
+          to=c(1,2,3))
+employe_manager_general$Over18 <- mapvalues(employe_manager_general$Over18, 
+          from=c('Y'), 
+          to=c(1))
+
+```
+
+
+```{r}
+# On vérifie
+
+table(employe_manager_general$Gender)
+table(employe_manager_general$Attrition)
+table(employe_manager_general$BusinessTravel)
+table(employe_manager_general$Department)
+table(employe_manager_general$EducationField)
+table(employe_manager_general$JobRole)
+table(employe_manager_general$MaritalStatus)
+table(employe_manager_general$Over18)
+```
+
+```{r}
+sapply(employe_manager_general, class)
+# Le type des colonnes n'est pas bon
+```
+On change le type des colonnes haracter en numeric
+```{r}
+employe_manager_general <- transform(employe_manager_general, Attrition = as.numeric(Attrition), 
+                    BusinessTravel = as.numeric(BusinessTravel), Department = as.numeric(Department), 
+                    EducationField = as.numeric(EducationField), Gender = as.numeric(Gender), 
+                    JobRole = as.numeric(JobRole), MaritalStatus = as.numeric(MaritalStatus), 
+                    Over18 = as.numeric(Over18))
+```
+On vérifie
+```{r}
+sapply(employe_manager_general, class)
+```
+
+```{r}
+summary(employe_manager_general)
+
+```
+
+On supprime les colonnes contenant que les mêmes valeurs (sert à rien)
+
+```{r}
+employe_manager_general %>% select(-c('EmployeeCount', 'Over18','StandardHours'))
+```
+
+Reste à faire :
+- Ajouter les datasets in_time et out_time
+- Visualisation des données
+- On doit voir les features importances,
+- Jeu de train et test,
+- Entrainement modèle
+
+
+
+
+
+
+
+
+
