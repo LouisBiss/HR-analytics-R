@@ -13,6 +13,7 @@ Try executing this chunk by clicking the *Run* button within the chunk or by pla
 ##Importe les données
 
 ```{r}
+
 df_employee_survey_data <- read.csv('C://Users//louis//Documents//COURS EMSE//Année 5 - Ingé 3//ESME//R//Projet//archive//employee_survey_data.csv')
 df_general_data<- read.csv('C://Users//louis//Documents//COURS EMSE//Année 5 - Ingé 3//ESME//R//Projet//archive//general_data.csv')
 df_in_time<- read.csv('C://Users//louis//Documents//COURS EMSE//Année 5 - Ingé 3//ESME//R//Projet//archive//in_time.csv')
@@ -22,7 +23,7 @@ df_out_time<- read.csv('C://Users//louis//Documents//COURS EMSE//Année 5 - Ing�
 
 ```{r}
 
-head(df_employee_data)
+head(df_employee_survey_data)
 
 ```
 #Traitement des données 
@@ -80,6 +81,34 @@ any(is.na(df_general_data))
 
 ```
 
+```{r}
+
+#Pas besoin de chercher à remplacer les Na dans les data_time car un Na signifie qu'ils ne sont pas venue.
+
+#replace les dates manquantes par le Mode (valeure la plus fréquente)
+#rdf <- rle(df_in_time$mode)
+#df$mode <- na.locf(inverse.rle(rdf))
+
+#calc_mode <- function(x){
+  # List the distinct / unique values
+  #distinct_values <- unique(x)
+  # Count the occurrence of each distinct value
+  #distinct_tabulate <- tabulate(match(x, distinct_values))
+  # Return the value with the highest occurrence
+  #distinct_values[which.max(distinct_tabulate)]
+#}
+
+
+#for (i in colnames(df_in_time)){
+  #rdf <- rle(df_in_time$i)
+  #df_in_time$i <- na.locf(calc_mode(i))
+#}
+
+#if (!require("tidyverse")) install.packages("tidyverse")
+
+#df_in_time <-mutate(across(everything(), ~replace_na(.x, calc_mode(.x))))
+
+```
 
 
 The preview shows you a rendered HTML copy of the contents of the editor. Consequently, unlike *Knit*, *Preview* does not run any R code chunks. Instead, the output of the chunk when it was last run in the editor is displayed.
