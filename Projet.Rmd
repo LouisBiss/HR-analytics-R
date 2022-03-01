@@ -80,33 +80,15 @@ df_general_data$TotalWorkingYears[is.na(df_general_data$TotalWorkingYears)] <- m
 any(is.na(df_general_data))
 
 ```
+#Exploiration des données générales 
 
+##Roulement du personnel 
 ```{r}
-
-#Pas besoin de chercher à remplacer les Na dans les data_time car un Na signifie qu'ils ne sont pas venue.
-
-#replace les dates manquantes par le Mode (valeure la plus fréquente)
-#rdf <- rle(df_in_time$mode)
-#df$mode <- na.locf(inverse.rle(rdf))
-
-#calc_mode <- function(x){
-  # List the distinct / unique values
-  #distinct_values <- unique(x)
-  # Count the occurrence of each distinct value
-  #distinct_tabulate <- tabulate(match(x, distinct_values))
-  # Return the value with the highest occurrence
-  #distinct_values[which.max(distinct_tabulate)]
-#}
+#data <- table(df_general_data['Attrition'])   affiche les données en somme 
+data <- prop.table(table(df_general_data['Attrition']))*100   #affiche porucentage 
 
 
-#for (i in colnames(df_in_time)){
-  #rdf <- rle(df_in_time$i)
-  #df_in_time$i <- na.locf(calc_mode(i))
-#}
-
-#if (!require("tidyverse")) install.packages("tidyverse")
-
-#df_in_time <-mutate(across(everything(), ~replace_na(.x, calc_mode(.x))))
+barplot (data , space =1.0,main="Attrition")
 
 ```
 
