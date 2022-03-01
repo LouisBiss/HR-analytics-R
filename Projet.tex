@@ -283,61 +283,34 @@ incomplètes nous allons remplacer les Na par la moyenne.
 ## [1] FALSE
 \end{verbatim}
 
-\#Exploiration des données générales
-
-\#\#Roulement du personnel
-
 \begin{Shaded}
 \begin{Highlighting}[]
-\CommentTok{\#data \textless{}{-} table(df\_general\_data[\textquotesingle{}Attrition\textquotesingle{}])   affiche les données en somme }
-\NormalTok{data }\OtherTok{\textless{}{-}} \FunctionTok{prop.table}\NormalTok{(}\FunctionTok{table}\NormalTok{(df\_general\_data[}\StringTok{\textquotesingle{}Attrition\textquotesingle{}}\NormalTok{]))}\SpecialCharTok{*}\DecValTok{100}   \CommentTok{\#affiche porucentage }
+\CommentTok{\#Pas besoin de chercher à remplacer les Na dans les data\_time car un Na signifie qu\textquotesingle{}ils ne sont pas venue.}
+
+\CommentTok{\#replace les dates manquantes par le Mode (valeure la plus fréquente)}
+\CommentTok{\#rdf \textless{}{-} rle(df\_in\_time$mode)}
+\CommentTok{\#df$mode \textless{}{-} na.locf(inverse.rle(rdf))}
+
+\CommentTok{\#calc\_mode \textless{}{-} function(x)\{}
+  \CommentTok{\# List the distinct / unique values}
+  \CommentTok{\#distinct\_values \textless{}{-} unique(x)}
+  \CommentTok{\# Count the occurrence of each distinct value}
+  \CommentTok{\#distinct\_tabulate \textless{}{-} tabulate(match(x, distinct\_values))}
+  \CommentTok{\# Return the value with the highest occurrence}
+  \CommentTok{\#distinct\_values[which.max(distinct\_tabulate)]}
+\CommentTok{\#\}}
 
 
-\FunctionTok{barplot}\NormalTok{ (data , }\AttributeTok{space =}\FloatTok{1.0}\NormalTok{,}
-         \AttributeTok{main=}\StringTok{"Attrition"}\NormalTok{,  }\CommentTok{\#Nom graph}
-         \AttributeTok{ylim=}\FunctionTok{c}\NormalTok{(}\DecValTok{0}\NormalTok{,}\DecValTok{100}\NormalTok{))     }\CommentTok{\#échelle des ordonnées}
+\CommentTok{\#for (i in colnames(df\_in\_time))\{}
+  \CommentTok{\#rdf \textless{}{-} rle(df\_in\_time$i)}
+  \CommentTok{\#df\_in\_time$i \textless{}{-} na.locf(calc\_mode(i))}
+\CommentTok{\#\}}
+
+\CommentTok{\#if (!require("tidyverse")) install.packages("tidyverse")}
+
+\CommentTok{\#df\_in\_time \textless{}{-}mutate(across(everything(), \textasciitilde{}replace\_na(.x, calc\_mode(.x))))}
 \end{Highlighting}
 \end{Shaded}
-
-\includegraphics{Projet_files/figure-latex/unnamed-chunk-9-1.pdf}
-\#Analyse Salaire
-
-\#Répartitions des salaires
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\FunctionTok{boxplot}\NormalTok{(df\_general\_data}\SpecialCharTok{$}\NormalTok{MonthlyIncome,}
-        \AttributeTok{main =} \StringTok{\textquotesingle{}Box Plot: Salaire\textquotesingle{}}\NormalTok{,}
-        \AttributeTok{xlab=}\StringTok{"salaire mensuel ($)"}\NormalTok{)}
-\end{Highlighting}
-\end{Shaded}
-
-\includegraphics{Projet_files/figure-latex/unnamed-chunk-10-1.pdf}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\FunctionTok{boxplot}\NormalTok{(df\_general\_data}\SpecialCharTok{$}\NormalTok{MonthlyIncome }\SpecialCharTok{\textasciitilde{}}\NormalTok{ df\_general\_data}\SpecialCharTok{$}\NormalTok{Department, }
-        \AttributeTok{main=}\StringTok{\textquotesingle{}salire en fonction du déârtement\textquotesingle{}}\NormalTok{,}
-        \AttributeTok{ylab=}\StringTok{"salaire mensuel ($)"}\NormalTok{,}
-        \AttributeTok{xlab=}\StringTok{"Département"}\NormalTok{)}
-\end{Highlighting}
-\end{Shaded}
-
-\includegraphics{Projet_files/figure-latex/unnamed-chunk-10-2.pdf}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\FunctionTok{boxplot}\NormalTok{(df\_general\_data}\SpecialCharTok{$}\NormalTok{MonthlyIncome }\SpecialCharTok{\textasciitilde{}}\NormalTok{ df\_general\_data}\SpecialCharTok{$}\NormalTok{JobRole,}
-        \AttributeTok{las=}\DecValTok{2}\NormalTok{,   }\CommentTok{\#légende à la verticale}
-        \AttributeTok{main=}\StringTok{\textquotesingle{}Salaire en fonction du poste\textquotesingle{}}\NormalTok{,}
-        \AttributeTok{ylab=}\StringTok{"salaire mensuel ($)"}\NormalTok{,}
-        \AttributeTok{xlab=}\StringTok{"Postes"}\NormalTok{)}
-\end{Highlighting}
-\end{Shaded}
-
-\includegraphics{Projet_files/figure-latex/unnamed-chunk-10-3.pdf}
-
-\#\#Revenue en fonction du post
 
 The preview shows you a rendered HTML copy of the contents of the
 editor. Consequently, unlike \emph{Knit}, \emph{Preview} does not run

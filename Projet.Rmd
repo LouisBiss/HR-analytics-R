@@ -104,27 +104,86 @@ boxplot(df_general_data$MonthlyIncome,
 
 
 boxplot(df_general_data$MonthlyIncome ~ df_general_data$Department, 
-        main='salire en fonction du déârtement',
+        main='Répartition Salaire en fonction du déârtement',
         ylab="salaire mensuel ($)",
         xlab="Département")
 
 
 boxplot(df_general_data$MonthlyIncome ~ df_general_data$JobRole,
         las=2,   #légende à la verticale
-        main='Salaire en fonction du poste',
+        main='Répartion Salaire en fonction du poste',
         ylab="salaire mensuel ($)",
-        xlab="Postes")
+        xlab="Postes",
+        height=2000, unit="px")
 
 
 
 
 ```
+
 
 
 ##Revenue en fonction du post 
 ```{r}
+library(dplyr)
+
+df_inter <- df_employee_survey_data %>%
+  inner_join(df_general_data, by = c("EmployeeID" = "EmployeeID"))
+
+df_global <- df_inter %>%
+  inner_join(df_manager_survey_data, by = c("EmployeeID" = "EmployeeID"))
 
 ```
 
+```{r}
+#df_sunburst <- df_global[, c("EmployeeID","Departement","JobSatisfaction")]
+df_sunburst <- data.frame(df_global$EmployeeID, df_global$Department, df_global$JobSatisfaction)
+names(df_sunburst) <- c("EmployeeID", "Department", "JobSatisfaction")
+
+
+
+```
+
+
+
+```{r}
+
+#library(plotly)
+#fig <- plot_ly()
+
+#fig <- fig %>% 
+ # add_trace(
+  #  EmployeeID=df_sunburst$EmployeeID,
+   # Department=df_sunburst$Department,
+    #JobSatisfaction=df_sunburst$JobSatisfaction,
+    #domain=list(column=1),
+    #maxdepth=2,
+    #type='sunburst',
+    #insidetextorientation='radial')
+#fig
+
+```
+
+```{r}
+unique(df_global$JobRole)
+```
+
+```{r}
+library("ggplot2")
+
+ggplot(df_global,                         # Draw barplot with grouping & stacking
+       aes('Sales Representative' = JobRole,
+           'Healthcare Representative' = JobRole,
+           'Human Resources' = JobRole,
+           'Manufacturing Director' = JobRole,
+           'Research Scientist' = JobRole,
+           'Sales Executive' = JobRole,
+           'Laboratory Technician' = JobRole,
+           'Manager' = JobRole,
+           fill = stack)) + 
+  geom_bar(stat = "identity",
+           position = "Departement") +
+  facet_grid(~ facet)
+```
 
 The preview shows you a rendered HTML copy of the contents of the editor. Consequently, unlike *Knit*, *Preview* does not run any R code chunks. Instead, the output of the chunk when it was last run in the editor is displayed.
