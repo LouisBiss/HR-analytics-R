@@ -140,47 +140,86 @@ df_global <- df_inter %>%
 df_sunburst <- data.frame(df_global$EmployeeID, df_global$Department, df_global$JobSatisfaction)
 names(df_sunburst) <- c("EmployeeID", "Department", "JobSatisfaction")
 
-
-
 ```
 
 
+##Graph circulaire:nb employés par départements
 
 ```{r}
+#Compte le nombre de ligne par département (et donc le nombre d'employé)
+df_employee_per_dep <-data.frame(table(df_global$Department))
 
-#library(plotly)
-#fig <- plot_ly()
+#calcul pourcentage
+x=df_employee_per_dep$Freq
+df_employee_per_dep$percentage <-(x/sum(x)*100)
 
-#fig <- fig %>% 
- # add_trace(
-  #  EmployeeID=df_sunburst$EmployeeID,
-   # Department=df_sunburst$Department,
-    #JobSatisfaction=df_sunburst$JobSatisfaction,
-    #domain=list(column=1),
-    #maxdepth=2,
-    #type='sunburst',
-    #insidetextorientation='radial')
-#fig
+#install.packages("fmsb")
+library(ggplot2)
+g <-ggplot(df_employee_per_dep, aes(x="", y=percentage, fill=Var1)) +
+  geom_bar(stat="identity", width=1) +
+  coord_polar("y", start=0)
 
-```
+g + scale_fill_discrete(name = "Répartition des employés par départements")
 
-```{r}
-unique(df_global$JobRole)
 ```
 
 ```{r}
-library("ggplot2")
+library(tidyverse)
+library(readr)
 
-library(reshape2) # for melt
+#re-order groups by employee count
+groups_by_count <- df_global %>%
+  count(`Department`)# %>%
+  #arrange(desc(n))
 
-melted <- melt(df_global, "Departement")
+df_global$Department <- factor(df_global$Department, levels=groups_by_count$Department)
 
-melted$cat <- ''
-melted[melted$variable == 'Healthcare Representative',]$cat <- "Healthcare Representative"
-melted[melted$variable != 'Human Resources',]$cat <- "Human Resources"
 
-ggplot(melted, aes(x = cat, y = value, fill = variable)) +
-  geom_bar(stat = 'identity', position = 'stack') + facet_grid(~ person)
+#job statisfaction & salaire
+df_global %>%
+  ggplot() +
+    geom_point(aes(y=MonthlyIncome, x=JobSatisfaction, color=JobSatisfaction), position="jitter") +
+    facet_wrap(~`Department`, nrow=1)
+
+#job performance and salary 
+df_global %>%
+  ggplot() +
+    geom_point(aes(y=MonthlyIncome, x=PerformanceRating, color=PerformanceRating), position="jitter") +
+    facet_wrap(~`Department`, nrow=1)
+
+
+
 ```
+#attrition en fonction de la satisfaction 
+```{r}
+ggplot(df_global, aes(fill=Attrition, 
+                      y=JobSatisfaction,
+                      x=JobSatisfaction)) + 
+                      ggtitle('Attrition en fonction de la statisfaction des employés')+
+    geom_bar(position="stack", stat="identity")
+
+```
+#Déterminer l'influence des heures de travails sur l'attrition 
+```{r}
+sapply(df_in_time$X2015.01.01, class)
+#class = logical 
+```
+
+```{r}
+#df_in_time_2 <- as.Date(df_in_time, format = '%Y-%m-%d %H:%M:%S') 
+
+d <- df_in_time
+
+d %>% mutate(across(everything(), ~as.POSIXct(., format ="%Y-%m-%d %H:%M:%S")))
+
+
+#df_in_time_2 <- data.frame(as.POSIXct(df_in_time$X2015.01.01, format ="%Y-%m-%d %H:%M:%S"))
+
+```
+
+```{r}
+nrow(df_in_time)
+```
+
 
 The preview shows you a rendered HTML copy of the contents of the editor. Consequently, unlike *Knit*, *Preview* does not run any R code chunks. Instead, the output of the chunk when it was last run in the editor is displayed.
