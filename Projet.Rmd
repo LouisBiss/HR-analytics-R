@@ -171,19 +171,16 @@ unique(df_global$JobRole)
 ```{r}
 library("ggplot2")
 
-ggplot(df_global,                         # Draw barplot with grouping & stacking
-       aes('Sales Representative' = JobRole,
-           'Healthcare Representative' = JobRole,
-           'Human Resources' = JobRole,
-           'Manufacturing Director' = JobRole,
-           'Research Scientist' = JobRole,
-           'Sales Executive' = JobRole,
-           'Laboratory Technician' = JobRole,
-           'Manager' = JobRole,
-           fill = stack)) + 
-  geom_bar(stat = "identity",
-           position = "Departement") +
-  facet_grid(~ facet)
+library(reshape2) # for melt
+
+melted <- melt(df_global, "Departement")
+
+melted$cat <- ''
+melted[melted$variable == 'Healthcare Representative',]$cat <- "Healthcare Representative"
+melted[melted$variable != 'Human Resources',]$cat <- "Human Resources"
+
+ggplot(melted, aes(x = cat, y = value, fill = variable)) +
+  geom_bar(stat = 'identity', position = 'stack') + facet_grid(~ person)
 ```
 
 The preview shows you a rendered HTML copy of the contents of the editor. Consequently, unlike *Knit*, *Preview* does not run any R code chunks. Instead, the output of the chunk when it was last run in the editor is displayed.
