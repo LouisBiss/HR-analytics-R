@@ -1,19 +1,11 @@
 ---
 title: "R Notebook"
-output:
-  pdf_document: default
-  html_document:
-    df_print: paged
+output: html_notebook
 ---
-
-This is an [R Markdown](http://rmarkdown.rstudio.com) Notebook. When you execute code within the notebook, the results appear beneath the code. 
-
-Try executing this chunk by clicking the *Run* button within the chunk or by placing your cursor inside it and pressing *Ctrl+Shift+Enter*. 
 
 ##Importe les données
 
 ```{r}
-
 df_employee_survey_data <- read.csv('C://Users//louis//Documents//COURS EMSE//Année 5 - Ingé 3//ESME//R//Projet//archive//employee_survey_data.csv')
 df_general_data<- read.csv('C://Users//louis//Documents//COURS EMSE//Année 5 - Ingé 3//ESME//R//Projet//archive//general_data.csv')
 df_in_time<- read.csv('C://Users//louis//Documents//COURS EMSE//Année 5 - Ingé 3//ESME//R//Projet//archive//in_time.csv')
@@ -22,9 +14,7 @@ df_out_time<- read.csv('C://Users//louis//Documents//COURS EMSE//Année 5 - Ing�
 ```
 
 ```{r}
-
 head(df_employee_survey_data)
-
 ```
 #Traitement des données 
 
@@ -33,22 +23,17 @@ head(df_employee_survey_data)
 #Premier dataframe : df_employee_survey_data
 
 ```{r}
-
 colSums(is.na(df_employee_survey_data))
-
-
 ```
 #Second dataframe : df_general_data
 Add a new chunk by clicking the *Insert Chunk* button on the toolbar or by pressing *Ctrl+Alt+I*.
 ```{r}
 colSums(is.na(df_general_data))
-
 ```
 #Troisième : In_time & Out_time Dataframe
 
 ```{r}
 #A cause de l'immense quantité de données présente on ne peut pas juste afficher les colonnes avec le nombre de Na. Cela serait ilisible. 
-
 any(is.na(df_in_time))
 any(is.na(df_out_time))
 ```
@@ -65,20 +50,15 @@ df_test <- df_general_data
 df_test$NumCompaniesWorked[is.na(df_test$NumCompaniesWorked)] <- mean(df_test$NumCompaniesWorked, na.rm = TRUE)
 # na.rm =TRUE : retire les Na du calcul de la moyenne 
 colSums(is.na(df_test))
-
 ```
 
 
 ```{r}
 #Colonne NumCompaniesWorked
 df_general_data$NumCompaniesWorked[is.na(df_general_data$NumCompaniesWorked)] <- mean(df_test$NumCompaniesWorked, na.rm = TRUE)
-
 #Colonne TotalWorkingYears
-
 df_general_data$TotalWorkingYears[is.na(df_general_data$TotalWorkingYears)] <- mean(df_test$TotalWorkingYears, na.rm = TRUE)
-
 any(is.na(df_general_data))
-
 ```
 #Exploiration des données générales 
 
@@ -86,13 +66,10 @@ any(is.na(df_general_data))
 ```{r}
 #data <- table(df_general_data['Attrition'])   affiche les données en somme 
 data <- prop.table(table(df_general_data['Attrition']))*100   #affiche porucentage 
-
-
 barplot (data , space =1.0,
          main="Attrition",  #Nom graph
          ylim=c(0,100))     #échelle des ordonnées
               
-
 ```
 #Analyse Salaire
 
@@ -101,24 +78,16 @@ barplot (data , space =1.0,
 boxplot(df_general_data$MonthlyIncome,
         main = 'Box Plot: Salaire',
         xlab="salaire mensuel ($)")
-
-
 boxplot(df_general_data$MonthlyIncome ~ df_general_data$Department, 
         main='Répartition Salaire en fonction du déârtement',
         ylab="salaire mensuel ($)",
         xlab="Département")
-
-
 boxplot(df_general_data$MonthlyIncome ~ df_general_data$JobRole,
         las=2,   #légende à la verticale
         main='Répartion Salaire en fonction du poste',
         ylab="salaire mensuel ($)",
         xlab="Postes",
         height=2000, unit="px")
-
-
-
-
 ```
 
 
@@ -126,20 +95,16 @@ boxplot(df_general_data$MonthlyIncome ~ df_general_data$JobRole,
 ##Revenue en fonction du post 
 ```{r}
 library(dplyr)
-
 df_inter <- df_employee_survey_data %>%
   inner_join(df_general_data, by = c("EmployeeID" = "EmployeeID"))
-
 df_global <- df_inter %>%
   inner_join(df_manager_survey_data, by = c("EmployeeID" = "EmployeeID"))
-
 ```
 
 ```{r}
 #df_sunburst <- df_global[, c("EmployeeID","Departement","JobSatisfaction")]
 df_sunburst <- data.frame(df_global$EmployeeID, df_global$Department, df_global$JobSatisfaction)
 names(df_sunburst) <- c("EmployeeID", "Department", "JobSatisfaction")
-
 ```
 
 
@@ -148,47 +113,35 @@ names(df_sunburst) <- c("EmployeeID", "Department", "JobSatisfaction")
 ```{r}
 #Compte le nombre de ligne par département (et donc le nombre d'employé)
 df_employee_per_dep <-data.frame(table(df_global$Department))
-
 #calcul pourcentage
 x=df_employee_per_dep$Freq
 df_employee_per_dep$percentage <-(x/sum(x)*100)
-
 #install.packages("fmsb")
 library(ggplot2)
 g <-ggplot(df_employee_per_dep, aes(x="", y=percentage, fill=Var1)) +
   geom_bar(stat="identity", width=1) +
   coord_polar("y", start=0)
-
 g + scale_fill_discrete(name = "Répartition des employés par départements")
-
 ```
 
 ```{r}
 library(tidyverse)
 library(readr)
-
 #re-order groups by employee count
 groups_by_count <- df_global %>%
   count(`Department`)# %>%
   #arrange(desc(n))
-
 df_global$Department <- factor(df_global$Department, levels=groups_by_count$Department)
-
-
 #job statisfaction & salaire
 df_global %>%
   ggplot() +
     geom_point(aes(y=MonthlyIncome, x=JobSatisfaction, color=JobSatisfaction), position="jitter") +
     facet_wrap(~`Department`, nrow=1)
-
 #job performance and salary 
 df_global %>%
   ggplot() +
     geom_point(aes(y=MonthlyIncome, x=PerformanceRating, color=PerformanceRating), position="jitter") +
     facet_wrap(~`Department`, nrow=1)
-
-
-
 ```
 #attrition en fonction de la satisfaction 
 ```{r}
@@ -197,29 +150,59 @@ ggplot(df_global, aes(fill=Attrition,
                       x=JobSatisfaction)) + 
                       ggtitle('Attrition en fonction de la statisfaction des employés')+
     geom_bar(position="stack", stat="identity")
-
 ```
 #Déterminer l'influence des heures de travails sur l'attrition 
 ```{r}
-sapply(df_in_time$X2015.01.01, class)
+#sapply(df_in_time$X2015.01.01, class)
 #class = logical 
 ```
 
 ```{r}
 #df_in_time_2 <- as.Date(df_in_time, format = '%Y-%m-%d %H:%M:%S') 
-
-d <- df_in_time
-
-d %>% mutate(across(everything(), ~as.POSIXct(., format ="%Y-%m-%d %H:%M:%S")))
-
-
+#d <- df_in_time
+#d %>% mutate(across(everything(), ~as.POSIXct(., format ="%Y-%m-%d %H:%M:%S")))
 #df_in_time_2 <- data.frame(as.POSIXct(df_in_time$X2015.01.01, format ="%Y-%m-%d %H:%M:%S"))
+df_in_time_date_format <- data.frame(matrix(nrow=nrow(df_in_time),ncol=ncol(df_in_time)))
+df_out_time_date_format <- data.frame(matrix(nrow=nrow(df_out_time),ncol=ncol(df_out_time)))
+
+for (i in 1:ncol(df_in_time)){
+  df_in_time_date_format[i]<-as.POSIXct(df_in_time[,i],format ="%Y-%m-%d %H:%M:%S",origin='1970-01-01')
+  colnames(df_in_time_date_format)<-names(df_in_time)
+}
+
+for (i in 1:ncol(df_out_time)){
+  df_out_time_date_format[i]<-as.POSIXct(df_out_time[,i],format ="%Y-%m-%d %H:%M:%S",origin='1970-01-01')
+  colnames(df_out_time_date_format)<-names(df_out_time)
+}
+
 
 ```
 
 ```{r}
-nrow(df_in_time)
+df_working_time_by_day <- df_out_time_date_format -df_in_time_date_format
+```
+
+En France une journnée de travail fait normalement 7h, nous essayer de visualiser l'impact du temps de travail sur l'attrition. 
+```{r}
+#df_average_working_time <- mean.Date(df_working_time_by_day)
+df_average_working_time <- data.frame(matrix(nrow=nrow(df_working_time_by_day)))
+for (i in 1:ncol(df_working_time_by_day)) {
+  df_average_working_time$mean<- mean(df_working_time_by_day[,i],na.rm = TRUE)
+}
+df_average_working_time   
 ```
 
 
-The preview shows you a rendered HTML copy of the contents of the editor. Consequently, unlike *Knit*, *Preview* does not run any R code chunks. Instead, the output of the chunk when it was last run in the editor is displayed.
+```{r}
+df_working_time_by_day
+```
+En France le temps travail (réglementé) est 7h par jour, observons l'influence de l'accumulation d'heure sup sur l'attrition 
+
+
+```{r}
+#df_avg <- rowMeans.Date(df_working_time_by_day)
+
+df_avg <- mean.Date(df_working_time_by_day, na.rm = TRUE)
+
+```
+
