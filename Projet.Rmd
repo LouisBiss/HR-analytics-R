@@ -12,7 +12,6 @@ df_in_time<- read.csv('C://Users//louis//Documents//COURS EMSE//Année 5 - Ingé
 df_manager_survey_data<- read.csv('C://Users//louis//Documents//COURS EMSE//Année 5 - Ingé 3//ESME//R//Projet//archive//manager_survey_data.csv')
 df_out_time<- read.csv('C://Users//louis//Documents//COURS EMSE//Année 5 - Ingé 3//ESME//R//Projet//archive//out_time.csv')
 ```
-
 ```{r}
 head(df_employee_survey_data)
 ```
@@ -127,16 +126,19 @@ g + scale_fill_discrete(name = "Répartition des employés par départements")
 ```{r}
 library(tidyverse)
 library(readr)
+
 #re-order groups by employee count
-groups_by_count <- df_global %>%
-  count(`Department`)# %>%
+#groups_by_count <- df_global %>%
+ # count(`Department`)# %>%
   #arrange(desc(n))
-df_global$Department <- factor(df_global$Department, levels=groups_by_count$Department)
+#df_global$Department <- factor
+
 #job statisfaction & salaire
 df_global %>%
   ggplot() +
     geom_point(aes(y=MonthlyIncome, x=JobSatisfaction, color=JobSatisfaction), position="jitter") +
     facet_wrap(~`Department`, nrow=1)
+
 #job performance and salary 
 df_global %>%
   ggplot() +
@@ -186,9 +188,10 @@ En France une journnée de travail fait normalement 7h, nous essayer de visualis
 ```{r}
 #df_average_working_time <- mean.Date(df_working_time_by_day)
 df_average_working_time <- data.frame(matrix(nrow=nrow(df_working_time_by_day)))
-for (i in 1:ncol(df_working_time_by_day)) {
-  df_average_working_time$mean<- mean(df_working_time_by_day[,i],na.rm = TRUE)
-}
+#for (i in 1:ncol(df_working_time_by_day)) {
+# df_average_working_time$mean<- mean(df_working_time_by_day[,i],na.rm = TRUE)
+#}
+
 df_average_working_time   
 ```
 
@@ -198,11 +201,105 @@ df_working_time_by_day
 ```
 En France le temps travail (réglementé) est 7h par jour, observons l'influence de l'accumulation d'heure sup sur l'attrition 
 
+```{r}
+#il faut d'abord convertir les heures en numéric afin de faire des opérations dessus 
+
+
+#df_avg <- rowMeans.Date(df_working_time_by_day)
+#df_avg <- data.frame(as.numeric(as.POSIXct(df_working_time_by_day, na.rm = TRUE))))
+
+```
 
 ```{r}
-#df_avg <- rowMeans.Date(df_working_time_by_day)
+#df_test %>% mutate(across(everything(), ~as.unclass))
 
-df_avg <- mean.Date(df_working_time_by_day, na.rm = TRUE)
+for (i in 1:ncol(df_working_time_by_day)){
+ # df_working_time_by_day[i]<-lapply(df_working_time_by_day[i], unclass)
+  df_working_time_by_day[i]<-lapply(df_working_time_by_day[i], as.numeric)
+}
 
+#df_avg <- data.frame(rowMeans(df_test),na.rm = TRUE )
+
+#df_avg <- data.frame(matrix(row=nrow(df_test)))
+
+#for (i in 1:nrow(df_test)) {
+# df_avg$mean<- mean(df_test[i],na.rm = TRUE)
+#}
+
+df_working_time_by_day$avg<-rowMeans(df_working_time_by_day,na.rm=TRUE)
+
+```
+
+```{r}
+df_avg <- data.frame(df_working_time_by_day$avg)
+#ajouter une colonne id pour pouvoir fuisoner le dataframe global 
+df_avg$EmployeeID <- seq.int(nrow(df_avg))
+```
+
+```{r}
+#fusionne les df
+df_global <- df_global %>%
+  inner_join(df_avg, by = c("EmployeeID" = "EmployeeID"))
+```
+
+```{r}
+#renommer colonne
+names(df_global)[names(df_global) == "df_working_time_by_day.avg"] <- "avg"
+
+
+
+```
+
+```{r}
+library(ggplot2)
+df_graph <- df_global[, c("avg", "Attrition")]
+#df_graph$avg <-signif(df_global$avg, digits = 2)
+df_graph$avg <- floor(df_graph$avg)
+df_graph$value <- 1
+
+# stacked area chart
+
+ggplot(df_graph, aes(x=avg, y=value, fill=Attrition)) + 
+    stat_summary(fun = "sum", geom = "area", position = "stack")
+
+```
+```{r}
+library(dplyr)
+df_graph <- df_graph  %>%
+  group_by(avg, Attrition) %>%
+  summarise(n = sum(value)) %>%
+  mutate(percentage = n / sum(n))
+
+
+ggplot(df_graph, aes(x=avg, y=percentage, fill=Attrition)) + 
+    geom_area(alpha=0.6 , size=1, colour="black")+
+    ggtitle("Attrition en fonctions des heures de travail journalières moyennes")+
+    xlab("Temps de travail moyen")
+
+
+```
+```{r}
+df_global$value <- 1
+
+ggplot(df_global, aes(x=YearsSinceLastPromotion, y=value, fill=Attrition)) + 
+    stat_summary(fun = "sum", geom = "area", position = "stack")
+```
+
+```{r}
+df_YSLP <- df_global[,c("YearsSinceLastPromotion","Attrition","value")]
+df_YSLP <- df_YSLP  %>%
+  group_by(YearsSinceLastPromotion, Attrition) %>%
+  summarise(n = sum(value)) %>%
+  mutate(percentage = n / sum(n))
+
+
+ggplot(df_YSLP, aes(x=YearsSinceLastPromotion, y=percentage, fill=Attrition)) + 
+    geom_area(alpha=0.6 , size=1, colour="black")+
+    ggtitle("Relation entre le temps depuis la dernière promotion et l'Attrtion")+
+    xlab("Temps de travail moyen")
+```
+```{r}
+ggplot(df_global, aes(fill=condition, y=value, x=specie)) + 
+    geom_bar(position="stack", stat="identity")
 ```
 

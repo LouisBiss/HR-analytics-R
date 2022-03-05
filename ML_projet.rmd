@@ -164,8 +164,193 @@ On supprime les colonnes contenant que les mêmes valeurs (sert à rien)
 employe_manager_general %>% select(-c('EmployeeCount', 'Over18','StandardHours'))
 ```
 
+```{r}
+# Tentative ajout dataframes time
+df_test <- in_time
+
+
+library(dplyr)
+df_test = rename(df_test,c("X"="EmployeeID"))
+out_time = rename(out_time,c("X"="EmployeeID"))
+
+```
+
+
+```{r}
+colSums(is.na(df_test))
+# On constate que des colonnes sont totalement vides et qu'en moyennes il y a 250 valeurs manquantes par colonnes
+```
+```{r}
+# On supprime les colonnes qui ont des valeurs manquantes supérieures à 50%
+df_test <-  df_test[,!sapply(df_test, function(x) mean(is.na(x)))>0.5]
+df_test$Nb_absence_in <- rowSums(is.na(df_test))
+head(df_test)
+```
+```{r}
+# On fait la meme chose pour out_time
+out_time <-  out_time[,!sapply(out_time, function(x) mean(is.na(x)))>0.5]
+out_time$Nb_absence_out <- rowSums(is.na(out_time))
+head(out_time)
+```
+```{r}
+# On créer un nouveau dataframe avec les colonnes EmpolyeeID, Nb_absence_in 
+df1 <- df_test[-c(2:250)]
+#On créer un nouveau dataframe avec les colonnes EmpolyeeID, Nb_absence_out
+df2 <- out_time[-c(2:250)] 
+head(df1)
+head(df2)
+
+```
+```{r}
+# On joint les deux dataframes
+df <- df1 %>%
+  inner_join(df2, by = c("EmployeeID" = "EmployeeID"))
+head(df)
+```
+```{r}
+df$Nb_absence <- ifelse(df$Nb_absence_in > df$Nb_absence_out, df$Nb_absence_in,
+               ifelse(df$Nb_absence_in < df$Nb_absence_out, df$Nb_absence_out, df$Nb_absence_out))
+head(df)
+```
+```{r}
+#On supprime les colonnes Nb_absence_in et Nb_absence_out
+df <- df[-c(2:3)]
+head(df)
+```
+## On joins ce dataframe à celui de employee_manager_general
+```{r}
+employe_manager_general <- employe_manager_general %>%
+  inner_join(df, by = c("EmployeeID" = "EmployeeID"))
+head(employe_manager_general)
+```
+
+```{r}
+# On supprime les colonnes à valeurs uniques soit : EmployeeCount, Over18 et StandardHours
+employe_manager_general <- employe_manager_general %>% select(-c('EmployeeCount', 'Over18', 'StandardHours'))
+```
+```{r}
+# On voit la correlation 
+cor(employe_manager_general[,1:27])
+```
+```{r}
+"""employe_manager_general_pca <- prcomp(employe_manager_general[,1:27], center = T, scale = T)
+summary(employe_manager_general_pca)"""
+```
+On sépare les données en jeu de train et de test
+```{r}
+library(tidymodels)
+set.seed(364)
+
+n <-nrow(employe_manager_general)
+employe_parts <- employe_manager_general %>%
+  initial_split(prop=0.8)
+
+train <-employe_parts %>%
+  training()
+
+test <-employe_parts %>%
+  testing()
+
+list(train,test) %>%
+  map_int(nrow)
+```
+
+## On entraine le model Logistic Regression avec pour variable cible Attrition
+```{r}
+# Fit the model
+model <- glm(Attrition ~.,family=binomial(link='logit'),data=train)
+
+# On observe les résultats du modele
+summary(model)
+
+
+```
+```{r}
+exp(coef(model))
+# Plus les résultats sont au dessus de 1, plus cela correspond à une augmentation du phénomène étudié
+# Plus les résultats sont en dessous de 1, plus cela correspond à une diminution du phénomène étudié
+# Le rapport de côtes à 1 signifie l’absence d’effet
+```
+```{r}
+exp(cbind(coef(model), confint(model)))
+```
+```{r}
+# intervalles de confiance
+library(questionr)
+odds.ratio(model)
+```
+```{r}
+library(gtsummary)
+tbl_regression(model, exponentiate = TRUE)
+```
+
+```{r}
+library(GGally)
+ggcoef_model(model, exponentiate = TRUE)
+```
+
+```{r}
+# Représentation graphique résumant les effets de chaque variable du modèle.
+library(effects)
+plot(allEffects(model))
+```
+
+```{r}
+attrition.pred <- predict(model, type = "response", newdata = test)
+head(attrition.pred)
+#La méthode predict avec l’argument type="response" permet d’appliquer notre modèle logistique à un tableau de données et renvoie pour chaque individu la probabilité qu’il ait vécu le phénomène étudié.
+```
+
+### Variable binaire, alors on transforme nos variables prédites en "oui"/"non
+```{r}
+table(attrition.pred > 0.5, test$Attrition)
+```
+##On a 13+115 = 128 prédictions incorrectes sur un total de 882 au total. Soit un pourcentage de mauvais classement de 14,5%
+
+
+
+
+
+
+
+
+
+
+
+```{r}
+"""data(iris)
+data <- iris[ iris$Species != "virginica", ]
+data$Species <- droplevels(data$Species)
+formula <- Species ~ Petal.Length + Sepal.Length + Petal.Width
+pca.logistic <- pcaLogisticR(formula = formula,
+                            data = data, n.pc = 2, scale = TRUE,
+                            center = TRUE, max.pc = 2)
+set.seed(123)
+newdata <- iris[sample.int(150, 40), 1:4]
+newdata.prediction <- predict(pca.logistic, newdata, type = "all")"""
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 Reste à faire :
-- Ajouter les datasets in_time et out_time
 - Visualisation des données
 - On doit voir les features importances,
 - Jeu de train et test,
