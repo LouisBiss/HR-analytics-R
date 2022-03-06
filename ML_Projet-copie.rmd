@@ -1,0 +1,403 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+```{r}
+#install.packages('plyr')
+#install.packages('tidymodels')
+#install.packages('caret')
+#install.packages('lubridate')
+#install.packages('cowplot')
+```
+
+
+```{r}
+# Importation des librairies
+library(dplyr)
+library(tidyr)
+library(ggplot2)
+library(lubridate)
+
+```
+
+
+```{r}
+# Lecture des csv
+# 1
+employee_survey <- read.table('C://Users//louis//Documents//COURS EMSE//Année 5 - Ingé 3//ESME//R//Projet//archive//employee_survey_data.csv', header = TRUE, sep = ",")
+
+# 2
+general <- read.table('C://Users//louis//Documents//COURS EMSE//Année 5 - Ingé 3//ESME//R//Projet//archive//general_data.csv', header = TRUE, sep = ",")
+
+# 3
+in_time <- read.table('C://Users//louis//Documents//COURS EMSE//Année 5 - Ingé 3//ESME//R//Projet//archive//in_time.csv', header = TRUE, sep = ",")
+
+# 4
+out_time <- read.table('C://Users//louis//Documents//COURS EMSE//Année 5 - Ingé 3//ESME//R//Projet//archive//out_time.csv', header = TRUE, sep = ",")
+
+# 5
+manager_survey <- read.table('C://Users//louis//Documents//COURS EMSE//Année 5 - Ingé 3//ESME//R//Projet//archive//manager_survey_data.csv', header = TRUE, sep = ",")
+```
+
+```{r}
+in_time_2 <- in_time
+out_time_2 <- out_time
+```
+
+```{r} 
+#on join les 3 dataframes
+employe_general <- employee_survey %>%
+  inner_join(general, by = c("EmployeeID" = "EmployeeID"))
+
+employe_manager_general <- employe_general %>%
+  inner_join(manager_survey, by = c("EmployeeID" = "EmployeeID"))
+
+```
+
+
+```{r}
+# Observations et visualisation des variables
+
+colSums(is.na(employe_manager_general))
+
+# Pour la colonne EnvironnementSatisfaction, on remplace par la médiane
+
+employe_manager_general$EnvironmentSatisfaction[is.na(employe_manager_general$EnvironmentSatisfaction)] <- median(employe_manager_general$EnvironmentSatisfaction, na.rm = TRUE)
+
+# Pour la colonne WorkLifeBalance, on remplace par la médiane
+
+employe_manager_general$WorkLifeBalance[is.na(employe_manager_general$WorkLifeBalance)] <- median(employe_manager_general$WorkLifeBalance, na.rm = TRUE)
+
+# Pour la colonne JobSatisfaction, on remplace par la médiane
+
+employe_manager_general$JobSatisfaction[is.na(employe_manager_general$JobSatisfaction)] <- median(employe_manager_general$JobSatisfaction, na.rm = TRUE)
+
+# Pour la colonne TotalWorkingYears, on remplace par la moyenne
+
+employe_manager_general$TotalWorkingYears[is.na(employe_manager_general$TotalWorkingYears)] <- mean(employe_manager_general$TotalWorkingYears, na.rm = TRUE)
+
+# Pour la colonne NumCompaniesWorked, on remplace par la moyenne
+
+employe_manager_general$NumCompaniesWorked[is.na(employe_manager_general$NumCompaniesWorked)] <- mean(employe_manager_general$NumCompaniesWorked, na.rm = TRUE)
+
+colSums(is.na(employe_manager_general))
+```
+
+```{r}
+summary(employe_manager_general)
+```
+
+On remplace les valeurs qualitatives par des valeurs quantitatives pour que pouvoir utiliser les modèles de ML
+```{r}
+# On affiche les différentes valeurs quali pour pouvoir les remplacer
+
+table(employe_manager_general$Gender)
+table(employe_manager_general$Attrition)
+table(employe_manager_general$BusinessTravel)
+table(employe_manager_general$Department)
+table(employe_manager_general$EducationField)
+table(employe_manager_general$JobRole)
+table(employe_manager_general$MaritalStatus)
+table(employe_manager_general$Over18)
+```
+```{r}
+library(dplyr)
+library(plyr)
+```
+
+```{r}
+
+employe_manager_general$Gender <- mapvalues(employe_manager_general$Gender, 
+          from=c('Female', 'Male'), 
+          to=c(1,0))
+employe_manager_general$Attrition <- mapvalues(employe_manager_general$Attrition, 
+          from=c('No', 'Yes'), 
+          to=c(1,0))
+employe_manager_general$BusinessTravel <- mapvalues(employe_manager_general$BusinessTravel, 
+          from=c('Non-Travel', 'Travel_Frequently','Travel_Rarely'), 
+          to=c(1,2,3))
+employe_manager_general$Department <- mapvalues(employe_manager_general$Department, 
+          from=c('Human Resources', 'Research & Development','Sales'), 
+          to=c(1,2,3))
+
+employe_manager_general$EducationField <- mapvalues(employe_manager_general$EducationField, 
+          from=c('Human Resources', 'Life Sciences', 'Marketing', 'Medical', 'Other', 'Technical Degree'), 
+          to=c(1,2,3,4,5,6))
+employe_manager_general$JobRole <- mapvalues(employe_manager_general$JobRole, 
+          from=c('Healthcare Representative', 'Human Resources','Laboratory Technician','Manager','Manufacturing Director','Research Director','Research Scientist','Sales Executive','Sales Representative'), 
+          to=c(1,2,3,4,5,6,7,8,9))
+employe_manager_general$MaritalStatus <- mapvalues(employe_manager_general$MaritalStatus, 
+          from=c('Divorced', 'Married','Single'), 
+          to=c(1,2,3))
+employe_manager_general$Over18 <- mapvalues(employe_manager_general$Over18, 
+          from=c('Y'), 
+          to=c(1))
+
+```
+
+
+```{r}
+# On vérifie
+
+table(employe_manager_general$Gender)
+table(employe_manager_general$Attrition)
+table(employe_manager_general$BusinessTravel)
+table(employe_manager_general$Department)
+table(employe_manager_general$EducationField)
+table(employe_manager_general$JobRole)
+table(employe_manager_general$MaritalStatus)
+table(employe_manager_general$Over18)
+```
+
+```{r}
+sapply(employe_manager_general, class)
+# Le type des colonnes n'est pas bon
+```
+On change le type des colonnes haracter en numeric
+```{r}
+employe_manager_general <- transform(employe_manager_general, Attrition = as.numeric(Attrition), 
+                    BusinessTravel = as.numeric(BusinessTravel), Department = as.numeric(Department), 
+                    EducationField = as.numeric(EducationField), Gender = as.numeric(Gender), 
+                    JobRole = as.numeric(JobRole), MaritalStatus = as.numeric(MaritalStatus), 
+                    Over18 = as.numeric(Over18))
+```
+On vérifie
+```{r}
+sapply(employe_manager_general, class)
+```
+
+```{r}
+summary(employe_manager_general)
+
+```
+
+On supprime les colonnes contenant que les mêmes valeurs (sert à rien)
+
+```{r}
+employe_manager_general %>% select(-c('EmployeeCount', 'Over18','StandardHours'))
+```
+
+```{r}
+# Tentative ajout dataframes time
+df_test <- in_time
+
+
+library(dplyr)
+df_test = rename(df_test,c("X"="EmployeeID"))
+out_time = rename(out_time,c("X"="EmployeeID"))
+
+```
+
+
+```{r}
+colSums(is.na(df_test))
+# On constate que des colonnes sont totalement vides et qu'en moyennes il y a 250 valeurs manquantes par colonnes
+```
+```{r}
+# On supprime les colonnes qui ont des valeurs manquantes supérieures à 50%
+df_test <-  df_test[,!sapply(df_test, function(x) mean(is.na(x)))>0.5]
+df_test$Nb_absence_in <- rowSums(is.na(df_test))
+head(df_test)
+```
+```{r}
+# On fait la meme chose pour out_time
+out_time <-  out_time[,!sapply(out_time, function(x) mean(is.na(x)))>0.5]
+out_time$Nb_absence_out <- rowSums(is.na(out_time))
+head(out_time)
+```
+```{r}
+# On créer un nouveau dataframe avec les colonnes EmpolyeeID, Nb_absence_in 
+df1 <- df_test[-c(2:250)]
+#On créer un nouveau dataframe avec les colonnes EmpolyeeID, Nb_absence_out
+df2 <- out_time[-c(2:250)] 
+head(df1)
+head(df2)
+
+```
+```{r}
+# On joint les deux dataframes
+df <- df1 %>%
+  inner_join(df2, by = c("EmployeeID" = "EmployeeID"))
+head(df)
+```
+
+```{r}
+df$Nb_absence <- ifelse(df$Nb_absence_in > df$Nb_absence_out, df$Nb_absence_in,
+               ifelse(df$Nb_absence_in < df$Nb_absence_out, df$Nb_absence_out, df$Nb_absence_out))
+head(df)
+```
+```{r}
+#On supprime les colonnes Nb_absence_in et Nb_absence_out
+df <- df[-c(2:3)]
+head(df)
+```
+## On joins ce dataframe à celui de employee_manager_general
+```{r}
+employe_manager_general <- employe_manager_general %>%
+  inner_join(df, by = c("EmployeeID" = "EmployeeID"))
+head(employe_manager_general)
+```
+D'après l'analyse des données qu'il ya avait une forte corrélation entre le temps de travail moyen et l'attrition, nous allons donc l'ajouter à notre jeu de données
+```{r}
+#création de dataframe vide ayant les mêmes dimensions que "in_timé" et "out_time
+df_in_time_date_format <- data.frame(matrix(nrow=nrow(in_time_2),ncol=ncol(in_time_2)))
+df_out_time_date_format <- data.frame(matrix(nrow=nrow(out_time_2),ncol=ncol(out_time_2)))
+
+#chaque colonnes est convertit au fromat d'une data afin de pouvoir faire des opérations avec les heures
+for (i in 1:ncol(in_time_2)){
+  df_in_time_date_format[i]<-as.POSIXct(in_time_2[,i],format ="%Y-%m-%d %H:%M:%S",origin='1970-01-01')
+  colnames(df_in_time_date_format)<-names(in_time_2)
+}
+
+for (i in 1:ncol(out_time_2)){
+  df_out_time_date_format[i]<-as.POSIXct(out_time_2[,i],format ="%Y-%m-%d %H:%M:%S",origin='1970-01-01')
+  colnames(df_out_time_date_format)<-names(out_time_2)
+}
+
+#créer un nouveau dataframe contenant la différence entre les heures d'arrivé et de sortie afin de connaitre le temps de travail journalier 
+df_working_time_by_day <- df_out_time_date_format -df_in_time_date_format
+
+#pour calculer la moyenne il faut convertire les temps en heure en numérique 
+for (i in 1:ncol(df_working_time_by_day)){
+  df_working_time_by_day[i]<-lapply(df_working_time_by_day[i], as.numeric)
+}
+
+#calcul de la moyenne 
+df_working_time_by_day$avg<-rowMeans(df_working_time_by_day,na.rm=TRUE)
+
+#ajoute la moyenne au dataframe destiné à la création du modèle 
+employe_manager_general$avg <- df_working_time_by_day$avg
+
+```
+
+```{r}
+# On supprime les colonnes à valeurs uniques soit : EmployeeCount, Over18 et StandardHours
+employe_manager_general <- employe_manager_general %>% select(-c('EmployeeCount', 'Over18', 'StandardHours'))
+```
+```{r}
+# On voit la correlation 
+cor(employe_manager_general[,1:27])
+```
+```{r}
+#"""employe_manager_general_pca <- prcomp(employe_manager_general[,1:27], center = T, scale = T) summary(employe_manager_general_pca)"""
+```
+On sépare les données en jeu de train et de test
+```{r}
+library(tidymodels)
+set.seed(364)
+
+n <-nrow(employe_manager_general)
+employe_parts <- employe_manager_general %>%
+  initial_split(prop=0.8)
+
+train <-employe_parts %>%
+  training()
+
+test <-employe_parts %>%
+  testing()
+
+list(train,test) %>%
+  map_int(nrow)
+```
+
+## On entraine le model Logistic Regression avec pour variable cible Attrition
+```{r}
+# Fit the model
+model <- glm(Attrition ~.,family=binomial(link='logit'),data=train)
+
+```
+
+```{r}
+library(caret)
+varImp(model)
+```
+# On observe que JobSatisfaction est le feature le plus important, suivi par Environnementsatisfaction, WorkLifeBalance et Age
+
+```{r}
+# On fait du logreg en prenant compte les features importances
+logistic = glm(Attrition ~ JobSatisfaction + EnvironmentSatisfaction + WorkLifeBalance + Age, data=train, family=binomial)
+summary(logistic)
+# Semble bon --> centré en 0 et semble à peu près symétrique
+```
+## On teste une visualisation des prédictions
+```{r}
+predicted.data <- data.frame(
+  probability.of.Attrition=logistic$fitted.values,
+  Attrition=test$Attrition)
+```
+
+```{r}
+# On ordonne à partir des probabilités basses à hautes
+predicted.data <- predicted.data[
+  + order(predicted.data$probability.of.Attrition, decreasing = FALSE),
+]
+# On ajoute une colonne "rank" pour chaque sample
+predicted.data$rank <- 1:nrow(predicted.data)
+```
+
+```{r}
+library(ggplot2)
+library(cowplot) #Permet d'avoir un bel affichage
+```
+```{r}
+ggplot(data = predicted.data, aes(x=rank, y =probability.of.Attrition)) + geom_point(aes(color= Attrition), alpha = 1, shape =4, stroke = 2) + xlab("Index") + ylab("Predicited probability of doing Attrition")
+```
+```{r}
+table(test$Attrition)
+```
+
+# Autre test
+
+```{r}
+#Checker l'accuracy du model
+employe_model_logistic_rmse_train <- train %>%
+  mutate(pred.reg.train = predict(logistic))
+
+plot(employe_model_logistic_rmse_train$Attrition, employe_model_logistic_rmse_train$pred.reg.train)
+```
+
+```{r}
+mse <- employe_model_logistic_rmse_train %>%
+  mutate(error = pred.reg.train - Attrition,
+         sq.error = error^2) %>%
+  summarise(mse = mean(sq.error))
+rmse <- sqrt(mse)
+rmse # training rmse = 1.16 --> RMSE faible car moyenne des observations = 2958
+```
+## On va le faire sur le test maintenant
+```{r}
+pred_reg_test <- predict(logistic, newdata = test)
+reg_rmse_test <- sqrt(mean(pred_reg_test - test$Attrition)^2)
+reg_rmse_test # test rmse = 0.9 --> similaire à peu près au train
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Reste à faire :
+- Visualisation des données
+- On doit voir les features importances,
+- Jeu de train et test,
+- Entrainement modèle
+
+
+
+
+
+
+
+
+

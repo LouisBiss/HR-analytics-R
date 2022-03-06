@@ -3,7 +3,7 @@ title: "R Notebook"
 output: html_notebook
 ---
 
-##Importe les données
+## Importe les données
 
 ```{r}
 df_employee_survey_data <- read.csv('C://Users//louis//Documents//COURS EMSE//Année 5 - Ingé 3//ESME//R//Projet//archive//employee_survey_data.csv')
@@ -15,34 +15,34 @@ df_out_time<- read.csv('C://Users//louis//Documents//COURS EMSE//Année 5 - Ing�
 ```{r}
 head(df_employee_survey_data)
 ```
-#Traitement des données 
+# Traitement des données 
 
-##Vérifie s'il y a des valeurs manquantes 
+## Vérifie s'il y a des valeurs manquantes 
 
-#Premier dataframe : df_employee_survey_data
+### Premier dataframe : df_employee_survey_data
 
 ```{r}
 colSums(is.na(df_employee_survey_data))
 ```
-#Second dataframe : df_general_data
+### Second dataframe : df_general_data
 Add a new chunk by clicking the *Insert Chunk* button on the toolbar or by pressing *Ctrl+Alt+I*.
 ```{r}
 colSums(is.na(df_general_data))
 ```
-#Troisième : In_time & Out_time Dataframe
+### Troisième : In_time & Out_time Dataframe
 
 ```{r}
 #A cause de l'immense quantité de données présente on ne peut pas juste afficher les colonnes avec le nombre de Na. Cela serait ilisible. 
 any(is.na(df_in_time))
 any(is.na(df_out_time))
 ```
-#Quatrième : df_manager_survey_data
+### Quatrième : df_manager_survey_data
 When you save the notebook, an HTML file containing the code and output will be saved alongside it (click the *Preview* button or press *Ctrl+Shift+K* to preview the HTML file).
 ```{r}
 colSums(is.na(df_manager_survey_data))
 ```
-#Remplacement des données Manquantes par la Moyenne 
-###Afin de ne pas fausser notre jeux de données en supprimant simplement les lignes incomplètes nous allons remplacer les Na par la moyenne. 
+# Remplacement des données Manquantes par la Moyenne 
+### Afin de ne pas fausser notre jeux de données en supprimant simplement les lignes incomplètes nous allons remplacer les Na par la moyenne. 
 ```{r}
 #duplique le dataframe afin d'effectuer nos essaie 
 df_test <- df_general_data
@@ -59,9 +59,9 @@ df_general_data$NumCompaniesWorked[is.na(df_general_data$NumCompaniesWorked)] <-
 df_general_data$TotalWorkingYears[is.na(df_general_data$TotalWorkingYears)] <- mean(df_test$TotalWorkingYears, na.rm = TRUE)
 any(is.na(df_general_data))
 ```
-#Exploiration des données générales 
+# Exploiration des données générales 
 
-##Roulement du personnel 
+## Roulement du personnel 
 ```{r}
 #data <- table(df_general_data['Attrition'])   affiche les données en somme 
 data <- prop.table(table(df_general_data['Attrition']))*100   #affiche porucentage 
@@ -72,7 +72,7 @@ barplot (data , space =1.0,
 ```
 #Analyse Salaire
 
-#Répartitions des salaires
+## Répartitions des salaires
 ```{r}
 boxplot(df_general_data$MonthlyIncome,
         main = 'Box Plot: Salaire',
@@ -91,7 +91,7 @@ boxplot(df_general_data$MonthlyIncome ~ df_general_data$JobRole,
 
 
 
-##Revenue en fonction du post 
+## Revenue en fonction du post 
 ```{r}
 library(dplyr)
 df_inter <- df_employee_survey_data %>%
@@ -145,7 +145,7 @@ df_global %>%
     geom_point(aes(y=MonthlyIncome, x=PerformanceRating, color=PerformanceRating), position="jitter") +
     facet_wrap(~`Department`, nrow=1)
 ```
-#attrition en fonction de la satisfaction 
+## Attrition en fonction de la satisfaction 
 ```{r}
 ggplot(df_global, aes(fill=Attrition, 
                       y=JobSatisfaction,
@@ -153,7 +153,7 @@ ggplot(df_global, aes(fill=Attrition,
                       ggtitle('Attrition en fonction de la statisfaction des employés')+
     geom_bar(position="stack", stat="identity")
 ```
-#Déterminer l'influence des heures de travails sur l'attrition 
+## Déterminer l'influence des heures de travails sur l'attrition 
 ```{r}
 #sapply(df_in_time$X2015.01.01, class)
 #class = logical 
@@ -186,13 +186,7 @@ df_working_time_by_day <- df_out_time_date_format -df_in_time_date_format
 
 En France une journnée de travail fait normalement 7h, nous essayer de visualiser l'impact du temps de travail sur l'attrition. 
 ```{r}
-#df_average_working_time <- mean.Date(df_working_time_by_day)
-df_average_working_time <- data.frame(matrix(nrow=nrow(df_working_time_by_day)))
-#for (i in 1:ncol(df_working_time_by_day)) {
-# df_average_working_time$mean<- mean(df_working_time_by_day[,i],na.rm = TRUE)
-#}
-
-df_average_working_time   
+  
 ```
 
 

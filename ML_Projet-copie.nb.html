@@ -1766,415 +1766,511 @@ pre code {
 
 
 <!-- rnb-text-begin -->
-<div id="importe-les-données" class="section level2">
-<h2>Importe les données</h2>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuZGZfZW1wbG95ZWVfc3VydmV5X2RhdGEgPC0gcmVhZC5jc3YoJ0M6Ly9Vc2Vycy8vbG91aXMvL0RvY3VtZW50cy8vQ09VUlMgRU1TRS8vQW5uw6llIDUgLSBJbmfDqSAzLy9FU01FLy9SLy9Qcm9qZXQvL2FyY2hpdmUvL2VtcGxveWVlX3N1cnZleV9kYXRhLmNzdicpXG5kZl9nZW5lcmFsX2RhdGE8LSByZWFkLmNzdignQzovL1VzZXJzLy9sb3Vpcy8vRG9jdW1lbnRzLy9DT1VSUyBFTVNFLy9Bbm7DqWUgNSAtIEluZ8OpIDMvL0VTTUUvL1IvL1Byb2pldC8vYXJjaGl2ZS8vZ2VuZXJhbF9kYXRhLmNzdicpXG5kZl9pbl90aW1lPC0gcmVhZC5jc3YoJ0M6Ly9Vc2Vycy8vbG91aXMvL0RvY3VtZW50cy8vQ09VUlMgRU1TRS8vQW5uw6llIDUgLSBJbmfDqSAzLy9FU01FLy9SLy9Qcm9qZXQvL2FyY2hpdmUvL2luX3RpbWUuY3N2JylcbmRmX21hbmFnZXJfc3VydmV5X2RhdGE8LSByZWFkLmNzdignQzovL1VzZXJzLy9sb3Vpcy8vRG9jdW1lbnRzLy9DT1VSUyBFTVNFLy9Bbm7DqWUgNSAtIEluZ8OpIDMvL0VTTUUvL1IvL1Byb2pldC8vYXJjaGl2ZS8vbWFuYWdlcl9zdXJ2ZXlfZGF0YS5jc3YnKVxuZGZfb3V0X3RpbWU8LSByZWFkLmNzdignQzovL1VzZXJzLy9sb3Vpcy8vRG9jdW1lbnRzLy9DT1VSUyBFTVNFLy9Bbm7DqWUgNSAtIEluZ8OpIDMvL0VTTUUvL1IvL1Byb2pldC8vYXJjaGl2ZS8vb3V0X3RpbWUuY3N2JylcbmBgYCJ9 -->
-<pre class="r"><code>df_employee_survey_data &lt;- read.csv(&#39;C://Users//louis//Documents//COURS EMSE//Année 5 - Ingé 3//ESME//R//Projet//archive//employee_survey_data.csv&#39;)
-df_general_data&lt;- read.csv(&#39;C://Users//louis//Documents//COURS EMSE//Année 5 - Ingé 3//ESME//R//Projet//archive//general_data.csv&#39;)
-df_in_time&lt;- read.csv(&#39;C://Users//louis//Documents//COURS EMSE//Année 5 - Ingé 3//ESME//R//Projet//archive//in_time.csv&#39;)
-df_manager_survey_data&lt;- read.csv(&#39;C://Users//louis//Documents//COURS EMSE//Année 5 - Ingé 3//ESME//R//Projet//archive//manager_survey_data.csv&#39;)
-df_out_time&lt;- read.csv(&#39;C://Users//louis//Documents//COURS EMSE//Année 5 - Ingé 3//ESME//R//Projet//archive//out_time.csv&#39;)</code></pre>
-<!-- rnb-source-end -->
-<!-- rnb-chunk-end -->
-<!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuaGVhZChkZl9lbXBsb3llZV9zdXJ2ZXlfZGF0YSlcbmBgYCJ9 -->
-<pre class="r"><code>head(df_employee_survey_data)</code></pre>
-<!-- rnb-source-end -->
-<!-- rnb-chunk-end -->
-<!-- rnb-text-begin -->
-</div>
-<div id="traitement-des-données" class="section level1">
-<h1>Traitement des données</h1>
-<div id="vérifie-sil-y-a-des-valeurs-manquantes" class="section level2">
-<h2>Vérifie s’il y a des valeurs manquantes</h2>
-<div id="premier-dataframe-df_employee_survey_data" class="section level3">
-<h3>Premier dataframe : df_employee_survey_data</h3>
-<!-- rnb-text-end -->
-<!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuY29sU3Vtcyhpcy5uYShkZl9lbXBsb3llZV9zdXJ2ZXlfZGF0YSkpXG5gYGAifQ== -->
-<pre class="r"><code>colSums(is.na(df_employee_survey_data))</code></pre>
-<!-- rnb-source-end -->
-<!-- rnb-chunk-end -->
-<!-- rnb-text-begin -->
-</div>
-<div id="second-dataframe-df_general_data" class="section level3">
-<h3>Second dataframe : df_general_data</h3>
-<p>Add a new chunk by clicking the <em>Insert Chunk</em> button on the
-toolbar or by pressing <em>Ctrl+Alt+I</em>.</p>
-<!-- rnb-text-end -->
-<!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuY29sU3Vtcyhpcy5uYShkZl9nZW5lcmFsX2RhdGEpKVxuYGBgIn0= -->
-<pre class="r"><code>colSums(is.na(df_general_data))</code></pre>
-<!-- rnb-source-end -->
-<!-- rnb-chunk-end -->
-<!-- rnb-text-begin -->
-</div>
-<div id="troisième-in_time-out_time-dataframe" class="section level3">
-<h3>Troisième : In_time &amp; Out_time Dataframe</h3>
-<!-- rnb-text-end -->
-<!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuI0EgY2F1c2UgZGUgbCdpbW1lbnNlIHF1YW50aXTDqSBkZSBkb25uw6llcyBwcsOpc2VudGUgb24gbmUgcGV1dCBwYXMganVzdGUgYWZmaWNoZXIgbGVzIGNvbG9ubmVzIGF2ZWMgbGUgbm9tYnJlIGRlIE5hLiBDZWxhIHNlcmFpdCBpbGlzaWJsZS4gXG5hbnkoaXMubmEoZGZfaW5fdGltZSkpXG5hbnkoaXMubmEoZGZfb3V0X3RpbWUpKVxuYGBgIn0= -->
-<pre class="r"><code>#A cause de l&#39;immense quantité de données présente on ne peut pas juste afficher les colonnes avec le nombre de Na. Cela serait ilisible. 
-any(is.na(df_in_time))
-any(is.na(df_out_time))</code></pre>
-<!-- rnb-source-end -->
-<!-- rnb-chunk-end -->
-<!-- rnb-text-begin -->
-</div>
-<div id="quatrième-df_manager_survey_data" class="section level3">
-<h3>Quatrième : df_manager_survey_data</h3>
-<p>When you save the notebook, an HTML file containing the code and
-output will be saved alongside it (click the <em>Preview</em> button or
-press <em>Ctrl+Shift+K</em> to preview the HTML file).</p>
-<!-- rnb-text-end -->
-<!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuY29sU3Vtcyhpcy5uYShkZl9tYW5hZ2VyX3N1cnZleV9kYXRhKSlcbmBgYCJ9 -->
-<pre class="r"><code>colSums(is.na(df_manager_survey_data))</code></pre>
-<!-- rnb-source-end -->
-<!-- rnb-chunk-end -->
-<!-- rnb-text-begin -->
-</div>
-</div>
-</div>
-<div id="remplacement-des-données-manquantes-par-la-moyenne" class="section level1">
-<h1>Remplacement des données Manquantes par la Moyenne</h1>
-<div id="afin-de-ne-pas-fausser-notre-jeux-de-données-en-supprimant-simplement-les-lignes-incomplètes-nous-allons-remplacer-les-na-par-la-moyenne." class="section level3">
-<h3>Afin de ne pas fausser notre jeux de données en supprimant
-simplement les lignes incomplètes nous allons remplacer les Na par la
-moyenne.</h3>
-<!-- rnb-text-end -->
-<!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuI2R1cGxpcXVlIGxlIGRhdGFmcmFtZSBhZmluIGQnZWZmZWN0dWVyIG5vcyBlc3NhaWUgXG5kZl90ZXN0IDwtIGRmX2dlbmVyYWxfZGF0YVxuZGZfdGVzdCROdW1Db21wYW5pZXNXb3JrZWRbaXMubmEoZGZfdGVzdCROdW1Db21wYW5pZXNXb3JrZWQpXSA8LSBtZWFuKGRmX3Rlc3QkTnVtQ29tcGFuaWVzV29ya2VkLCBuYS5ybSA9IFRSVUUpXG4jIG5hLnJtID1UUlVFIDogcmV0aXJlIGxlcyBOYSBkdSBjYWxjdWwgZGUgbGEgbW95ZW5uZSBcbmNvbFN1bXMoaXMubmEoZGZfdGVzdCkpXG5gYGAifQ== -->
-<pre class="r"><code>#duplique le dataframe afin d&#39;effectuer nos essaie 
-df_test &lt;- df_general_data
-df_test$NumCompaniesWorked[is.na(df_test$NumCompaniesWorked)] &lt;- mean(df_test$NumCompaniesWorked, na.rm = TRUE)
-# na.rm =TRUE : retire les Na du calcul de la moyenne 
-colSums(is.na(df_test))</code></pre>
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuI2luc3RhbGwucGFja2FnZXMoJ3BseXInKVxuI2luc3RhbGwucGFja2FnZXMoJ3RpZHltb2RlbHMnKVxuI2luc3RhbGwucGFja2FnZXMoJ2NhcmV0JylcbiNpbnN0YWxsLnBhY2thZ2VzKCdsdWJyaWRhdGUnKVxuI2luc3RhbGwucGFja2FnZXMoJ2Nvd3Bsb3QnKVxuYGBgIn0= -->
+<pre class="r"><code>#install.packages(&#39;plyr&#39;)
+#install.packages(&#39;tidymodels&#39;)
+#install.packages(&#39;caret&#39;)
+#install.packages(&#39;lubridate&#39;)
+#install.packages(&#39;cowplot&#39;)</code></pre>
 <!-- rnb-source-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuI0NvbG9ubmUgTnVtQ29tcGFuaWVzV29ya2VkXG5kZl9nZW5lcmFsX2RhdGEkTnVtQ29tcGFuaWVzV29ya2VkW2lzLm5hKGRmX2dlbmVyYWxfZGF0YSROdW1Db21wYW5pZXNXb3JrZWQpXSA8LSBtZWFuKGRmX3Rlc3QkTnVtQ29tcGFuaWVzV29ya2VkLCBuYS5ybSA9IFRSVUUpXG4jQ29sb25uZSBUb3RhbFdvcmtpbmdZZWFyc1xuZGZfZ2VuZXJhbF9kYXRhJFRvdGFsV29ya2luZ1llYXJzW2lzLm5hKGRmX2dlbmVyYWxfZGF0YSRUb3RhbFdvcmtpbmdZZWFycyldIDwtIG1lYW4oZGZfdGVzdCRUb3RhbFdvcmtpbmdZZWFycywgbmEucm0gPSBUUlVFKVxuYW55KGlzLm5hKGRmX2dlbmVyYWxfZGF0YSkpXG5gYGAifQ== -->
-<pre class="r"><code>#Colonne NumCompaniesWorked
-df_general_data$NumCompaniesWorked[is.na(df_general_data$NumCompaniesWorked)] &lt;- mean(df_test$NumCompaniesWorked, na.rm = TRUE)
-#Colonne TotalWorkingYears
-df_general_data$TotalWorkingYears[is.na(df_general_data$TotalWorkingYears)] &lt;- mean(df_test$TotalWorkingYears, na.rm = TRUE)
-any(is.na(df_general_data))</code></pre>
-<!-- rnb-source-end -->
-<!-- rnb-chunk-end -->
-<!-- rnb-text-begin -->
-</div>
-</div>
-<div id="exploiration-des-données-générales" class="section level1">
-<h1>Exploiration des données générales</h1>
-<div id="roulement-du-personnel" class="section level2">
-<h2>Roulement du personnel</h2>
-<!-- rnb-text-end -->
-<!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuI2RhdGEgPC0gdGFibGUoZGZfZ2VuZXJhbF9kYXRhWydBdHRyaXRpb24nXSkgICBhZmZpY2hlIGxlcyBkb25uw6llcyBlbiBzb21tZSBcbmRhdGEgPC0gcHJvcC50YWJsZSh0YWJsZShkZl9nZW5lcmFsX2RhdGFbJ0F0dHJpdGlvbiddKSkqMTAwICAgI2FmZmljaGUgcG9ydWNlbnRhZ2UgXG5iYXJwbG90IChkYXRhICwgc3BhY2UgPTEuMCxcbiAgICAgICAgIG1haW49XCJBdHRyaXRpb25cIiwgICNOb20gZ3JhcGhcbiAgICAgICAgIHlsaW09YygwLDEwMCkpICAgICAjw6ljaGVsbGUgZGVzIG9yZG9ubsOpZXNcbiAgICAgICAgICAgICAgXG5gYGAifQ== -->
-<pre class="r"><code>#data &lt;- table(df_general_data[&#39;Attrition&#39;])   affiche les données en somme 
-data &lt;- prop.table(table(df_general_data[&#39;Attrition&#39;]))*100   #affiche porucentage 
-barplot (data , space =1.0,
-         main=&quot;Attrition&quot;,  #Nom graph
-         ylim=c(0,100))     #échelle des ordonnées
-              </code></pre>
-<!-- rnb-source-end -->
-<!-- rnb-chunk-end -->
-<!-- rnb-text-begin -->
-<p>#Analyse Salaire</p>
-</div>
-<div id="répartitions-des-salaires" class="section level2">
-<h2>Répartitions des salaires</h2>
-<!-- rnb-text-end -->
-<!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuYm94cGxvdChkZl9nZW5lcmFsX2RhdGEkTW9udGhseUluY29tZSxcbiAgICAgICAgbWFpbiA9ICdCb3ggUGxvdDogU2FsYWlyZScsXG4gICAgICAgIHhsYWI9XCJzYWxhaXJlIG1lbnN1ZWwgKCQpXCIpXG5ib3hwbG90KGRmX2dlbmVyYWxfZGF0YSRNb250aGx5SW5jb21lIH4gZGZfZ2VuZXJhbF9kYXRhJERlcGFydG1lbnQsIFxuICAgICAgICBtYWluPSdSw6lwYXJ0aXRpb24gU2FsYWlyZSBlbiBmb25jdGlvbiBkdSBkw6nDonJ0ZW1lbnQnLFxuICAgICAgICB5bGFiPVwic2FsYWlyZSBtZW5zdWVsICgkKVwiLFxuICAgICAgICB4bGFiPVwiRMOpcGFydGVtZW50XCIpXG5ib3hwbG90KGRmX2dlbmVyYWxfZGF0YSRNb250aGx5SW5jb21lIH4gZGZfZ2VuZXJhbF9kYXRhJEpvYlJvbGUsXG4gICAgICAgIGxhcz0yLCAgICNsw6lnZW5kZSDDoCBsYSB2ZXJ0aWNhbGVcbiAgICAgICAgbWFpbj0nUsOpcGFydGlvbiBTYWxhaXJlIGVuIGZvbmN0aW9uIGR1IHBvc3RlJyxcbiAgICAgICAgeWxhYj1cInNhbGFpcmUgbWVuc3VlbCAoJClcIixcbiAgICAgICAgeGxhYj1cIlBvc3Rlc1wiLFxuICAgICAgICBoZWlnaHQ9MjAwMCwgdW5pdD1cInB4XCIpXG5gYGAifQ== -->
-<pre class="r"><code>boxplot(df_general_data$MonthlyIncome,
-        main = &#39;Box Plot: Salaire&#39;,
-        xlab=&quot;salaire mensuel ($)&quot;)
-boxplot(df_general_data$MonthlyIncome ~ df_general_data$Department, 
-        main=&#39;Répartition Salaire en fonction du déârtement&#39;,
-        ylab=&quot;salaire mensuel ($)&quot;,
-        xlab=&quot;Département&quot;)
-boxplot(df_general_data$MonthlyIncome ~ df_general_data$JobRole,
-        las=2,   #légende à la verticale
-        main=&#39;Répartion Salaire en fonction du poste&#39;,
-        ylab=&quot;salaire mensuel ($)&quot;,
-        xlab=&quot;Postes&quot;,
-        height=2000, unit=&quot;px&quot;)</code></pre>
-<!-- rnb-source-end -->
-<!-- rnb-chunk-end -->
-<!-- rnb-text-begin -->
-</div>
-<div id="revenue-en-fonction-du-post" class="section level2">
-<h2>Revenue en fonction du post</h2>
-<!-- rnb-text-end -->
-<!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubGlicmFyeShkcGx5cilcbmRmX2ludGVyIDwtIGRmX2VtcGxveWVlX3N1cnZleV9kYXRhICU+JVxuICBpbm5lcl9qb2luKGRmX2dlbmVyYWxfZGF0YSwgYnkgPSBjKFwiRW1wbG95ZWVJRFwiID0gXCJFbXBsb3llZUlEXCIpKVxuZGZfZ2xvYmFsIDwtIGRmX2ludGVyICU+JVxuICBpbm5lcl9qb2luKGRmX21hbmFnZXJfc3VydmV5X2RhdGEsIGJ5ID0gYyhcIkVtcGxveWVlSURcIiA9IFwiRW1wbG95ZWVJRFwiKSlcbmBgYCJ9 -->
-<pre class="r"><code>library(dplyr)
-df_inter &lt;- df_employee_survey_data %&gt;%
-  inner_join(df_general_data, by = c(&quot;EmployeeID&quot; = &quot;EmployeeID&quot;))
-df_global &lt;- df_inter %&gt;%
-  inner_join(df_manager_survey_data, by = c(&quot;EmployeeID&quot; = &quot;EmployeeID&quot;))</code></pre>
-<!-- rnb-source-end -->
-<!-- rnb-chunk-end -->
-<!-- rnb-text-begin -->
-<!-- rnb-text-end -->
-<!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuI2RmX3N1bmJ1cnN0IDwtIGRmX2dsb2JhbFssIGMoXCJFbXBsb3llZUlEXCIsXCJEZXBhcnRlbWVudFwiLFwiSm9iU2F0aXNmYWN0aW9uXCIpXVxuZGZfc3VuYnVyc3QgPC0gZGF0YS5mcmFtZShkZl9nbG9iYWwkRW1wbG95ZWVJRCwgZGZfZ2xvYmFsJERlcGFydG1lbnQsIGRmX2dsb2JhbCRKb2JTYXRpc2ZhY3Rpb24pXG5uYW1lcyhkZl9zdW5idXJzdCkgPC0gYyhcIkVtcGxveWVlSURcIiwgXCJEZXBhcnRtZW50XCIsIFwiSm9iU2F0aXNmYWN0aW9uXCIpXG5gYGAifQ== -->
-<pre class="r"><code>#df_sunburst &lt;- df_global[, c(&quot;EmployeeID&quot;,&quot;Departement&quot;,&quot;JobSatisfaction&quot;)]
-df_sunburst &lt;- data.frame(df_global$EmployeeID, df_global$Department, df_global$JobSatisfaction)
-names(df_sunburst) &lt;- c(&quot;EmployeeID&quot;, &quot;Department&quot;, &quot;JobSatisfaction&quot;)</code></pre>
-<!-- rnb-source-end -->
-<!-- rnb-chunk-end -->
-<!-- rnb-text-begin -->
-<p>##Graph circulaire:nb employés par départements</p>
-<!-- rnb-text-end -->
-<!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuI0NvbXB0ZSBsZSBub21icmUgZGUgbGlnbmUgcGFyIGTDqXBhcnRlbWVudCAoZXQgZG9uYyBsZSBub21icmUgZCdlbXBsb3nDqSlcbmRmX2VtcGxveWVlX3Blcl9kZXAgPC1kYXRhLmZyYW1lKHRhYmxlKGRmX2dsb2JhbCREZXBhcnRtZW50KSlcbiNjYWxjdWwgcG91cmNlbnRhZ2Vcbng9ZGZfZW1wbG95ZWVfcGVyX2RlcCRGcmVxXG5kZl9lbXBsb3llZV9wZXJfZGVwJHBlcmNlbnRhZ2UgPC0oeC9zdW0oeCkqMTAwKVxuI2luc3RhbGwucGFja2FnZXMoXCJmbXNiXCIpXG5saWJyYXJ5KGdncGxvdDIpXG5nIDwtZ2dwbG90KGRmX2VtcGxveWVlX3Blcl9kZXAsIGFlcyh4PVwiXCIsIHk9cGVyY2VudGFnZSwgZmlsbD1WYXIxKSkgK1xuICBnZW9tX2JhcihzdGF0PVwiaWRlbnRpdHlcIiwgd2lkdGg9MSkgK1xuICBjb29yZF9wb2xhcihcInlcIiwgc3RhcnQ9MClcbmcgKyBzY2FsZV9maWxsX2Rpc2NyZXRlKG5hbWUgPSBcIlLDqXBhcnRpdGlvbiBkZXMgZW1wbG95w6lzIHBhciBkw6lwYXJ0ZW1lbnRzXCIpXG5gYGAifQ== -->
-<pre class="r"><code>#Compte le nombre de ligne par département (et donc le nombre d&#39;employé)
-df_employee_per_dep &lt;-data.frame(table(df_global$Department))
-#calcul pourcentage
-x=df_employee_per_dep$Freq
-df_employee_per_dep$percentage &lt;-(x/sum(x)*100)
-#install.packages(&quot;fmsb&quot;)
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuIyBJbXBvcnRhdGlvbiBkZXMgbGlicmFpcmllc1xubGlicmFyeShkcGx5cilcbmxpYnJhcnkodGlkeXIpXG5saWJyYXJ5KGdncGxvdDIpXG5saWJyYXJ5KGx1YnJpZGF0ZSlcblxuYGBgIn0= -->
+<pre class="r"><code># Importation des librairies
+library(dplyr)
+library(tidyr)
 library(ggplot2)
-g &lt;-ggplot(df_employee_per_dep, aes(x=&quot;&quot;, y=percentage, fill=Var1)) +
-  geom_bar(stat=&quot;identity&quot;, width=1) +
-  coord_polar(&quot;y&quot;, start=0)
-g + scale_fill_discrete(name = &quot;Répartition des employés par départements&quot;)</code></pre>
-<!-- rnb-source-end -->
-<!-- rnb-chunk-end -->
-<!-- rnb-text-begin -->
-<!-- rnb-text-end -->
-<!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubGlicmFyeSh0aWR5dmVyc2UpXG5saWJyYXJ5KHJlYWRyKVxuXG4jcmUtb3JkZXIgZ3JvdXBzIGJ5IGVtcGxveWVlIGNvdW50XG4jZ3JvdXBzX2J5X2NvdW50IDwtIGRmX2dsb2JhbCAlPiVcbiAjIGNvdW50KGBEZXBhcnRtZW50YCkjICU+JVxuICAjYXJyYW5nZShkZXNjKG4pKVxuI2RmX2dsb2JhbCREZXBhcnRtZW50IDwtIGZhY3RvclxuXG4jam9iIHN0YXRpc2ZhY3Rpb24gJiBzYWxhaXJlXG5kZl9nbG9iYWwgJT4lXG4gIGdncGxvdCgpICtcbiAgICBnZW9tX3BvaW50KGFlcyh5PU1vbnRobHlJbmNvbWUsIHg9Sm9iU2F0aXNmYWN0aW9uLCBjb2xvcj1Kb2JTYXRpc2ZhY3Rpb24pLCBwb3NpdGlvbj1cImppdHRlclwiKSArXG4gICAgZmFjZXRfd3JhcCh+YERlcGFydG1lbnRgLCBucm93PTEpXG5cbiNqb2IgcGVyZm9ybWFuY2UgYW5kIHNhbGFyeSBcbmRmX2dsb2JhbCAlPiVcbiAgZ2dwbG90KCkgK1xuICAgIGdlb21fcG9pbnQoYWVzKHk9TW9udGhseUluY29tZSwgeD1QZXJmb3JtYW5jZVJhdGluZywgY29sb3I9UGVyZm9ybWFuY2VSYXRpbmcpLCBwb3NpdGlvbj1cImppdHRlclwiKSArXG4gICAgZmFjZXRfd3JhcCh+YERlcGFydG1lbnRgLCBucm93PTEpXG5gYGAifQ== -->
-<pre class="r"><code>library(tidyverse)
-library(readr)
-
-#re-order groups by employee count
-#groups_by_count &lt;- df_global %&gt;%
- # count(`Department`)# %&gt;%
-  #arrange(desc(n))
-#df_global$Department &lt;- factor
-
-#job statisfaction &amp; salaire
-df_global %&gt;%
-  ggplot() +
-    geom_point(aes(y=MonthlyIncome, x=JobSatisfaction, color=JobSatisfaction), position=&quot;jitter&quot;) +
-    facet_wrap(~`Department`, nrow=1)
-
-#job performance and salary 
-df_global %&gt;%
-  ggplot() +
-    geom_point(aes(y=MonthlyIncome, x=PerformanceRating, color=PerformanceRating), position=&quot;jitter&quot;) +
-    facet_wrap(~`Department`, nrow=1)</code></pre>
-<!-- rnb-source-end -->
-<!-- rnb-chunk-end -->
-<!-- rnb-text-begin -->
-</div>
-<div id="attrition-en-fonction-de-la-satisfaction" class="section level2">
-<h2>Attrition en fonction de la satisfaction</h2>
-<!-- rnb-text-end -->
-<!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuZ2dwbG90KGRmX2dsb2JhbCwgYWVzKGZpbGw9QXR0cml0aW9uLCBcbiAgICAgICAgICAgICAgICAgICAgICB5PUpvYlNhdGlzZmFjdGlvbixcbiAgICAgICAgICAgICAgICAgICAgICB4PUpvYlNhdGlzZmFjdGlvbikpICsgXG4gICAgICAgICAgICAgICAgICAgICAgZ2d0aXRsZSgnQXR0cml0aW9uIGVuIGZvbmN0aW9uIGRlIGxhIHN0YXRpc2ZhY3Rpb24gZGVzIGVtcGxvecOpcycpK1xuICAgIGdlb21fYmFyKHBvc2l0aW9uPVwic3RhY2tcIiwgc3RhdD1cImlkZW50aXR5XCIpXG5gYGAifQ== -->
-<pre class="r"><code>ggplot(df_global, aes(fill=Attrition, 
-                      y=JobSatisfaction,
-                      x=JobSatisfaction)) + 
-                      ggtitle(&#39;Attrition en fonction de la statisfaction des employés&#39;)+
-    geom_bar(position=&quot;stack&quot;, stat=&quot;identity&quot;)</code></pre>
-<!-- rnb-source-end -->
-<!-- rnb-chunk-end -->
-<!-- rnb-text-begin -->
-</div>
-<div id="déterminer-linfluence-des-heures-de-travails-sur-lattrition" class="section level2">
-<h2>Déterminer l’influence des heures de travails sur l’attrition</h2>
-<!-- rnb-text-end -->
-<!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuI3NhcHBseShkZl9pbl90aW1lJFgyMDE1LjAxLjAxLCBjbGFzcylcbiNjbGFzcyA9IGxvZ2ljYWwgXG5gYGAifQ== -->
-<pre class="r"><code>#sapply(df_in_time$X2015.01.01, class)
-#class = logical </code></pre>
-<!-- rnb-source-end -->
-<!-- rnb-chunk-end -->
-<!-- rnb-text-begin -->
-<!-- rnb-text-end -->
-<!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuI2RmX2luX3RpbWVfMiA8LSBhcy5EYXRlKGRmX2luX3RpbWUsIGZvcm1hdCA9ICclWS0lbS0lZCAlSDolTTolUycpIFxuI2QgPC0gZGZfaW5fdGltZVxuI2QgJT4lIG11dGF0ZShhY3Jvc3MoZXZlcnl0aGluZygpLCB+YXMuUE9TSVhjdCguLCBmb3JtYXQgPVwiJVktJW0tJWQgJUg6JU06JVNcIikpKVxuI2RmX2luX3RpbWVfMiA8LSBkYXRhLmZyYW1lKGFzLlBPU0lYY3QoZGZfaW5fdGltZSRYMjAxNS4wMS4wMSwgZm9ybWF0ID1cIiVZLSVtLSVkICVIOiVNOiVTXCIpKVxuZGZfaW5fdGltZV9kYXRlX2Zvcm1hdCA8LSBkYXRhLmZyYW1lKG1hdHJpeChucm93PW5yb3coZGZfaW5fdGltZSksbmNvbD1uY29sKGRmX2luX3RpbWUpKSlcbmRmX291dF90aW1lX2RhdGVfZm9ybWF0IDwtIGRhdGEuZnJhbWUobWF0cml4KG5yb3c9bnJvdyhkZl9vdXRfdGltZSksbmNvbD1uY29sKGRmX291dF90aW1lKSkpXG5cbmZvciAoaSBpbiAxOm5jb2woZGZfaW5fdGltZSkpe1xuICBkZl9pbl90aW1lX2RhdGVfZm9ybWF0W2ldPC1hcy5QT1NJWGN0KGRmX2luX3RpbWVbLGldLGZvcm1hdCA9XCIlWS0lbS0lZCAlSDolTTolU1wiLG9yaWdpbj0nMTk3MC0wMS0wMScpXG4gIGNvbG5hbWVzKGRmX2luX3RpbWVfZGF0ZV9mb3JtYXQpPC1uYW1lcyhkZl9pbl90aW1lKVxufVxuXG5mb3IgKGkgaW4gMTpuY29sKGRmX291dF90aW1lKSl7XG4gIGRmX291dF90aW1lX2RhdGVfZm9ybWF0W2ldPC1hcy5QT1NJWGN0KGRmX291dF90aW1lWyxpXSxmb3JtYXQgPVwiJVktJW0tJWQgJUg6JU06JVNcIixvcmlnaW49JzE5NzAtMDEtMDEnKVxuICBjb2xuYW1lcyhkZl9vdXRfdGltZV9kYXRlX2Zvcm1hdCk8LW5hbWVzKGRmX291dF90aW1lKVxufVxuXG5cbmBgYCJ9 -->
-<pre class="r"><code>#df_in_time_2 &lt;- as.Date(df_in_time, format = &#39;%Y-%m-%d %H:%M:%S&#39;) 
-#d &lt;- df_in_time
-#d %&gt;% mutate(across(everything(), ~as.POSIXct(., format =&quot;%Y-%m-%d %H:%M:%S&quot;)))
-#df_in_time_2 &lt;- data.frame(as.POSIXct(df_in_time$X2015.01.01, format =&quot;%Y-%m-%d %H:%M:%S&quot;))
-df_in_time_date_format &lt;- data.frame(matrix(nrow=nrow(df_in_time),ncol=ncol(df_in_time)))
-df_out_time_date_format &lt;- data.frame(matrix(nrow=nrow(df_out_time),ncol=ncol(df_out_time)))
-
-for (i in 1:ncol(df_in_time)){
-  df_in_time_date_format[i]&lt;-as.POSIXct(df_in_time[,i],format =&quot;%Y-%m-%d %H:%M:%S&quot;,origin=&#39;1970-01-01&#39;)
-  colnames(df_in_time_date_format)&lt;-names(df_in_time)
-}
-
-for (i in 1:ncol(df_out_time)){
-  df_out_time_date_format[i]&lt;-as.POSIXct(df_out_time[,i],format =&quot;%Y-%m-%d %H:%M:%S&quot;,origin=&#39;1970-01-01&#39;)
-  colnames(df_out_time_date_format)&lt;-names(df_out_time)
-}
+library(lubridate)
 </code></pre>
 <!-- rnb-source-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuZGZfd29ya2luZ190aW1lX2J5X2RheSA8LSBkZl9vdXRfdGltZV9kYXRlX2Zvcm1hdCAtZGZfaW5fdGltZV9kYXRlX2Zvcm1hdFxuYGBgIn0= -->
-<pre class="r"><code>df_working_time_by_day &lt;- df_out_time_date_format -df_in_time_date_format</code></pre>
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuIyBMZWN0dXJlIGRlcyBjc3ZcbiMgMVxuZW1wbG95ZWVfc3VydmV5IDwtIHJlYWQudGFibGUoJ0M6Ly9Vc2Vycy8vbG91aXMvL0RvY3VtZW50cy8vQ09VUlMgRU1TRS8vQW5uw6llIDUgLSBJbmfDqSAzLy9FU01FLy9SLy9Qcm9qZXQvL2FyY2hpdmUvL2VtcGxveWVlX3N1cnZleV9kYXRhLmNzdicsIGhlYWRlciA9IFRSVUUsIHNlcCA9IFwiLFwiKVxuXG4jIDJcbmdlbmVyYWwgPC0gcmVhZC50YWJsZSgnQzovL1VzZXJzLy9sb3Vpcy8vRG9jdW1lbnRzLy9DT1VSUyBFTVNFLy9Bbm7DqWUgNSAtIEluZ8OpIDMvL0VTTUUvL1IvL1Byb2pldC8vYXJjaGl2ZS8vZ2VuZXJhbF9kYXRhLmNzdicsIGhlYWRlciA9IFRSVUUsIHNlcCA9IFwiLFwiKVxuXG4jIDNcbmluX3RpbWUgPC0gcmVhZC50YWJsZSgnQzovL1VzZXJzLy9sb3Vpcy8vRG9jdW1lbnRzLy9DT1VSUyBFTVNFLy9Bbm7DqWUgNSAtIEluZ8OpIDMvL0VTTUUvL1IvL1Byb2pldC8vYXJjaGl2ZS8vaW5fdGltZS5jc3YnLCBoZWFkZXIgPSBUUlVFLCBzZXAgPSBcIixcIilcblxuIyA0XG5vdXRfdGltZSA8LSByZWFkLnRhYmxlKCdDOi8vVXNlcnMvL2xvdWlzLy9Eb2N1bWVudHMvL0NPVVJTIEVNU0UvL0FubsOpZSA1IC0gSW5nw6kgMy8vRVNNRS8vUi8vUHJvamV0Ly9hcmNoaXZlLy9vdXRfdGltZS5jc3YnLCBoZWFkZXIgPSBUUlVFLCBzZXAgPSBcIixcIilcblxuIyA1XG5tYW5hZ2VyX3N1cnZleSA8LSByZWFkLnRhYmxlKCdDOi8vVXNlcnMvL2xvdWlzLy9Eb2N1bWVudHMvL0NPVVJTIEVNU0UvL0FubsOpZSA1IC0gSW5nw6kgMy8vRVNNRS8vUi8vUHJvamV0Ly9hcmNoaXZlLy9tYW5hZ2VyX3N1cnZleV9kYXRhLmNzdicsIGhlYWRlciA9IFRSVUUsIHNlcCA9IFwiLFwiKVxuYGBgIn0= -->
+<pre class="r"><code># Lecture des csv
+# 1
+employee_survey &lt;- read.table(&#39;C://Users//louis//Documents//COURS EMSE//Année 5 - Ingé 3//ESME//R//Projet//archive//employee_survey_data.csv&#39;, header = TRUE, sep = &quot;,&quot;)
+
+# 2
+general &lt;- read.table(&#39;C://Users//louis//Documents//COURS EMSE//Année 5 - Ingé 3//ESME//R//Projet//archive//general_data.csv&#39;, header = TRUE, sep = &quot;,&quot;)
+
+# 3
+in_time &lt;- read.table(&#39;C://Users//louis//Documents//COURS EMSE//Année 5 - Ingé 3//ESME//R//Projet//archive//in_time.csv&#39;, header = TRUE, sep = &quot;,&quot;)
+
+# 4
+out_time &lt;- read.table(&#39;C://Users//louis//Documents//COURS EMSE//Année 5 - Ingé 3//ESME//R//Projet//archive//out_time.csv&#39;, header = TRUE, sep = &quot;,&quot;)
+
+# 5
+manager_survey &lt;- read.table(&#39;C://Users//louis//Documents//COURS EMSE//Année 5 - Ingé 3//ESME//R//Projet//archive//manager_survey_data.csv&#39;, header = TRUE, sep = &quot;,&quot;)</code></pre>
 <!-- rnb-source-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
-<p>En France une journnée de travail fait normalement 7h, nous essayer
-de visualiser l’impact du temps de travail sur l’attrition.</p>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-chunk-end -->
-<!-- rnb-text-begin -->
-<!-- rnb-text-end -->
-<!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuZGZfd29ya2luZ190aW1lX2J5X2RheVxuYGBgIn0= -->
-<pre class="r"><code>df_working_time_by_day</code></pre>
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuaW5fdGltZV8yIDwtIGluX3RpbWVcbm91dF90aW1lXzIgPC0gb3V0X3RpbWVcbmBgYCJ9 -->
+<pre class="r"><code>in_time_2 &lt;- in_time
+out_time_2 &lt;- out_time</code></pre>
 <!-- rnb-source-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
-<p>En France le temps travail (réglementé) est 7h par jour, observons
-l’influence de l’accumulation d’heure sup sur l’attrition</p>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuI2lsIGZhdXQgZCdhYm9yZCBjb252ZXJ0aXIgbGVzIGhldXJlcyBlbiBudW3DqXJpYyBhZmluIGRlIGZhaXJlIGRlcyBvcMOpcmF0aW9ucyBkZXNzdXMgXG5cblxuI2RmX2F2ZyA8LSByb3dNZWFucy5EYXRlKGRmX3dvcmtpbmdfdGltZV9ieV9kYXkpXG4jZGZfYXZnIDwtIGRhdGEuZnJhbWUoYXMubnVtZXJpYyhhcy5QT1NJWGN0KGRmX3dvcmtpbmdfdGltZV9ieV9kYXksIG5hLnJtID0gVFJVRSkpKSlcblxuYGBgIn0= -->
-<pre class="r"><code>#il faut d&#39;abord convertir les heures en numéric afin de faire des opérations dessus 
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuI29uIGpvaW4gbGVzIDMgZGF0YWZyYW1lc1xuZW1wbG95ZV9nZW5lcmFsIDwtIGVtcGxveWVlX3N1cnZleSAlPiVcbiAgaW5uZXJfam9pbihnZW5lcmFsLCBieSA9IGMoXCJFbXBsb3llZUlEXCIgPSBcIkVtcGxveWVlSURcIikpXG5cbmVtcGxveWVfbWFuYWdlcl9nZW5lcmFsIDwtIGVtcGxveWVfZ2VuZXJhbCAlPiVcbiAgaW5uZXJfam9pbihtYW5hZ2VyX3N1cnZleSwgYnkgPSBjKFwiRW1wbG95ZWVJRFwiID0gXCJFbXBsb3llZUlEXCIpKVxuXG5gYGAifQ== -->
+<pre class="r"><code>#on join les 3 dataframes
+employe_general &lt;- employee_survey %&gt;%
+  inner_join(general, by = c(&quot;EmployeeID&quot; = &quot;EmployeeID&quot;))
 
-
-#df_avg &lt;- rowMeans.Date(df_working_time_by_day)
-#df_avg &lt;- data.frame(as.numeric(as.POSIXct(df_working_time_by_day, na.rm = TRUE))))
+employe_manager_general &lt;- employe_general %&gt;%
+  inner_join(manager_survey, by = c(&quot;EmployeeID&quot; = &quot;EmployeeID&quot;))
 </code></pre>
 <!-- rnb-source-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuI2RmX3Rlc3QgJT4lIG11dGF0ZShhY3Jvc3MoZXZlcnl0aGluZygpLCB+YXMudW5jbGFzcykpXG5cbmZvciAoaSBpbiAxOm5jb2woZGZfd29ya2luZ190aW1lX2J5X2RheSkpe1xuICMgZGZfd29ya2luZ190aW1lX2J5X2RheVtpXTwtbGFwcGx5KGRmX3dvcmtpbmdfdGltZV9ieV9kYXlbaV0sIHVuY2xhc3MpXG4gIGRmX3dvcmtpbmdfdGltZV9ieV9kYXlbaV08LWxhcHBseShkZl93b3JraW5nX3RpbWVfYnlfZGF5W2ldLCBhcy5udW1lcmljKVxufVxuXG4jZGZfYXZnIDwtIGRhdGEuZnJhbWUocm93TWVhbnMoZGZfdGVzdCksbmEucm0gPSBUUlVFIClcblxuI2RmX2F2ZyA8LSBkYXRhLmZyYW1lKG1hdHJpeChyb3c9bnJvdyhkZl90ZXN0KSkpXG5cbiNmb3IgKGkgaW4gMTpucm93KGRmX3Rlc3QpKSB7XG4jIGRmX2F2ZyRtZWFuPC0gbWVhbihkZl90ZXN0W2ldLG5hLnJtID0gVFJVRSlcbiN9XG5cbmRmX3dvcmtpbmdfdGltZV9ieV9kYXkkYXZnPC1yb3dNZWFucyhkZl93b3JraW5nX3RpbWVfYnlfZGF5LG5hLnJtPVRSVUUpXG5cbmBgYCJ9 -->
-<pre class="r"><code>#df_test %&gt;% mutate(across(everything(), ~as.unclass))
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuIyBPYnNlcnZhdGlvbnMgZXQgdmlzdWFsaXNhdGlvbiBkZXMgdmFyaWFibGVzXG5cbmNvbFN1bXMoaXMubmEoZW1wbG95ZV9tYW5hZ2VyX2dlbmVyYWwpKVxuXG4jIFBvdXIgbGEgY29sb25uZSBFbnZpcm9ubmVtZW50U2F0aXNmYWN0aW9uLCBvbiByZW1wbGFjZSBwYXIgbGEgbcOpZGlhbmVcblxuZW1wbG95ZV9tYW5hZ2VyX2dlbmVyYWwkRW52aXJvbm1lbnRTYXRpc2ZhY3Rpb25baXMubmEoZW1wbG95ZV9tYW5hZ2VyX2dlbmVyYWwkRW52aXJvbm1lbnRTYXRpc2ZhY3Rpb24pXSA8LSBtZWRpYW4oZW1wbG95ZV9tYW5hZ2VyX2dlbmVyYWwkRW52aXJvbm1lbnRTYXRpc2ZhY3Rpb24sIG5hLnJtID0gVFJVRSlcblxuIyBQb3VyIGxhIGNvbG9ubmUgV29ya0xpZmVCYWxhbmNlLCBvbiByZW1wbGFjZSBwYXIgbGEgbcOpZGlhbmVcblxuZW1wbG95ZV9tYW5hZ2VyX2dlbmVyYWwkV29ya0xpZmVCYWxhbmNlW2lzLm5hKGVtcGxveWVfbWFuYWdlcl9nZW5lcmFsJFdvcmtMaWZlQmFsYW5jZSldIDwtIG1lZGlhbihlbXBsb3llX21hbmFnZXJfZ2VuZXJhbCRXb3JrTGlmZUJhbGFuY2UsIG5hLnJtID0gVFJVRSlcblxuIyBQb3VyIGxhIGNvbG9ubmUgSm9iU2F0aXNmYWN0aW9uLCBvbiByZW1wbGFjZSBwYXIgbGEgbcOpZGlhbmVcblxuZW1wbG95ZV9tYW5hZ2VyX2dlbmVyYWwkSm9iU2F0aXNmYWN0aW9uW2lzLm5hKGVtcGxveWVfbWFuYWdlcl9nZW5lcmFsJEpvYlNhdGlzZmFjdGlvbildIDwtIG1lZGlhbihlbXBsb3llX21hbmFnZXJfZ2VuZXJhbCRKb2JTYXRpc2ZhY3Rpb24sIG5hLnJtID0gVFJVRSlcblxuIyBQb3VyIGxhIGNvbG9ubmUgVG90YWxXb3JraW5nWWVhcnMsIG9uIHJlbXBsYWNlIHBhciBsYSBtb3llbm5lXG5cbmVtcGxveWVfbWFuYWdlcl9nZW5lcmFsJFRvdGFsV29ya2luZ1llYXJzW2lzLm5hKGVtcGxveWVfbWFuYWdlcl9nZW5lcmFsJFRvdGFsV29ya2luZ1llYXJzKV0gPC0gbWVhbihlbXBsb3llX21hbmFnZXJfZ2VuZXJhbCRUb3RhbFdvcmtpbmdZZWFycywgbmEucm0gPSBUUlVFKVxuXG4jIFBvdXIgbGEgY29sb25uZSBOdW1Db21wYW5pZXNXb3JrZWQsIG9uIHJlbXBsYWNlIHBhciBsYSBtb3llbm5lXG5cbmVtcGxveWVfbWFuYWdlcl9nZW5lcmFsJE51bUNvbXBhbmllc1dvcmtlZFtpcy5uYShlbXBsb3llX21hbmFnZXJfZ2VuZXJhbCROdW1Db21wYW5pZXNXb3JrZWQpXSA8LSBtZWFuKGVtcGxveWVfbWFuYWdlcl9nZW5lcmFsJE51bUNvbXBhbmllc1dvcmtlZCwgbmEucm0gPSBUUlVFKVxuXG5jb2xTdW1zKGlzLm5hKGVtcGxveWVfbWFuYWdlcl9nZW5lcmFsKSlcbmBgYCJ9 -->
+<pre class="r"><code># Observations et visualisation des variables
 
+colSums(is.na(employe_manager_general))
+
+# Pour la colonne EnvironnementSatisfaction, on remplace par la médiane
+
+employe_manager_general$EnvironmentSatisfaction[is.na(employe_manager_general$EnvironmentSatisfaction)] &lt;- median(employe_manager_general$EnvironmentSatisfaction, na.rm = TRUE)
+
+# Pour la colonne WorkLifeBalance, on remplace par la médiane
+
+employe_manager_general$WorkLifeBalance[is.na(employe_manager_general$WorkLifeBalance)] &lt;- median(employe_manager_general$WorkLifeBalance, na.rm = TRUE)
+
+# Pour la colonne JobSatisfaction, on remplace par la médiane
+
+employe_manager_general$JobSatisfaction[is.na(employe_manager_general$JobSatisfaction)] &lt;- median(employe_manager_general$JobSatisfaction, na.rm = TRUE)
+
+# Pour la colonne TotalWorkingYears, on remplace par la moyenne
+
+employe_manager_general$TotalWorkingYears[is.na(employe_manager_general$TotalWorkingYears)] &lt;- mean(employe_manager_general$TotalWorkingYears, na.rm = TRUE)
+
+# Pour la colonne NumCompaniesWorked, on remplace par la moyenne
+
+employe_manager_general$NumCompaniesWorked[is.na(employe_manager_general$NumCompaniesWorked)] &lt;- mean(employe_manager_general$NumCompaniesWorked, na.rm = TRUE)
+
+colSums(is.na(employe_manager_general))</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuc3VtbWFyeShlbXBsb3llX21hbmFnZXJfZ2VuZXJhbClcbmBgYCJ9 -->
+<pre class="r"><code>summary(employe_manager_general)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<p>On remplace les valeurs qualitatives par des valeurs quantitatives
+pour que pouvoir utiliser les modèles de ML</p>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuIyBPbiBhZmZpY2hlIGxlcyBkaWZmw6lyZW50ZXMgdmFsZXVycyBxdWFsaSBwb3VyIHBvdXZvaXIgbGVzIHJlbXBsYWNlclxuXG50YWJsZShlbXBsb3llX21hbmFnZXJfZ2VuZXJhbCRHZW5kZXIpXG50YWJsZShlbXBsb3llX21hbmFnZXJfZ2VuZXJhbCRBdHRyaXRpb24pXG50YWJsZShlbXBsb3llX21hbmFnZXJfZ2VuZXJhbCRCdXNpbmVzc1RyYXZlbClcbnRhYmxlKGVtcGxveWVfbWFuYWdlcl9nZW5lcmFsJERlcGFydG1lbnQpXG50YWJsZShlbXBsb3llX21hbmFnZXJfZ2VuZXJhbCRFZHVjYXRpb25GaWVsZClcbnRhYmxlKGVtcGxveWVfbWFuYWdlcl9nZW5lcmFsJEpvYlJvbGUpXG50YWJsZShlbXBsb3llX21hbmFnZXJfZ2VuZXJhbCRNYXJpdGFsU3RhdHVzKVxudGFibGUoZW1wbG95ZV9tYW5hZ2VyX2dlbmVyYWwkT3ZlcjE4KVxuYGBgIn0= -->
+<pre class="r"><code># On affiche les différentes valeurs quali pour pouvoir les remplacer
+
+table(employe_manager_general$Gender)
+table(employe_manager_general$Attrition)
+table(employe_manager_general$BusinessTravel)
+table(employe_manager_general$Department)
+table(employe_manager_general$EducationField)
+table(employe_manager_general$JobRole)
+table(employe_manager_general$MaritalStatus)
+table(employe_manager_general$Over18)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubGlicmFyeShkcGx5cilcbmxpYnJhcnkocGx5cilcbmBgYCJ9 -->
+<pre class="r"><code>library(dplyr)
+library(plyr)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuXG5lbXBsb3llX21hbmFnZXJfZ2VuZXJhbCRHZW5kZXIgPC0gbWFwdmFsdWVzKGVtcGxveWVfbWFuYWdlcl9nZW5lcmFsJEdlbmRlciwgXG4gICAgICAgICAgZnJvbT1jKCdGZW1hbGUnLCAnTWFsZScpLCBcbiAgICAgICAgICB0bz1jKDEsMCkpXG5lbXBsb3llX21hbmFnZXJfZ2VuZXJhbCRBdHRyaXRpb24gPC0gbWFwdmFsdWVzKGVtcGxveWVfbWFuYWdlcl9nZW5lcmFsJEF0dHJpdGlvbiwgXG4gICAgICAgICAgZnJvbT1jKCdObycsICdZZXMnKSwgXG4gICAgICAgICAgdG89YygxLDApKVxuZW1wbG95ZV9tYW5hZ2VyX2dlbmVyYWwkQnVzaW5lc3NUcmF2ZWwgPC0gbWFwdmFsdWVzKGVtcGxveWVfbWFuYWdlcl9nZW5lcmFsJEJ1c2luZXNzVHJhdmVsLCBcbiAgICAgICAgICBmcm9tPWMoJ05vbi1UcmF2ZWwnLCAnVHJhdmVsX0ZyZXF1ZW50bHknLCdUcmF2ZWxfUmFyZWx5JyksIFxuICAgICAgICAgIHRvPWMoMSwyLDMpKVxuZW1wbG95ZV9tYW5hZ2VyX2dlbmVyYWwkRGVwYXJ0bWVudCA8LSBtYXB2YWx1ZXMoZW1wbG95ZV9tYW5hZ2VyX2dlbmVyYWwkRGVwYXJ0bWVudCwgXG4gICAgICAgICAgZnJvbT1jKCdIdW1hbiBSZXNvdXJjZXMnLCAnUmVzZWFyY2ggJiBEZXZlbG9wbWVudCcsJ1NhbGVzJyksIFxuICAgICAgICAgIHRvPWMoMSwyLDMpKVxuXG5lbXBsb3llX21hbmFnZXJfZ2VuZXJhbCRFZHVjYXRpb25GaWVsZCA8LSBtYXB2YWx1ZXMoZW1wbG95ZV9tYW5hZ2VyX2dlbmVyYWwkRWR1Y2F0aW9uRmllbGQsIFxuICAgICAgICAgIGZyb209YygnSHVtYW4gUmVzb3VyY2VzJywgJ0xpZmUgU2NpZW5jZXMnLCAnTWFya2V0aW5nJywgJ01lZGljYWwnLCAnT3RoZXInLCAnVGVjaG5pY2FsIERlZ3JlZScpLCBcbiAgICAgICAgICB0bz1jKDEsMiwzLDQsNSw2KSlcbmVtcGxveWVfbWFuYWdlcl9nZW5lcmFsJEpvYlJvbGUgPC0gbWFwdmFsdWVzKGVtcGxveWVfbWFuYWdlcl9nZW5lcmFsJEpvYlJvbGUsIFxuICAgICAgICAgIGZyb209YygnSGVhbHRoY2FyZSBSZXByZXNlbnRhdGl2ZScsICdIdW1hbiBSZXNvdXJjZXMnLCdMYWJvcmF0b3J5IFRlY2huaWNpYW4nLCdNYW5hZ2VyJywnTWFudWZhY3R1cmluZyBEaXJlY3RvcicsJ1Jlc2VhcmNoIERpcmVjdG9yJywnUmVzZWFyY2ggU2NpZW50aXN0JywnU2FsZXMgRXhlY3V0aXZlJywnU2FsZXMgUmVwcmVzZW50YXRpdmUnKSwgXG4gICAgICAgICAgdG89YygxLDIsMyw0LDUsNiw3LDgsOSkpXG5lbXBsb3llX21hbmFnZXJfZ2VuZXJhbCRNYXJpdGFsU3RhdHVzIDwtIG1hcHZhbHVlcyhlbXBsb3llX21hbmFnZXJfZ2VuZXJhbCRNYXJpdGFsU3RhdHVzLCBcbiAgICAgICAgICBmcm9tPWMoJ0Rpdm9yY2VkJywgJ01hcnJpZWQnLCdTaW5nbGUnKSwgXG4gICAgICAgICAgdG89YygxLDIsMykpXG5lbXBsb3llX21hbmFnZXJfZ2VuZXJhbCRPdmVyMTggPC0gbWFwdmFsdWVzKGVtcGxveWVfbWFuYWdlcl9nZW5lcmFsJE92ZXIxOCwgXG4gICAgICAgICAgZnJvbT1jKCdZJyksIFxuICAgICAgICAgIHRvPWMoMSkpXG5cbmBgYCJ9 -->
+<pre class="r"><code>
+employe_manager_general$Gender &lt;- mapvalues(employe_manager_general$Gender, 
+          from=c(&#39;Female&#39;, &#39;Male&#39;), 
+          to=c(1,0))
+employe_manager_general$Attrition &lt;- mapvalues(employe_manager_general$Attrition, 
+          from=c(&#39;No&#39;, &#39;Yes&#39;), 
+          to=c(1,0))
+employe_manager_general$BusinessTravel &lt;- mapvalues(employe_manager_general$BusinessTravel, 
+          from=c(&#39;Non-Travel&#39;, &#39;Travel_Frequently&#39;,&#39;Travel_Rarely&#39;), 
+          to=c(1,2,3))
+employe_manager_general$Department &lt;- mapvalues(employe_manager_general$Department, 
+          from=c(&#39;Human Resources&#39;, &#39;Research &amp; Development&#39;,&#39;Sales&#39;), 
+          to=c(1,2,3))
+
+employe_manager_general$EducationField &lt;- mapvalues(employe_manager_general$EducationField, 
+          from=c(&#39;Human Resources&#39;, &#39;Life Sciences&#39;, &#39;Marketing&#39;, &#39;Medical&#39;, &#39;Other&#39;, &#39;Technical Degree&#39;), 
+          to=c(1,2,3,4,5,6))
+employe_manager_general$JobRole &lt;- mapvalues(employe_manager_general$JobRole, 
+          from=c(&#39;Healthcare Representative&#39;, &#39;Human Resources&#39;,&#39;Laboratory Technician&#39;,&#39;Manager&#39;,&#39;Manufacturing Director&#39;,&#39;Research Director&#39;,&#39;Research Scientist&#39;,&#39;Sales Executive&#39;,&#39;Sales Representative&#39;), 
+          to=c(1,2,3,4,5,6,7,8,9))
+employe_manager_general$MaritalStatus &lt;- mapvalues(employe_manager_general$MaritalStatus, 
+          from=c(&#39;Divorced&#39;, &#39;Married&#39;,&#39;Single&#39;), 
+          to=c(1,2,3))
+employe_manager_general$Over18 &lt;- mapvalues(employe_manager_general$Over18, 
+          from=c(&#39;Y&#39;), 
+          to=c(1))
+</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuIyBPbiB2w6lyaWZpZVxuXG50YWJsZShlbXBsb3llX21hbmFnZXJfZ2VuZXJhbCRHZW5kZXIpXG50YWJsZShlbXBsb3llX21hbmFnZXJfZ2VuZXJhbCRBdHRyaXRpb24pXG50YWJsZShlbXBsb3llX21hbmFnZXJfZ2VuZXJhbCRCdXNpbmVzc1RyYXZlbClcbnRhYmxlKGVtcGxveWVfbWFuYWdlcl9nZW5lcmFsJERlcGFydG1lbnQpXG50YWJsZShlbXBsb3llX21hbmFnZXJfZ2VuZXJhbCRFZHVjYXRpb25GaWVsZClcbnRhYmxlKGVtcGxveWVfbWFuYWdlcl9nZW5lcmFsJEpvYlJvbGUpXG50YWJsZShlbXBsb3llX21hbmFnZXJfZ2VuZXJhbCRNYXJpdGFsU3RhdHVzKVxudGFibGUoZW1wbG95ZV9tYW5hZ2VyX2dlbmVyYWwkT3ZlcjE4KVxuYGBgIn0= -->
+<pre class="r"><code># On vérifie
+
+table(employe_manager_general$Gender)
+table(employe_manager_general$Attrition)
+table(employe_manager_general$BusinessTravel)
+table(employe_manager_general$Department)
+table(employe_manager_general$EducationField)
+table(employe_manager_general$JobRole)
+table(employe_manager_general$MaritalStatus)
+table(employe_manager_general$Over18)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuc2FwcGx5KGVtcGxveWVfbWFuYWdlcl9nZW5lcmFsLCBjbGFzcylcbiMgTGUgdHlwZSBkZXMgY29sb25uZXMgbidlc3QgcGFzIGJvblxuYGBgIn0= -->
+<pre class="r"><code>sapply(employe_manager_general, class)
+# Le type des colonnes n&#39;est pas bon</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<p>On change le type des colonnes haracter en numeric</p>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuZW1wbG95ZV9tYW5hZ2VyX2dlbmVyYWwgPC0gdHJhbnNmb3JtKGVtcGxveWVfbWFuYWdlcl9nZW5lcmFsLCBBdHRyaXRpb24gPSBhcy5udW1lcmljKEF0dHJpdGlvbiksIFxuICAgICAgICAgICAgICAgICAgICBCdXNpbmVzc1RyYXZlbCA9IGFzLm51bWVyaWMoQnVzaW5lc3NUcmF2ZWwpLCBEZXBhcnRtZW50ID0gYXMubnVtZXJpYyhEZXBhcnRtZW50KSwgXG4gICAgICAgICAgICAgICAgICAgIEVkdWNhdGlvbkZpZWxkID0gYXMubnVtZXJpYyhFZHVjYXRpb25GaWVsZCksIEdlbmRlciA9IGFzLm51bWVyaWMoR2VuZGVyKSwgXG4gICAgICAgICAgICAgICAgICAgIEpvYlJvbGUgPSBhcy5udW1lcmljKEpvYlJvbGUpLCBNYXJpdGFsU3RhdHVzID0gYXMubnVtZXJpYyhNYXJpdGFsU3RhdHVzKSwgXG4gICAgICAgICAgICAgICAgICAgIE92ZXIxOCA9IGFzLm51bWVyaWMoT3ZlcjE4KSlcbmBgYCJ9 -->
+<pre class="r"><code>employe_manager_general &lt;- transform(employe_manager_general, Attrition = as.numeric(Attrition), 
+                    BusinessTravel = as.numeric(BusinessTravel), Department = as.numeric(Department), 
+                    EducationField = as.numeric(EducationField), Gender = as.numeric(Gender), 
+                    JobRole = as.numeric(JobRole), MaritalStatus = as.numeric(MaritalStatus), 
+                    Over18 = as.numeric(Over18))</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<p>On vérifie</p>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuc2FwcGx5KGVtcGxveWVfbWFuYWdlcl9nZW5lcmFsLCBjbGFzcylcbmBgYCJ9 -->
+<pre class="r"><code>sapply(employe_manager_general, class)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuc3VtbWFyeShlbXBsb3llX21hbmFnZXJfZ2VuZXJhbClcblxuYGBgIn0= -->
+<pre class="r"><code>summary(employe_manager_general)
+</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<p>On supprime les colonnes contenant que les mêmes valeurs (sert à
+rien)</p>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuZW1wbG95ZV9tYW5hZ2VyX2dlbmVyYWwgJT4lIHNlbGVjdCgtYygnRW1wbG95ZWVDb3VudCcsICdPdmVyMTgnLCdTdGFuZGFyZEhvdXJzJykpXG5gYGAifQ== -->
+<pre class="r"><code>employe_manager_general %&gt;% select(-c(&#39;EmployeeCount&#39;, &#39;Over18&#39;,&#39;StandardHours&#39;))</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuIyBUZW50YXRpdmUgYWpvdXQgZGF0YWZyYW1lcyB0aW1lXG5kZl90ZXN0IDwtIGluX3RpbWVcblxuXG5saWJyYXJ5KGRwbHlyKVxuZGZfdGVzdCA9IHJlbmFtZShkZl90ZXN0LGMoXCJYXCI9XCJFbXBsb3llZUlEXCIpKVxub3V0X3RpbWUgPSByZW5hbWUob3V0X3RpbWUsYyhcIlhcIj1cIkVtcGxveWVlSURcIikpXG5cbmBgYCJ9 -->
+<pre class="r"><code># Tentative ajout dataframes time
+df_test &lt;- in_time
+
+
+library(dplyr)
+df_test = rename(df_test,c(&quot;X&quot;=&quot;EmployeeID&quot;))
+out_time = rename(out_time,c(&quot;X&quot;=&quot;EmployeeID&quot;))
+</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuY29sU3Vtcyhpcy5uYShkZl90ZXN0KSlcbiMgT24gY29uc3RhdGUgcXVlIGRlcyBjb2xvbm5lcyBzb250IHRvdGFsZW1lbnQgdmlkZXMgZXQgcXUnZW4gbW95ZW5uZXMgaWwgeSBhIDI1MCB2YWxldXJzIG1hbnF1YW50ZXMgcGFyIGNvbG9ubmVzXG5gYGAifQ== -->
+<pre class="r"><code>colSums(is.na(df_test))
+# On constate que des colonnes sont totalement vides et qu&#39;en moyennes il y a 250 valeurs manquantes par colonnes</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuIyBPbiBzdXBwcmltZSBsZXMgY29sb25uZXMgcXVpIG9udCBkZXMgdmFsZXVycyBtYW5xdWFudGVzIHN1cMOpcmlldXJlcyDDoCA1MCVcbmRmX3Rlc3QgPC0gIGRmX3Rlc3RbLCFzYXBwbHkoZGZfdGVzdCwgZnVuY3Rpb24oeCkgbWVhbihpcy5uYSh4KSkpPjAuNV1cbmRmX3Rlc3QkTmJfYWJzZW5jZV9pbiA8LSByb3dTdW1zKGlzLm5hKGRmX3Rlc3QpKVxuaGVhZChkZl90ZXN0KVxuYGBgIn0= -->
+<pre class="r"><code># On supprime les colonnes qui ont des valeurs manquantes supérieures à 50%
+df_test &lt;-  df_test[,!sapply(df_test, function(x) mean(is.na(x)))&gt;0.5]
+df_test$Nb_absence_in &lt;- rowSums(is.na(df_test))
+head(df_test)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuIyBPbiBmYWl0IGxhIG1lbWUgY2hvc2UgcG91ciBvdXRfdGltZVxub3V0X3RpbWUgPC0gIG91dF90aW1lWywhc2FwcGx5KG91dF90aW1lLCBmdW5jdGlvbih4KSBtZWFuKGlzLm5hKHgpKSk+MC41XVxub3V0X3RpbWUkTmJfYWJzZW5jZV9vdXQgPC0gcm93U3Vtcyhpcy5uYShvdXRfdGltZSkpXG5oZWFkKG91dF90aW1lKVxuYGBgIn0= -->
+<pre class="r"><code># On fait la meme chose pour out_time
+out_time &lt;-  out_time[,!sapply(out_time, function(x) mean(is.na(x)))&gt;0.5]
+out_time$Nb_absence_out &lt;- rowSums(is.na(out_time))
+head(out_time)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuIyBPbiBjcsOpZXIgdW4gbm91dmVhdSBkYXRhZnJhbWUgYXZlYyBsZXMgY29sb25uZXMgRW1wb2x5ZWVJRCwgTmJfYWJzZW5jZV9pbiBcbmRmMSA8LSBkZl90ZXN0Wy1jKDI6MjUwKV1cbiNPbiBjcsOpZXIgdW4gbm91dmVhdSBkYXRhZnJhbWUgYXZlYyBsZXMgY29sb25uZXMgRW1wb2x5ZWVJRCwgTmJfYWJzZW5jZV9vdXRcbmRmMiA8LSBvdXRfdGltZVstYygyOjI1MCldIFxuaGVhZChkZjEpXG5oZWFkKGRmMilcblxuYGBgIn0= -->
+<pre class="r"><code># On créer un nouveau dataframe avec les colonnes EmpolyeeID, Nb_absence_in 
+df1 &lt;- df_test[-c(2:250)]
+#On créer un nouveau dataframe avec les colonnes EmpolyeeID, Nb_absence_out
+df2 &lt;- out_time[-c(2:250)] 
+head(df1)
+head(df2)
+</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuIyBPbiBqb2ludCBsZXMgZGV1eCBkYXRhZnJhbWVzXG5kZiA8LSBkZjEgJT4lXG4gIGlubmVyX2pvaW4oZGYyLCBieSA9IGMoXCJFbXBsb3llZUlEXCIgPSBcIkVtcGxveWVlSURcIikpXG5oZWFkKGRmKVxuYGBgIn0= -->
+<pre class="r"><code># On joint les deux dataframes
+df &lt;- df1 %&gt;%
+  inner_join(df2, by = c(&quot;EmployeeID&quot; = &quot;EmployeeID&quot;))
+head(df)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuZGYkTmJfYWJzZW5jZSA8LSBpZmVsc2UoZGYkTmJfYWJzZW5jZV9pbiA+IGRmJE5iX2Fic2VuY2Vfb3V0LCBkZiROYl9hYnNlbmNlX2luLFxuICAgICAgICAgICAgICAgaWZlbHNlKGRmJE5iX2Fic2VuY2VfaW4gPCBkZiROYl9hYnNlbmNlX291dCwgZGYkTmJfYWJzZW5jZV9vdXQsIGRmJE5iX2Fic2VuY2Vfb3V0KSlcbmhlYWQoZGYpXG5gYGAifQ== -->
+<pre class="r"><code>df$Nb_absence &lt;- ifelse(df$Nb_absence_in &gt; df$Nb_absence_out, df$Nb_absence_in,
+               ifelse(df$Nb_absence_in &lt; df$Nb_absence_out, df$Nb_absence_out, df$Nb_absence_out))
+head(df)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuI09uIHN1cHByaW1lIGxlcyBjb2xvbm5lcyBOYl9hYnNlbmNlX2luIGV0IE5iX2Fic2VuY2Vfb3V0XG5kZiA8LSBkZlstYygyOjMpXVxuaGVhZChkZilcbmBgYCJ9 -->
+<pre class="r"><code>#On supprime les colonnes Nb_absence_in et Nb_absence_out
+df &lt;- df[-c(2:3)]
+head(df)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<div id="on-joins-ce-dataframe-à-celui-de-employee_manager_general" class="section level2">
+<h2>On joins ce dataframe à celui de employee_manager_general</h2>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuZW1wbG95ZV9tYW5hZ2VyX2dlbmVyYWwgPC0gZW1wbG95ZV9tYW5hZ2VyX2dlbmVyYWwgJT4lXG4gIGlubmVyX2pvaW4oZGYsIGJ5ID0gYyhcIkVtcGxveWVlSURcIiA9IFwiRW1wbG95ZWVJRFwiKSlcbmhlYWQoZW1wbG95ZV9tYW5hZ2VyX2dlbmVyYWwpXG5gYGAifQ== -->
+<pre class="r"><code>employe_manager_general &lt;- employe_manager_general %&gt;%
+  inner_join(df, by = c(&quot;EmployeeID&quot; = &quot;EmployeeID&quot;))
+head(employe_manager_general)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<p>D’après l’analyse des données qu’il ya avait une forte corrélation
+entre le temps de travail moyen et l’attrition, nous allons donc
+l’ajouter à notre jeu de données</p>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuI2Nyw6lhdGlvbiBkZSBkYXRhZnJhbWUgdmlkZSBheWFudCBsZXMgbcOqbWVzIGRpbWVuc2lvbnMgcXVlIFwiaW5fdGltw6lcIiBldCBcIm91dF90aW1lXG5kZl9pbl90aW1lX2RhdGVfZm9ybWF0IDwtIGRhdGEuZnJhbWUobWF0cml4KG5yb3c9bnJvdyhpbl90aW1lXzIpLG5jb2w9bmNvbChpbl90aW1lXzIpKSlcbmRmX291dF90aW1lX2RhdGVfZm9ybWF0IDwtIGRhdGEuZnJhbWUobWF0cml4KG5yb3c9bnJvdyhvdXRfdGltZV8yKSxuY29sPW5jb2wob3V0X3RpbWVfMikpKVxuXG4jY2hhcXVlIGNvbG9ubmVzIGVzdCBjb252ZXJ0aXQgYXUgZnJvbWF0IGQndW5lIGRhdGEgYWZpbiBkZSBwb3V2b2lyIGZhaXJlIGRlcyBvcMOpcmF0aW9ucyBhdmVjIGxlcyBoZXVyZXNcbmZvciAoaSBpbiAxOm5jb2woaW5fdGltZV8yKSl7XG4gIGRmX2luX3RpbWVfZGF0ZV9mb3JtYXRbaV08LWFzLlBPU0lYY3QoaW5fdGltZV8yWyxpXSxmb3JtYXQgPVwiJVktJW0tJWQgJUg6JU06JVNcIixvcmlnaW49JzE5NzAtMDEtMDEnKVxuICBjb2xuYW1lcyhkZl9pbl90aW1lX2RhdGVfZm9ybWF0KTwtbmFtZXMoaW5fdGltZV8yKVxufVxuXG5mb3IgKGkgaW4gMTpuY29sKG91dF90aW1lXzIpKXtcbiAgZGZfb3V0X3RpbWVfZGF0ZV9mb3JtYXRbaV08LWFzLlBPU0lYY3Qob3V0X3RpbWVfMlssaV0sZm9ybWF0ID1cIiVZLSVtLSVkICVIOiVNOiVTXCIsb3JpZ2luPScxOTcwLTAxLTAxJylcbiAgY29sbmFtZXMoZGZfb3V0X3RpbWVfZGF0ZV9mb3JtYXQpPC1uYW1lcyhvdXRfdGltZV8yKVxufVxuXG4jY3LDqWVyIHVuIG5vdXZlYXUgZGF0YWZyYW1lIGNvbnRlbmFudCBsYSBkaWZmw6lyZW5jZSBlbnRyZSBsZXMgaGV1cmVzIGQnYXJyaXbDqSBldCBkZSBzb3J0aWUgYWZpbiBkZSBjb25uYWl0cmUgbGUgdGVtcHMgZGUgdHJhdmFpbCBqb3VybmFsaWVyIFxuZGZfd29ya2luZ190aW1lX2J5X2RheSA8LSBkZl9vdXRfdGltZV9kYXRlX2Zvcm1hdCAtZGZfaW5fdGltZV9kYXRlX2Zvcm1hdFxuXG4jcG91ciBjYWxjdWxlciBsYSBtb3llbm5lIGlsIGZhdXQgY29udmVydGlyZSBsZXMgdGVtcHMgZW4gaGV1cmUgZW4gbnVtw6lyaXF1ZSBcbmZvciAoaSBpbiAxOm5jb2woZGZfd29ya2luZ190aW1lX2J5X2RheSkpe1xuICBkZl93b3JraW5nX3RpbWVfYnlfZGF5W2ldPC1sYXBwbHkoZGZfd29ya2luZ190aW1lX2J5X2RheVtpXSwgYXMubnVtZXJpYylcbn1cblxuI2NhbGN1bCBkZSBsYSBtb3llbm5lIFxuZGZfd29ya2luZ190aW1lX2J5X2RheSRhdmc8LXJvd01lYW5zKGRmX3dvcmtpbmdfdGltZV9ieV9kYXksbmEucm09VFJVRSlcblxuI2Fqb3V0ZSBsYSBtb3llbm5lIGF1IGRhdGFmcmFtZSBkZXN0aW7DqSDDoCBsYSBjcsOpYXRpb24gZHUgbW9kw6hsZSBcbmVtcGxveWVfbWFuYWdlcl9nZW5lcmFsJGF2ZyA8LSBkZl93b3JraW5nX3RpbWVfYnlfZGF5JGF2Z1xuXG5gYGAifQ== -->
+<pre class="r"><code>#création de dataframe vide ayant les mêmes dimensions que &quot;in_timé&quot; et &quot;out_time
+df_in_time_date_format &lt;- data.frame(matrix(nrow=nrow(in_time_2),ncol=ncol(in_time_2)))
+df_out_time_date_format &lt;- data.frame(matrix(nrow=nrow(out_time_2),ncol=ncol(out_time_2)))
+
+#chaque colonnes est convertit au fromat d&#39;une data afin de pouvoir faire des opérations avec les heures
+for (i in 1:ncol(in_time_2)){
+  df_in_time_date_format[i]&lt;-as.POSIXct(in_time_2[,i],format =&quot;%Y-%m-%d %H:%M:%S&quot;,origin=&#39;1970-01-01&#39;)
+  colnames(df_in_time_date_format)&lt;-names(in_time_2)
+}
+
+for (i in 1:ncol(out_time_2)){
+  df_out_time_date_format[i]&lt;-as.POSIXct(out_time_2[,i],format =&quot;%Y-%m-%d %H:%M:%S&quot;,origin=&#39;1970-01-01&#39;)
+  colnames(df_out_time_date_format)&lt;-names(out_time_2)
+}
+
+#créer un nouveau dataframe contenant la différence entre les heures d&#39;arrivé et de sortie afin de connaitre le temps de travail journalier 
+df_working_time_by_day &lt;- df_out_time_date_format -df_in_time_date_format
+
+#pour calculer la moyenne il faut convertire les temps en heure en numérique 
 for (i in 1:ncol(df_working_time_by_day)){
- # df_working_time_by_day[i]&lt;-lapply(df_working_time_by_day[i], unclass)
   df_working_time_by_day[i]&lt;-lapply(df_working_time_by_day[i], as.numeric)
 }
 
-#df_avg &lt;- data.frame(rowMeans(df_test),na.rm = TRUE )
-
-#df_avg &lt;- data.frame(matrix(row=nrow(df_test)))
-
-#for (i in 1:nrow(df_test)) {
-# df_avg$mean&lt;- mean(df_test[i],na.rm = TRUE)
-#}
-
+#calcul de la moyenne 
 df_working_time_by_day$avg&lt;-rowMeans(df_working_time_by_day,na.rm=TRUE)
+
+#ajoute la moyenne au dataframe destiné à la création du modèle 
+employe_manager_general$avg &lt;- df_working_time_by_day$avg
 </code></pre>
 <!-- rnb-source-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuZGZfYXZnIDwtIGRhdGEuZnJhbWUoZGZfd29ya2luZ190aW1lX2J5X2RheSRhdmcpXG4jYWpvdXRlciB1bmUgY29sb25uZSBpZCBwb3VyIHBvdXZvaXIgZnVpc29uZXIgbGUgZGF0YWZyYW1lIGdsb2JhbCBcbmRmX2F2ZyRFbXBsb3llZUlEIDwtIHNlcS5pbnQobnJvdyhkZl9hdmcpKVxuYGBgIn0= -->
-<pre class="r"><code>df_avg &lt;- data.frame(df_working_time_by_day$avg)
-#ajouter une colonne id pour pouvoir fuisoner le dataframe global 
-df_avg$EmployeeID &lt;- seq.int(nrow(df_avg))</code></pre>
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuIyBPbiBzdXBwcmltZSBsZXMgY29sb25uZXMgw6AgdmFsZXVycyB1bmlxdWVzIHNvaXQgOiBFbXBsb3llZUNvdW50LCBPdmVyMTggZXQgU3RhbmRhcmRIb3Vyc1xuZW1wbG95ZV9tYW5hZ2VyX2dlbmVyYWwgPC0gZW1wbG95ZV9tYW5hZ2VyX2dlbmVyYWwgJT4lIHNlbGVjdCgtYygnRW1wbG95ZWVDb3VudCcsICdPdmVyMTgnLCAnU3RhbmRhcmRIb3VycycpKVxuYGBgIn0= -->
+<pre class="r"><code># On supprime les colonnes à valeurs uniques soit : EmployeeCount, Over18 et StandardHours
+employe_manager_general &lt;- employe_manager_general %&gt;% select(-c(&#39;EmployeeCount&#39;, &#39;Over18&#39;, &#39;StandardHours&#39;))</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuIyBPbiB2b2l0IGxhIGNvcnJlbGF0aW9uIFxuY29yKGVtcGxveWVfbWFuYWdlcl9nZW5lcmFsWywxOjI3XSlcbmBgYCJ9 -->
+<pre class="r"><code># On voit la correlation 
+cor(employe_manager_general[,1:27])</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuI1wiXCJcImVtcGxveWVfbWFuYWdlcl9nZW5lcmFsX3BjYSA8LSBwcmNvbXAoZW1wbG95ZV9tYW5hZ2VyX2dlbmVyYWxbLDE6MjddLCBjZW50ZXIgPSBULCBzY2FsZSA9IFQpIHN1bW1hcnkoZW1wbG95ZV9tYW5hZ2VyX2dlbmVyYWxfcGNhKVwiXCJcIlxuYGBgIn0= -->
+<pre class="r"><code>#&quot;&quot;&quot;employe_manager_general_pca &lt;- prcomp(employe_manager_general[,1:27], center = T, scale = T) summary(employe_manager_general_pca)&quot;&quot;&quot;</code></pre>
 <!-- rnb-source-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
+<p>On sépare les données en jeu de train et de test</p>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuI2Z1c2lvbm5lIGxlcyBkZlxuZGZfZ2xvYmFsIDwtIGRmX2dsb2JhbCAlPiVcbiAgaW5uZXJfam9pbihkZl9hdmcsIGJ5ID0gYyhcIkVtcGxveWVlSURcIiA9IFwiRW1wbG95ZWVJRFwiKSlcbmBgYCJ9 -->
-<pre class="r"><code>#fusionne les df
-df_global &lt;- df_global %&gt;%
-  inner_join(df_avg, by = c(&quot;EmployeeID&quot; = &quot;EmployeeID&quot;))</code></pre>
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubGlicmFyeSh0aWR5bW9kZWxzKVxuc2V0LnNlZWQoMzY0KVxuXG5uIDwtbnJvdyhlbXBsb3llX21hbmFnZXJfZ2VuZXJhbClcbmVtcGxveWVfcGFydHMgPC0gZW1wbG95ZV9tYW5hZ2VyX2dlbmVyYWwgJT4lXG4gIGluaXRpYWxfc3BsaXQocHJvcD0wLjgpXG5cbnRyYWluIDwtZW1wbG95ZV9wYXJ0cyAlPiVcbiAgdHJhaW5pbmcoKVxuXG50ZXN0IDwtZW1wbG95ZV9wYXJ0cyAlPiVcbiAgdGVzdGluZygpXG5cbmxpc3QodHJhaW4sdGVzdCkgJT4lXG4gIG1hcF9pbnQobnJvdylcbmBgYCJ9 -->
+<pre class="r"><code>library(tidymodels)
+set.seed(364)
+
+n &lt;-nrow(employe_manager_general)
+employe_parts &lt;- employe_manager_general %&gt;%
+  initial_split(prop=0.8)
+
+train &lt;-employe_parts %&gt;%
+  training()
+
+test &lt;-employe_parts %&gt;%
+  testing()
+
+list(train,test) %&gt;%
+  map_int(nrow)</code></pre>
 <!-- rnb-source-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
+</div>
+<div id="on-entraine-le-model-logistic-regression-avec-pour-variable-cible-attrition" class="section level2">
+<h2>On entraine le model Logistic Regression avec pour variable cible
+Attrition</h2>
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuI3Jlbm9tbWVyIGNvbG9ubmVcbm5hbWVzKGRmX2dsb2JhbClbbmFtZXMoZGZfZ2xvYmFsKSA9PSBcImRmX3dvcmtpbmdfdGltZV9ieV9kYXkuYXZnXCJdIDwtIFwiYXZnXCJcblxuXG5cbmBgYCJ9 -->
-<pre class="r"><code>#renommer colonne
-names(df_global)[names(df_global) == &quot;df_working_time_by_day.avg&quot;] &lt;- &quot;avg&quot;
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuIyBGaXQgdGhlIG1vZGVsXG5tb2RlbCA8LSBnbG0oQXR0cml0aW9uIH4uLGZhbWlseT1iaW5vbWlhbChsaW5rPSdsb2dpdCcpLGRhdGE9dHJhaW4pXG5cbmBgYCJ9 -->
+<pre class="r"><code># Fit the model
+model &lt;- glm(Attrition ~.,family=binomial(link=&#39;logit&#39;),data=train)
 </code></pre>
 <!-- rnb-source-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubGlicmFyeShnZ3Bsb3QyKVxuZGZfZ3JhcGggPC0gZGZfZ2xvYmFsWywgYyhcImF2Z1wiLCBcIkF0dHJpdGlvblwiKV1cbiNkZl9ncmFwaCRhdmcgPC1zaWduaWYoZGZfZ2xvYmFsJGF2ZywgZGlnaXRzID0gMilcbmRmX2dyYXBoJGF2ZyA8LSBmbG9vcihkZl9ncmFwaCRhdmcpXG5kZl9ncmFwaCR2YWx1ZSA8LSAxXG5cbiMgc3RhY2tlZCBhcmVhIGNoYXJ0XG5cbmdncGxvdChkZl9ncmFwaCwgYWVzKHg9YXZnLCB5PXZhbHVlLCBmaWxsPUF0dHJpdGlvbikpICsgXG4gICAgc3RhdF9zdW1tYXJ5KGZ1biA9IFwic3VtXCIsIGdlb20gPSBcImFyZWFcIiwgcG9zaXRpb24gPSBcInN0YWNrXCIpXG5cbmBgYCJ9 -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubGlicmFyeShjYXJldClcbnZhckltcChtb2RlbClcbmBgYCJ9 -->
+<pre class="r"><code>library(caret)
+varImp(model)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+</div>
+<div id="on-observe-que-jobsatisfaction-est-le-feature-le-plus-important-suivi-par-environnementsatisfaction-worklifebalance-et-age" class="section level1">
+<h1>On observe que JobSatisfaction est le feature le plus important,
+suivi par Environnementsatisfaction, WorkLifeBalance et Age</h1>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuIyBPbiBmYWl0IGR1IGxvZ3JlZyBlbiBwcmVuYW50IGNvbXB0ZSBsZXMgZmVhdHVyZXMgaW1wb3J0YW5jZXNcbmxvZ2lzdGljID0gZ2xtKEF0dHJpdGlvbiB+IEpvYlNhdGlzZmFjdGlvbiArIEVudmlyb25tZW50U2F0aXNmYWN0aW9uICsgV29ya0xpZmVCYWxhbmNlICsgQWdlLCBkYXRhPXRyYWluLCBmYW1pbHk9Ymlub21pYWwpXG5zdW1tYXJ5KGxvZ2lzdGljKVxuIyBTZW1ibGUgYm9uIC0tPiBjZW50csOpIGVuIDAgZXQgc2VtYmxlIMOgIHBldSBwcsOocyBzeW3DqXRyaXF1ZVxuYGBgIn0= -->
+<pre class="r"><code># On fait du logreg en prenant compte les features importances
+logistic = glm(Attrition ~ JobSatisfaction + EnvironmentSatisfaction + WorkLifeBalance + Age, data=train, family=binomial)
+summary(logistic)
+# Semble bon --&gt; centré en 0 et semble à peu près symétrique</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<div id="on-teste-une-visualisation-des-prédictions" class="section level2">
+<h2>On teste une visualisation des prédictions</h2>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxucHJlZGljdGVkLmRhdGEgPC0gZGF0YS5mcmFtZShcbiAgcHJvYmFiaWxpdHkub2YuQXR0cml0aW9uPWxvZ2lzdGljJGZpdHRlZC52YWx1ZXMsXG4gIEF0dHJpdGlvbj10ZXN0JEF0dHJpdGlvbilcbmBgYCJ9 -->
+<pre class="r"><code>predicted.data &lt;- data.frame(
+  probability.of.Attrition=logistic$fitted.values,
+  Attrition=test$Attrition)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuIyBPbiBvcmRvbm5lIMOgIHBhcnRpciBkZXMgcHJvYmFiaWxpdMOpcyBiYXNzZXMgw6AgaGF1dGVzXG5wcmVkaWN0ZWQuZGF0YSA8LSBwcmVkaWN0ZWQuZGF0YVtcbiAgKyBvcmRlcihwcmVkaWN0ZWQuZGF0YSRwcm9iYWJpbGl0eS5vZi5BdHRyaXRpb24sIGRlY3JlYXNpbmcgPSBGQUxTRSksXG5dXG4jIE9uIGFqb3V0ZSB1bmUgY29sb25uZSBcInJhbmtcIiBwb3VyIGNoYXF1ZSBzYW1wbGVcbnByZWRpY3RlZC5kYXRhJHJhbmsgPC0gMTpucm93KHByZWRpY3RlZC5kYXRhKVxuYGBgIn0= -->
+<pre class="r"><code># On ordonne à partir des probabilités basses à hautes
+predicted.data &lt;- predicted.data[
+  + order(predicted.data$probability.of.Attrition, decreasing = FALSE),
+]
+# On ajoute une colonne &quot;rank&quot; pour chaque sample
+predicted.data$rank &lt;- 1:nrow(predicted.data)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubGlicmFyeShnZ3Bsb3QyKVxubGlicmFyeShjb3dwbG90KSAjUGVybWV0IGQnYXZvaXIgdW4gYmVsIGFmZmljaGFnZVxuYGBgIn0= -->
 <pre class="r"><code>library(ggplot2)
-df_graph &lt;- df_global[, c(&quot;avg&quot;, &quot;Attrition&quot;)]
-#df_graph$avg &lt;-signif(df_global$avg, digits = 2)
-df_graph$avg &lt;- floor(df_graph$avg)
-df_graph$value &lt;- 1
-
-# stacked area chart
-
-ggplot(df_graph, aes(x=avg, y=value, fill=Attrition)) + 
-    stat_summary(fun = &quot;sum&quot;, geom = &quot;area&quot;, position = &quot;stack&quot;)
-</code></pre>
+library(cowplot) #Permet d&#39;avoir un bel affichage</code></pre>
 <!-- rnb-source-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubGlicmFyeShkcGx5cilcbmRmX2dyYXBoIDwtIGRmX2dyYXBoICAlPiVcbiAgZ3JvdXBfYnkoYXZnLCBBdHRyaXRpb24pICU+JVxuICBzdW1tYXJpc2UobiA9IHN1bSh2YWx1ZSkpICU+JVxuICBtdXRhdGUocGVyY2VudGFnZSA9IG4gLyBzdW0obikpXG5cblxuZ2dwbG90KGRmX2dyYXBoLCBhZXMoeD1hdmcsIHk9cGVyY2VudGFnZSwgZmlsbD1BdHRyaXRpb24pKSArIFxuICAgIGdlb21fYXJlYShhbHBoYT0wLjYgLCBzaXplPTEsIGNvbG91cj1cImJsYWNrXCIpK1xuICAgIGdndGl0bGUoXCJBdHRyaXRpb24gZW4gZm9uY3Rpb25zIGRlcyBoZXVyZXMgZGUgdHJhdmFpbCBqb3VybmFsacOocmVzIG1veWVubmVzXCIpK1xuICAgIHhsYWIoXCJUZW1wcyBkZSB0cmF2YWlsIG1veWVuXCIpXG5cblxuYGBgIn0= -->
-<pre class="r"><code>library(dplyr)
-df_graph &lt;- df_graph  %&gt;%
-  group_by(avg, Attrition) %&gt;%
-  summarise(n = sum(value)) %&gt;%
-  mutate(percentage = n / sum(n))
-
-
-ggplot(df_graph, aes(x=avg, y=percentage, fill=Attrition)) + 
-    geom_area(alpha=0.6 , size=1, colour=&quot;black&quot;)+
-    ggtitle(&quot;Attrition en fonctions des heures de travail journalières moyennes&quot;)+
-    xlab(&quot;Temps de travail moyen&quot;)
-</code></pre>
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuZ2dwbG90KGRhdGEgPSBwcmVkaWN0ZWQuZGF0YSwgYWVzKHg9cmFuaywgeSA9cHJvYmFiaWxpdHkub2YuQXR0cml0aW9uKSkgKyBnZW9tX3BvaW50KGFlcyhjb2xvcj0gQXR0cml0aW9uKSwgYWxwaGEgPSAxLCBzaGFwZSA9NCwgc3Ryb2tlID0gMikgKyB4bGFiKFwiSW5kZXhcIikgKyB5bGFiKFwiUHJlZGljaXRlZCBwcm9iYWJpbGl0eSBvZiBkb2luZyBBdHRyaXRpb25cIilcbmBgYCJ9 -->
+<pre class="r"><code>ggplot(data = predicted.data, aes(x=rank, y =probability.of.Attrition)) + geom_point(aes(color= Attrition), alpha = 1, shape =4, stroke = 2) + xlab(&quot;Index&quot;) + ylab(&quot;Predicited probability of doing Attrition&quot;)</code></pre>
 <!-- rnb-source-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuZGZfZ2xvYmFsJHZhbHVlIDwtIDFcblxuZ2dwbG90KGRmX2dsb2JhbCwgYWVzKHg9WWVhcnNTaW5jZUxhc3RQcm9tb3Rpb24sIHk9dmFsdWUsIGZpbGw9QXR0cml0aW9uKSkgKyBcbiAgICBzdGF0X3N1bW1hcnkoZnVuID0gXCJzdW1cIiwgZ2VvbSA9IFwiYXJlYVwiLCBwb3NpdGlvbiA9IFwic3RhY2tcIilcbmBgYCJ9 -->
-<pre class="r"><code>df_global$value &lt;- 1
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxudGFibGUodGVzdCRBdHRyaXRpb24pXG5gYGAifQ== -->
+<pre class="r"><code>table(test$Attrition)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+</div>
+</div>
+<div id="autre-test" class="section level1">
+<h1>Autre test</h1>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuI0NoZWNrZXIgbCdhY2N1cmFjeSBkdSBtb2RlbFxuZW1wbG95ZV9tb2RlbF9sb2dpc3RpY19ybXNlX3RyYWluIDwtIHRyYWluICU+JVxuICBtdXRhdGUocHJlZC5yZWcudHJhaW4gPSBwcmVkaWN0KGxvZ2lzdGljKSlcblxucGxvdChlbXBsb3llX21vZGVsX2xvZ2lzdGljX3Jtc2VfdHJhaW4kQXR0cml0aW9uLCBlbXBsb3llX21vZGVsX2xvZ2lzdGljX3Jtc2VfdHJhaW4kcHJlZC5yZWcudHJhaW4pXG5gYGAifQ== -->
+<pre class="r"><code>#Checker l&#39;accuracy du model
+employe_model_logistic_rmse_train &lt;- train %&gt;%
+  mutate(pred.reg.train = predict(logistic))
 
-ggplot(df_global, aes(x=YearsSinceLastPromotion, y=value, fill=Attrition)) + 
-    stat_summary(fun = &quot;sum&quot;, geom = &quot;area&quot;, position = &quot;stack&quot;)</code></pre>
+plot(employe_model_logistic_rmse_train$Attrition, employe_model_logistic_rmse_train$pred.reg.train)</code></pre>
 <!-- rnb-source-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuZGZfWVNMUCA8LSBkZl9nbG9iYWxbLGMoXCJZZWFyc1NpbmNlTGFzdFByb21vdGlvblwiLFwiQXR0cml0aW9uXCIsXCJ2YWx1ZVwiKV1cbmRmX1lTTFAgPC0gZGZfWVNMUCAgJT4lXG4gIGdyb3VwX2J5KFllYXJzU2luY2VMYXN0UHJvbW90aW9uLCBBdHRyaXRpb24pICU+JVxuICBzdW1tYXJpc2UobiA9IHN1bSh2YWx1ZSkpICU+JVxuICBtdXRhdGUocGVyY2VudGFnZSA9IG4gLyBzdW0obikpXG5cblxuZ2dwbG90KGRmX1lTTFAsIGFlcyh4PVllYXJzU2luY2VMYXN0UHJvbW90aW9uLCB5PXBlcmNlbnRhZ2UsIGZpbGw9QXR0cml0aW9uKSkgKyBcbiAgICBnZW9tX2FyZWEoYWxwaGE9MC42ICwgc2l6ZT0xLCBjb2xvdXI9XCJibGFja1wiKStcbiAgICBnZ3RpdGxlKFwiUmVsYXRpb24gZW50cmUgbGUgdGVtcHMgZGVwdWlzIGxhIGRlcm5pw6hyZSBwcm9tb3Rpb24gZXQgbCdBdHRydGlvblwiKStcbiAgICB4bGFiKFwiVGVtcHMgZGUgdHJhdmFpbCBtb3llblwiKVxuYGBgIn0= -->
-<pre class="r"><code>df_YSLP &lt;- df_global[,c(&quot;YearsSinceLastPromotion&quot;,&quot;Attrition&quot;,&quot;value&quot;)]
-df_YSLP &lt;- df_YSLP  %&gt;%
-  group_by(YearsSinceLastPromotion, Attrition) %&gt;%
-  summarise(n = sum(value)) %&gt;%
-  mutate(percentage = n / sum(n))
-
-
-ggplot(df_YSLP, aes(x=YearsSinceLastPromotion, y=percentage, fill=Attrition)) + 
-    geom_area(alpha=0.6 , size=1, colour=&quot;black&quot;)+
-    ggtitle(&quot;Relation entre le temps depuis la dernière promotion et l&#39;Attrtion&quot;)+
-    xlab(&quot;Temps de travail moyen&quot;)</code></pre>
-<!-- rnb-source-end -->
-<!-- rnb-chunk-end -->
-<!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuZ2dwbG90KGRmX2dsb2JhbCwgYWVzKGZpbGw9Y29uZGl0aW9uLCB5PXZhbHVlLCB4PXNwZWNpZSkpICsgXG4gICAgZ2VvbV9iYXIocG9zaXRpb249XCJzdGFja1wiLCBzdGF0PVwiaWRlbnRpdHlcIilcbmBgYCJ9 -->
-<pre class="r"><code>ggplot(df_global, aes(fill=condition, y=value, x=specie)) + 
-    geom_bar(position=&quot;stack&quot;, stat=&quot;identity&quot;)</code></pre>
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubXNlIDwtIGVtcGxveWVfbW9kZWxfbG9naXN0aWNfcm1zZV90cmFpbiAlPiVcbiAgbXV0YXRlKGVycm9yID0gcHJlZC5yZWcudHJhaW4gLSBBdHRyaXRpb24sXG4gICAgICAgICBzcS5lcnJvciA9IGVycm9yXjIpICU+JVxuICBzdW1tYXJpc2UobXNlID0gbWVhbihzcS5lcnJvcikpXG5ybXNlIDwtIHNxcnQobXNlKVxucm1zZSAjIHRyYWluaW5nIHJtc2UgPSAxLjE2IC0tPiBSTVNFIGZhaWJsZSBjYXIgbW95ZW5uZSBkZXMgb2JzZXJ2YXRpb25zID0gMjk1OFxuYGBgIn0= -->
+<pre class="r"><code>mse &lt;- employe_model_logistic_rmse_train %&gt;%
+  mutate(error = pred.reg.train - Attrition,
+         sq.error = error^2) %&gt;%
+  summarise(mse = mean(sq.error))
+rmse &lt;- sqrt(mse)
+rmse # training rmse = 1.16 --&gt; RMSE faible car moyenne des observations = 2958</code></pre>
 <!-- rnb-source-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
+<div id="on-va-le-faire-sur-le-test-maintenant" class="section level2">
+<h2>On va le faire sur le test maintenant</h2>
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxucHJlZF9yZWdfdGVzdCA8LSBwcmVkaWN0KGxvZ2lzdGljLCBuZXdkYXRhID0gdGVzdClcbnJlZ19ybXNlX3Rlc3QgPC0gc3FydChtZWFuKHByZWRfcmVnX3Rlc3QgLSB0ZXN0JEF0dHJpdGlvbileMilcbnJlZ19ybXNlX3Rlc3QgIyB0ZXN0IHJtc2UgPSAwLjkgLS0+IHNpbWlsYWlyZSDDoCBwZXUgcHLDqHMgYXUgdHJhaW5cbmBgYCJ9 -->
+<pre class="r"><code>pred_reg_test &lt;- predict(logistic, newdata = test)
+reg_rmse_test &lt;- sqrt(mean(pred_reg_test - test$Attrition)^2)
+reg_rmse_test # test rmse = 0.9 --&gt; similaire à peu près au train</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<p>Reste à faire : - Visualisation des données - On doit voir les
+features importances, - Jeu de train et test, - Entrainement modèle</p>
 <!-- rnb-text-end -->
 </div>
 </div>
 
-<div id="rmd-source-code">LS0tDQp0aXRsZTogIlIgTm90ZWJvb2siDQpvdXRwdXQ6IGh0bWxfbm90ZWJvb2sNCi0tLQ0KDQojIyBJbXBvcnRlIGxlcyBkb25uw6llcw0KDQpgYGB7cn0NCmRmX2VtcGxveWVlX3N1cnZleV9kYXRhIDwtIHJlYWQuY3N2KCdDOi8vVXNlcnMvL2xvdWlzLy9Eb2N1bWVudHMvL0NPVVJTIEVNU0UvL0FubsOpZSA1IC0gSW5nw6kgMy8vRVNNRS8vUi8vUHJvamV0Ly9hcmNoaXZlLy9lbXBsb3llZV9zdXJ2ZXlfZGF0YS5jc3YnKQ0KZGZfZ2VuZXJhbF9kYXRhPC0gcmVhZC5jc3YoJ0M6Ly9Vc2Vycy8vbG91aXMvL0RvY3VtZW50cy8vQ09VUlMgRU1TRS8vQW5uw6llIDUgLSBJbmfDqSAzLy9FU01FLy9SLy9Qcm9qZXQvL2FyY2hpdmUvL2dlbmVyYWxfZGF0YS5jc3YnKQ0KZGZfaW5fdGltZTwtIHJlYWQuY3N2KCdDOi8vVXNlcnMvL2xvdWlzLy9Eb2N1bWVudHMvL0NPVVJTIEVNU0UvL0FubsOpZSA1IC0gSW5nw6kgMy8vRVNNRS8vUi8vUHJvamV0Ly9hcmNoaXZlLy9pbl90aW1lLmNzdicpDQpkZl9tYW5hZ2VyX3N1cnZleV9kYXRhPC0gcmVhZC5jc3YoJ0M6Ly9Vc2Vycy8vbG91aXMvL0RvY3VtZW50cy8vQ09VUlMgRU1TRS8vQW5uw6llIDUgLSBJbmfDqSAzLy9FU01FLy9SLy9Qcm9qZXQvL2FyY2hpdmUvL21hbmFnZXJfc3VydmV5X2RhdGEuY3N2JykNCmRmX291dF90aW1lPC0gcmVhZC5jc3YoJ0M6Ly9Vc2Vycy8vbG91aXMvL0RvY3VtZW50cy8vQ09VUlMgRU1TRS8vQW5uw6llIDUgLSBJbmfDqSAzLy9FU01FLy9SLy9Qcm9qZXQvL2FyY2hpdmUvL291dF90aW1lLmNzdicpDQpgYGANCmBgYHtyfQ0KaGVhZChkZl9lbXBsb3llZV9zdXJ2ZXlfZGF0YSkNCmBgYA0KIyBUcmFpdGVtZW50IGRlcyBkb25uw6llcyANCg0KIyMgVsOpcmlmaWUgcydpbCB5IGEgZGVzIHZhbGV1cnMgbWFucXVhbnRlcyANCg0KIyMjIFByZW1pZXIgZGF0YWZyYW1lIDogZGZfZW1wbG95ZWVfc3VydmV5X2RhdGENCg0KYGBge3J9DQpjb2xTdW1zKGlzLm5hKGRmX2VtcGxveWVlX3N1cnZleV9kYXRhKSkNCmBgYA0KIyMjIFNlY29uZCBkYXRhZnJhbWUgOiBkZl9nZW5lcmFsX2RhdGENCkFkZCBhIG5ldyBjaHVuayBieSBjbGlja2luZyB0aGUgKkluc2VydCBDaHVuayogYnV0dG9uIG9uIHRoZSB0b29sYmFyIG9yIGJ5IHByZXNzaW5nICpDdHJsK0FsdCtJKi4NCmBgYHtyfQ0KY29sU3Vtcyhpcy5uYShkZl9nZW5lcmFsX2RhdGEpKQ0KYGBgDQojIyMgVHJvaXNpw6htZSA6IEluX3RpbWUgJiBPdXRfdGltZSBEYXRhZnJhbWUNCg0KYGBge3J9DQojQSBjYXVzZSBkZSBsJ2ltbWVuc2UgcXVhbnRpdMOpIGRlIGRvbm7DqWVzIHByw6lzZW50ZSBvbiBuZSBwZXV0IHBhcyBqdXN0ZSBhZmZpY2hlciBsZXMgY29sb25uZXMgYXZlYyBsZSBub21icmUgZGUgTmEuIENlbGEgc2VyYWl0IGlsaXNpYmxlLiANCmFueShpcy5uYShkZl9pbl90aW1lKSkNCmFueShpcy5uYShkZl9vdXRfdGltZSkpDQpgYGANCiMjIyBRdWF0cmnDqG1lIDogZGZfbWFuYWdlcl9zdXJ2ZXlfZGF0YQ0KV2hlbiB5b3Ugc2F2ZSB0aGUgbm90ZWJvb2ssIGFuIEhUTUwgZmlsZSBjb250YWluaW5nIHRoZSBjb2RlIGFuZCBvdXRwdXQgd2lsbCBiZSBzYXZlZCBhbG9uZ3NpZGUgaXQgKGNsaWNrIHRoZSAqUHJldmlldyogYnV0dG9uIG9yIHByZXNzICpDdHJsK1NoaWZ0K0sqIHRvIHByZXZpZXcgdGhlIEhUTUwgZmlsZSkuDQpgYGB7cn0NCmNvbFN1bXMoaXMubmEoZGZfbWFuYWdlcl9zdXJ2ZXlfZGF0YSkpDQpgYGANCiMgUmVtcGxhY2VtZW50IGRlcyBkb25uw6llcyBNYW5xdWFudGVzIHBhciBsYSBNb3llbm5lIA0KIyMjIEFmaW4gZGUgbmUgcGFzIGZhdXNzZXIgbm90cmUgamV1eCBkZSBkb25uw6llcyBlbiBzdXBwcmltYW50IHNpbXBsZW1lbnQgbGVzIGxpZ25lcyBpbmNvbXBsw6h0ZXMgbm91cyBhbGxvbnMgcmVtcGxhY2VyIGxlcyBOYSBwYXIgbGEgbW95ZW5uZS4gDQpgYGB7cn0NCiNkdXBsaXF1ZSBsZSBkYXRhZnJhbWUgYWZpbiBkJ2VmZmVjdHVlciBub3MgZXNzYWllIA0KZGZfdGVzdCA8LSBkZl9nZW5lcmFsX2RhdGENCmRmX3Rlc3QkTnVtQ29tcGFuaWVzV29ya2VkW2lzLm5hKGRmX3Rlc3QkTnVtQ29tcGFuaWVzV29ya2VkKV0gPC0gbWVhbihkZl90ZXN0JE51bUNvbXBhbmllc1dvcmtlZCwgbmEucm0gPSBUUlVFKQ0KIyBuYS5ybSA9VFJVRSA6IHJldGlyZSBsZXMgTmEgZHUgY2FsY3VsIGRlIGxhIG1veWVubmUgDQpjb2xTdW1zKGlzLm5hKGRmX3Rlc3QpKQ0KYGBgDQoNCg0KYGBge3J9DQojQ29sb25uZSBOdW1Db21wYW5pZXNXb3JrZWQNCmRmX2dlbmVyYWxfZGF0YSROdW1Db21wYW5pZXNXb3JrZWRbaXMubmEoZGZfZ2VuZXJhbF9kYXRhJE51bUNvbXBhbmllc1dvcmtlZCldIDwtIG1lYW4oZGZfdGVzdCROdW1Db21wYW5pZXNXb3JrZWQsIG5hLnJtID0gVFJVRSkNCiNDb2xvbm5lIFRvdGFsV29ya2luZ1llYXJzDQpkZl9nZW5lcmFsX2RhdGEkVG90YWxXb3JraW5nWWVhcnNbaXMubmEoZGZfZ2VuZXJhbF9kYXRhJFRvdGFsV29ya2luZ1llYXJzKV0gPC0gbWVhbihkZl90ZXN0JFRvdGFsV29ya2luZ1llYXJzLCBuYS5ybSA9IFRSVUUpDQphbnkoaXMubmEoZGZfZ2VuZXJhbF9kYXRhKSkNCmBgYA0KIyBFeHBsb2lyYXRpb24gZGVzIGRvbm7DqWVzIGfDqW7DqXJhbGVzIA0KDQojIyBSb3VsZW1lbnQgZHUgcGVyc29ubmVsIA0KYGBge3J9DQojZGF0YSA8LSB0YWJsZShkZl9nZW5lcmFsX2RhdGFbJ0F0dHJpdGlvbiddKSAgIGFmZmljaGUgbGVzIGRvbm7DqWVzIGVuIHNvbW1lIA0KZGF0YSA8LSBwcm9wLnRhYmxlKHRhYmxlKGRmX2dlbmVyYWxfZGF0YVsnQXR0cml0aW9uJ10pKSoxMDAgICAjYWZmaWNoZSBwb3J1Y2VudGFnZSANCmJhcnBsb3QgKGRhdGEgLCBzcGFjZSA9MS4wLA0KICAgICAgICAgbWFpbj0iQXR0cml0aW9uIiwgICNOb20gZ3JhcGgNCiAgICAgICAgIHlsaW09YygwLDEwMCkpICAgICAjw6ljaGVsbGUgZGVzIG9yZG9ubsOpZXMNCiAgICAgICAgICAgICAgDQpgYGANCiNBbmFseXNlIFNhbGFpcmUNCg0KIyMgUsOpcGFydGl0aW9ucyBkZXMgc2FsYWlyZXMNCmBgYHtyfQ0KYm94cGxvdChkZl9nZW5lcmFsX2RhdGEkTW9udGhseUluY29tZSwNCiAgICAgICAgbWFpbiA9ICdCb3ggUGxvdDogU2FsYWlyZScsDQogICAgICAgIHhsYWI9InNhbGFpcmUgbWVuc3VlbCAoJCkiKQ0KYm94cGxvdChkZl9nZW5lcmFsX2RhdGEkTW9udGhseUluY29tZSB+IGRmX2dlbmVyYWxfZGF0YSREZXBhcnRtZW50LCANCiAgICAgICAgbWFpbj0nUsOpcGFydGl0aW9uIFNhbGFpcmUgZW4gZm9uY3Rpb24gZHUgZMOpw6JydGVtZW50JywNCiAgICAgICAgeWxhYj0ic2FsYWlyZSBtZW5zdWVsICgkKSIsDQogICAgICAgIHhsYWI9IkTDqXBhcnRlbWVudCIpDQpib3hwbG90KGRmX2dlbmVyYWxfZGF0YSRNb250aGx5SW5jb21lIH4gZGZfZ2VuZXJhbF9kYXRhJEpvYlJvbGUsDQogICAgICAgIGxhcz0yLCAgICNsw6lnZW5kZSDDoCBsYSB2ZXJ0aWNhbGUNCiAgICAgICAgbWFpbj0nUsOpcGFydGlvbiBTYWxhaXJlIGVuIGZvbmN0aW9uIGR1IHBvc3RlJywNCiAgICAgICAgeWxhYj0ic2FsYWlyZSBtZW5zdWVsICgkKSIsDQogICAgICAgIHhsYWI9IlBvc3RlcyIsDQogICAgICAgIGhlaWdodD0yMDAwLCB1bml0PSJweCIpDQpgYGANCg0KDQoNCiMjIFJldmVudWUgZW4gZm9uY3Rpb24gZHUgcG9zdCANCmBgYHtyfQ0KbGlicmFyeShkcGx5cikNCmRmX2ludGVyIDwtIGRmX2VtcGxveWVlX3N1cnZleV9kYXRhICU+JQ0KICBpbm5lcl9qb2luKGRmX2dlbmVyYWxfZGF0YSwgYnkgPSBjKCJFbXBsb3llZUlEIiA9ICJFbXBsb3llZUlEIikpDQpkZl9nbG9iYWwgPC0gZGZfaW50ZXIgJT4lDQogIGlubmVyX2pvaW4oZGZfbWFuYWdlcl9zdXJ2ZXlfZGF0YSwgYnkgPSBjKCJFbXBsb3llZUlEIiA9ICJFbXBsb3llZUlEIikpDQpgYGANCg0KYGBge3J9DQojZGZfc3VuYnVyc3QgPC0gZGZfZ2xvYmFsWywgYygiRW1wbG95ZWVJRCIsIkRlcGFydGVtZW50IiwiSm9iU2F0aXNmYWN0aW9uIildDQpkZl9zdW5idXJzdCA8LSBkYXRhLmZyYW1lKGRmX2dsb2JhbCRFbXBsb3llZUlELCBkZl9nbG9iYWwkRGVwYXJ0bWVudCwgZGZfZ2xvYmFsJEpvYlNhdGlzZmFjdGlvbikNCm5hbWVzKGRmX3N1bmJ1cnN0KSA8LSBjKCJFbXBsb3llZUlEIiwgIkRlcGFydG1lbnQiLCAiSm9iU2F0aXNmYWN0aW9uIikNCmBgYA0KDQoNCiMjR3JhcGggY2lyY3VsYWlyZTpuYiBlbXBsb3nDqXMgcGFyIGTDqXBhcnRlbWVudHMNCg0KYGBge3J9DQojQ29tcHRlIGxlIG5vbWJyZSBkZSBsaWduZSBwYXIgZMOpcGFydGVtZW50IChldCBkb25jIGxlIG5vbWJyZSBkJ2VtcGxvecOpKQ0KZGZfZW1wbG95ZWVfcGVyX2RlcCA8LWRhdGEuZnJhbWUodGFibGUoZGZfZ2xvYmFsJERlcGFydG1lbnQpKQ0KI2NhbGN1bCBwb3VyY2VudGFnZQ0KeD1kZl9lbXBsb3llZV9wZXJfZGVwJEZyZXENCmRmX2VtcGxveWVlX3Blcl9kZXAkcGVyY2VudGFnZSA8LSh4L3N1bSh4KSoxMDApDQojaW5zdGFsbC5wYWNrYWdlcygiZm1zYiIpDQpsaWJyYXJ5KGdncGxvdDIpDQpnIDwtZ2dwbG90KGRmX2VtcGxveWVlX3Blcl9kZXAsIGFlcyh4PSIiLCB5PXBlcmNlbnRhZ2UsIGZpbGw9VmFyMSkpICsNCiAgZ2VvbV9iYXIoc3RhdD0iaWRlbnRpdHkiLCB3aWR0aD0xKSArDQogIGNvb3JkX3BvbGFyKCJ5Iiwgc3RhcnQ9MCkNCmcgKyBzY2FsZV9maWxsX2Rpc2NyZXRlKG5hbWUgPSAiUsOpcGFydGl0aW9uIGRlcyBlbXBsb3nDqXMgcGFyIGTDqXBhcnRlbWVudHMiKQ0KYGBgDQoNCmBgYHtyfQ0KbGlicmFyeSh0aWR5dmVyc2UpDQpsaWJyYXJ5KHJlYWRyKQ0KDQojcmUtb3JkZXIgZ3JvdXBzIGJ5IGVtcGxveWVlIGNvdW50DQojZ3JvdXBzX2J5X2NvdW50IDwtIGRmX2dsb2JhbCAlPiUNCiAjIGNvdW50KGBEZXBhcnRtZW50YCkjICU+JQ0KICAjYXJyYW5nZShkZXNjKG4pKQ0KI2RmX2dsb2JhbCREZXBhcnRtZW50IDwtIGZhY3Rvcg0KDQojam9iIHN0YXRpc2ZhY3Rpb24gJiBzYWxhaXJlDQpkZl9nbG9iYWwgJT4lDQogIGdncGxvdCgpICsNCiAgICBnZW9tX3BvaW50KGFlcyh5PU1vbnRobHlJbmNvbWUsIHg9Sm9iU2F0aXNmYWN0aW9uLCBjb2xvcj1Kb2JTYXRpc2ZhY3Rpb24pLCBwb3NpdGlvbj0iaml0dGVyIikgKw0KICAgIGZhY2V0X3dyYXAofmBEZXBhcnRtZW50YCwgbnJvdz0xKQ0KDQojam9iIHBlcmZvcm1hbmNlIGFuZCBzYWxhcnkgDQpkZl9nbG9iYWwgJT4lDQogIGdncGxvdCgpICsNCiAgICBnZW9tX3BvaW50KGFlcyh5PU1vbnRobHlJbmNvbWUsIHg9UGVyZm9ybWFuY2VSYXRpbmcsIGNvbG9yPVBlcmZvcm1hbmNlUmF0aW5nKSwgcG9zaXRpb249ImppdHRlciIpICsNCiAgICBmYWNldF93cmFwKH5gRGVwYXJ0bWVudGAsIG5yb3c9MSkNCmBgYA0KIyMgQXR0cml0aW9uIGVuIGZvbmN0aW9uIGRlIGxhIHNhdGlzZmFjdGlvbiANCmBgYHtyfQ0KZ2dwbG90KGRmX2dsb2JhbCwgYWVzKGZpbGw9QXR0cml0aW9uLCANCiAgICAgICAgICAgICAgICAgICAgICB5PUpvYlNhdGlzZmFjdGlvbiwNCiAgICAgICAgICAgICAgICAgICAgICB4PUpvYlNhdGlzZmFjdGlvbikpICsgDQogICAgICAgICAgICAgICAgICAgICAgZ2d0aXRsZSgnQXR0cml0aW9uIGVuIGZvbmN0aW9uIGRlIGxhIHN0YXRpc2ZhY3Rpb24gZGVzIGVtcGxvecOpcycpKw0KICAgIGdlb21fYmFyKHBvc2l0aW9uPSJzdGFjayIsIHN0YXQ9ImlkZW50aXR5IikNCmBgYA0KIyMgRMOpdGVybWluZXIgbCdpbmZsdWVuY2UgZGVzIGhldXJlcyBkZSB0cmF2YWlscyBzdXIgbCdhdHRyaXRpb24gDQpgYGB7cn0NCiNzYXBwbHkoZGZfaW5fdGltZSRYMjAxNS4wMS4wMSwgY2xhc3MpDQojY2xhc3MgPSBsb2dpY2FsIA0KYGBgDQoNCmBgYHtyfQ0KI2RmX2luX3RpbWVfMiA8LSBhcy5EYXRlKGRmX2luX3RpbWUsIGZvcm1hdCA9ICclWS0lbS0lZCAlSDolTTolUycpIA0KI2QgPC0gZGZfaW5fdGltZQ0KI2QgJT4lIG11dGF0ZShhY3Jvc3MoZXZlcnl0aGluZygpLCB+YXMuUE9TSVhjdCguLCBmb3JtYXQgPSIlWS0lbS0lZCAlSDolTTolUyIpKSkNCiNkZl9pbl90aW1lXzIgPC0gZGF0YS5mcmFtZShhcy5QT1NJWGN0KGRmX2luX3RpbWUkWDIwMTUuMDEuMDEsIGZvcm1hdCA9IiVZLSVtLSVkICVIOiVNOiVTIikpDQpkZl9pbl90aW1lX2RhdGVfZm9ybWF0IDwtIGRhdGEuZnJhbWUobWF0cml4KG5yb3c9bnJvdyhkZl9pbl90aW1lKSxuY29sPW5jb2woZGZfaW5fdGltZSkpKQ0KZGZfb3V0X3RpbWVfZGF0ZV9mb3JtYXQgPC0gZGF0YS5mcmFtZShtYXRyaXgobnJvdz1ucm93KGRmX291dF90aW1lKSxuY29sPW5jb2woZGZfb3V0X3RpbWUpKSkNCg0KZm9yIChpIGluIDE6bmNvbChkZl9pbl90aW1lKSl7DQogIGRmX2luX3RpbWVfZGF0ZV9mb3JtYXRbaV08LWFzLlBPU0lYY3QoZGZfaW5fdGltZVssaV0sZm9ybWF0ID0iJVktJW0tJWQgJUg6JU06JVMiLG9yaWdpbj0nMTk3MC0wMS0wMScpDQogIGNvbG5hbWVzKGRmX2luX3RpbWVfZGF0ZV9mb3JtYXQpPC1uYW1lcyhkZl9pbl90aW1lKQ0KfQ0KDQpmb3IgKGkgaW4gMTpuY29sKGRmX291dF90aW1lKSl7DQogIGRmX291dF90aW1lX2RhdGVfZm9ybWF0W2ldPC1hcy5QT1NJWGN0KGRmX291dF90aW1lWyxpXSxmb3JtYXQgPSIlWS0lbS0lZCAlSDolTTolUyIsb3JpZ2luPScxOTcwLTAxLTAxJykNCiAgY29sbmFtZXMoZGZfb3V0X3RpbWVfZGF0ZV9mb3JtYXQpPC1uYW1lcyhkZl9vdXRfdGltZSkNCn0NCg0KDQpgYGANCg0KYGBge3J9DQpkZl93b3JraW5nX3RpbWVfYnlfZGF5IDwtIGRmX291dF90aW1lX2RhdGVfZm9ybWF0IC1kZl9pbl90aW1lX2RhdGVfZm9ybWF0DQpgYGANCg0KRW4gRnJhbmNlIHVuZSBqb3Vybm7DqWUgZGUgdHJhdmFpbCBmYWl0IG5vcm1hbGVtZW50IDdoLCBub3VzIGVzc2F5ZXIgZGUgdmlzdWFsaXNlciBsJ2ltcGFjdCBkdSB0ZW1wcyBkZSB0cmF2YWlsIHN1ciBsJ2F0dHJpdGlvbi4gDQpgYGB7cn0NCiAgDQpgYGANCg0KDQpgYGB7cn0NCmRmX3dvcmtpbmdfdGltZV9ieV9kYXkNCmBgYA0KRW4gRnJhbmNlIGxlIHRlbXBzIHRyYXZhaWwgKHLDqWdsZW1lbnTDqSkgZXN0IDdoIHBhciBqb3VyLCBvYnNlcnZvbnMgbCdpbmZsdWVuY2UgZGUgbCdhY2N1bXVsYXRpb24gZCdoZXVyZSBzdXAgc3VyIGwnYXR0cml0aW9uIA0KDQpgYGB7cn0NCiNpbCBmYXV0IGQnYWJvcmQgY29udmVydGlyIGxlcyBoZXVyZXMgZW4gbnVtw6lyaWMgYWZpbiBkZSBmYWlyZSBkZXMgb3DDqXJhdGlvbnMgZGVzc3VzIA0KDQoNCiNkZl9hdmcgPC0gcm93TWVhbnMuRGF0ZShkZl93b3JraW5nX3RpbWVfYnlfZGF5KQ0KI2RmX2F2ZyA8LSBkYXRhLmZyYW1lKGFzLm51bWVyaWMoYXMuUE9TSVhjdChkZl93b3JraW5nX3RpbWVfYnlfZGF5LCBuYS5ybSA9IFRSVUUpKSkpDQoNCmBgYA0KDQpgYGB7cn0NCiNkZl90ZXN0ICU+JSBtdXRhdGUoYWNyb3NzKGV2ZXJ5dGhpbmcoKSwgfmFzLnVuY2xhc3MpKQ0KDQpmb3IgKGkgaW4gMTpuY29sKGRmX3dvcmtpbmdfdGltZV9ieV9kYXkpKXsNCiAjIGRmX3dvcmtpbmdfdGltZV9ieV9kYXlbaV08LWxhcHBseShkZl93b3JraW5nX3RpbWVfYnlfZGF5W2ldLCB1bmNsYXNzKQ0KICBkZl93b3JraW5nX3RpbWVfYnlfZGF5W2ldPC1sYXBwbHkoZGZfd29ya2luZ190aW1lX2J5X2RheVtpXSwgYXMubnVtZXJpYykNCn0NCg0KI2RmX2F2ZyA8LSBkYXRhLmZyYW1lKHJvd01lYW5zKGRmX3Rlc3QpLG5hLnJtID0gVFJVRSApDQoNCiNkZl9hdmcgPC0gZGF0YS5mcmFtZShtYXRyaXgocm93PW5yb3coZGZfdGVzdCkpKQ0KDQojZm9yIChpIGluIDE6bnJvdyhkZl90ZXN0KSkgew0KIyBkZl9hdmckbWVhbjwtIG1lYW4oZGZfdGVzdFtpXSxuYS5ybSA9IFRSVUUpDQojfQ0KDQpkZl93b3JraW5nX3RpbWVfYnlfZGF5JGF2Zzwtcm93TWVhbnMoZGZfd29ya2luZ190aW1lX2J5X2RheSxuYS5ybT1UUlVFKQ0KDQpgYGANCg0KYGBge3J9DQpkZl9hdmcgPC0gZGF0YS5mcmFtZShkZl93b3JraW5nX3RpbWVfYnlfZGF5JGF2ZykNCiNham91dGVyIHVuZSBjb2xvbm5lIGlkIHBvdXIgcG91dm9pciBmdWlzb25lciBsZSBkYXRhZnJhbWUgZ2xvYmFsIA0KZGZfYXZnJEVtcGxveWVlSUQgPC0gc2VxLmludChucm93KGRmX2F2ZykpDQpgYGANCg0KYGBge3J9DQojZnVzaW9ubmUgbGVzIGRmDQpkZl9nbG9iYWwgPC0gZGZfZ2xvYmFsICU+JQ0KICBpbm5lcl9qb2luKGRmX2F2ZywgYnkgPSBjKCJFbXBsb3llZUlEIiA9ICJFbXBsb3llZUlEIikpDQpgYGANCg0KYGBge3J9DQojcmVub21tZXIgY29sb25uZQ0KbmFtZXMoZGZfZ2xvYmFsKVtuYW1lcyhkZl9nbG9iYWwpID09ICJkZl93b3JraW5nX3RpbWVfYnlfZGF5LmF2ZyJdIDwtICJhdmciDQoNCg0KDQpgYGANCg0KYGBge3J9DQpsaWJyYXJ5KGdncGxvdDIpDQpkZl9ncmFwaCA8LSBkZl9nbG9iYWxbLCBjKCJhdmciLCAiQXR0cml0aW9uIildDQojZGZfZ3JhcGgkYXZnIDwtc2lnbmlmKGRmX2dsb2JhbCRhdmcsIGRpZ2l0cyA9IDIpDQpkZl9ncmFwaCRhdmcgPC0gZmxvb3IoZGZfZ3JhcGgkYXZnKQ0KZGZfZ3JhcGgkdmFsdWUgPC0gMQ0KDQojIHN0YWNrZWQgYXJlYSBjaGFydA0KDQpnZ3Bsb3QoZGZfZ3JhcGgsIGFlcyh4PWF2ZywgeT12YWx1ZSwgZmlsbD1BdHRyaXRpb24pKSArIA0KICAgIHN0YXRfc3VtbWFyeShmdW4gPSAic3VtIiwgZ2VvbSA9ICJhcmVhIiwgcG9zaXRpb24gPSAic3RhY2siKQ0KDQpgYGANCmBgYHtyfQ0KbGlicmFyeShkcGx5cikNCmRmX2dyYXBoIDwtIGRmX2dyYXBoICAlPiUNCiAgZ3JvdXBfYnkoYXZnLCBBdHRyaXRpb24pICU+JQ0KICBzdW1tYXJpc2UobiA9IHN1bSh2YWx1ZSkpICU+JQ0KICBtdXRhdGUocGVyY2VudGFnZSA9IG4gLyBzdW0obikpDQoNCg0KZ2dwbG90KGRmX2dyYXBoLCBhZXMoeD1hdmcsIHk9cGVyY2VudGFnZSwgZmlsbD1BdHRyaXRpb24pKSArIA0KICAgIGdlb21fYXJlYShhbHBoYT0wLjYgLCBzaXplPTEsIGNvbG91cj0iYmxhY2siKSsNCiAgICBnZ3RpdGxlKCJBdHRyaXRpb24gZW4gZm9uY3Rpb25zIGRlcyBoZXVyZXMgZGUgdHJhdmFpbCBqb3VybmFsacOocmVzIG1veWVubmVzIikrDQogICAgeGxhYigiVGVtcHMgZGUgdHJhdmFpbCBtb3llbiIpDQoNCg0KYGBgDQpgYGB7cn0NCmRmX2dsb2JhbCR2YWx1ZSA8LSAxDQoNCmdncGxvdChkZl9nbG9iYWwsIGFlcyh4PVllYXJzU2luY2VMYXN0UHJvbW90aW9uLCB5PXZhbHVlLCBmaWxsPUF0dHJpdGlvbikpICsgDQogICAgc3RhdF9zdW1tYXJ5KGZ1biA9ICJzdW0iLCBnZW9tID0gImFyZWEiLCBwb3NpdGlvbiA9ICJzdGFjayIpDQpgYGANCg0KYGBge3J9DQpkZl9ZU0xQIDwtIGRmX2dsb2JhbFssYygiWWVhcnNTaW5jZUxhc3RQcm9tb3Rpb24iLCJBdHRyaXRpb24iLCJ2YWx1ZSIpXQ0KZGZfWVNMUCA8LSBkZl9ZU0xQICAlPiUNCiAgZ3JvdXBfYnkoWWVhcnNTaW5jZUxhc3RQcm9tb3Rpb24sIEF0dHJpdGlvbikgJT4lDQogIHN1bW1hcmlzZShuID0gc3VtKHZhbHVlKSkgJT4lDQogIG11dGF0ZShwZXJjZW50YWdlID0gbiAvIHN1bShuKSkNCg0KDQpnZ3Bsb3QoZGZfWVNMUCwgYWVzKHg9WWVhcnNTaW5jZUxhc3RQcm9tb3Rpb24sIHk9cGVyY2VudGFnZSwgZmlsbD1BdHRyaXRpb24pKSArIA0KICAgIGdlb21fYXJlYShhbHBoYT0wLjYgLCBzaXplPTEsIGNvbG91cj0iYmxhY2siKSsNCiAgICBnZ3RpdGxlKCJSZWxhdGlvbiBlbnRyZSBsZSB0ZW1wcyBkZXB1aXMgbGEgZGVybmnDqHJlIHByb21vdGlvbiBldCBsJ0F0dHJ0aW9uIikrDQogICAgeGxhYigiVGVtcHMgZGUgdHJhdmFpbCBtb3llbiIpDQpgYGANCmBgYHtyfQ0KZ2dwbG90KGRmX2dsb2JhbCwgYWVzKGZpbGw9Y29uZGl0aW9uLCB5PXZhbHVlLCB4PXNwZWNpZSkpICsgDQogICAgZ2VvbV9iYXIocG9zaXRpb249InN0YWNrIiwgc3RhdD0iaWRlbnRpdHkiKQ0KYGBgDQoNCg==</div>
+<div id="rmd-source-code">LS0tDQp0aXRsZTogIlIgTm90ZWJvb2siDQpvdXRwdXQ6IGh0bWxfbm90ZWJvb2sNCi0tLQ0KYGBge3J9DQojaW5zdGFsbC5wYWNrYWdlcygncGx5cicpDQojaW5zdGFsbC5wYWNrYWdlcygndGlkeW1vZGVscycpDQojaW5zdGFsbC5wYWNrYWdlcygnY2FyZXQnKQ0KI2luc3RhbGwucGFja2FnZXMoJ2x1YnJpZGF0ZScpDQojaW5zdGFsbC5wYWNrYWdlcygnY293cGxvdCcpDQpgYGANCg0KDQpgYGB7cn0NCiMgSW1wb3J0YXRpb24gZGVzIGxpYnJhaXJpZXMNCmxpYnJhcnkoZHBseXIpDQpsaWJyYXJ5KHRpZHlyKQ0KbGlicmFyeShnZ3Bsb3QyKQ0KbGlicmFyeShsdWJyaWRhdGUpDQoNCmBgYA0KDQoNCmBgYHtyfQ0KIyBMZWN0dXJlIGRlcyBjc3YNCiMgMQ0KZW1wbG95ZWVfc3VydmV5IDwtIHJlYWQudGFibGUoJ0M6Ly9Vc2Vycy8vbG91aXMvL0RvY3VtZW50cy8vQ09VUlMgRU1TRS8vQW5uw6llIDUgLSBJbmfDqSAzLy9FU01FLy9SLy9Qcm9qZXQvL2FyY2hpdmUvL2VtcGxveWVlX3N1cnZleV9kYXRhLmNzdicsIGhlYWRlciA9IFRSVUUsIHNlcCA9ICIsIikNCg0KIyAyDQpnZW5lcmFsIDwtIHJlYWQudGFibGUoJ0M6Ly9Vc2Vycy8vbG91aXMvL0RvY3VtZW50cy8vQ09VUlMgRU1TRS8vQW5uw6llIDUgLSBJbmfDqSAzLy9FU01FLy9SLy9Qcm9qZXQvL2FyY2hpdmUvL2dlbmVyYWxfZGF0YS5jc3YnLCBoZWFkZXIgPSBUUlVFLCBzZXAgPSAiLCIpDQoNCiMgMw0KaW5fdGltZSA8LSByZWFkLnRhYmxlKCdDOi8vVXNlcnMvL2xvdWlzLy9Eb2N1bWVudHMvL0NPVVJTIEVNU0UvL0FubsOpZSA1IC0gSW5nw6kgMy8vRVNNRS8vUi8vUHJvamV0Ly9hcmNoaXZlLy9pbl90aW1lLmNzdicsIGhlYWRlciA9IFRSVUUsIHNlcCA9ICIsIikNCg0KIyA0DQpvdXRfdGltZSA8LSByZWFkLnRhYmxlKCdDOi8vVXNlcnMvL2xvdWlzLy9Eb2N1bWVudHMvL0NPVVJTIEVNU0UvL0FubsOpZSA1IC0gSW5nw6kgMy8vRVNNRS8vUi8vUHJvamV0Ly9hcmNoaXZlLy9vdXRfdGltZS5jc3YnLCBoZWFkZXIgPSBUUlVFLCBzZXAgPSAiLCIpDQoNCiMgNQ0KbWFuYWdlcl9zdXJ2ZXkgPC0gcmVhZC50YWJsZSgnQzovL1VzZXJzLy9sb3Vpcy8vRG9jdW1lbnRzLy9DT1VSUyBFTVNFLy9Bbm7DqWUgNSAtIEluZ8OpIDMvL0VTTUUvL1IvL1Byb2pldC8vYXJjaGl2ZS8vbWFuYWdlcl9zdXJ2ZXlfZGF0YS5jc3YnLCBoZWFkZXIgPSBUUlVFLCBzZXAgPSAiLCIpDQpgYGANCg0KYGBge3J9DQppbl90aW1lXzIgPC0gaW5fdGltZQ0Kb3V0X3RpbWVfMiA8LSBvdXRfdGltZQ0KYGBgDQoNCmBgYHtyfSANCiNvbiBqb2luIGxlcyAzIGRhdGFmcmFtZXMNCmVtcGxveWVfZ2VuZXJhbCA8LSBlbXBsb3llZV9zdXJ2ZXkgJT4lDQogIGlubmVyX2pvaW4oZ2VuZXJhbCwgYnkgPSBjKCJFbXBsb3llZUlEIiA9ICJFbXBsb3llZUlEIikpDQoNCmVtcGxveWVfbWFuYWdlcl9nZW5lcmFsIDwtIGVtcGxveWVfZ2VuZXJhbCAlPiUNCiAgaW5uZXJfam9pbihtYW5hZ2VyX3N1cnZleSwgYnkgPSBjKCJFbXBsb3llZUlEIiA9ICJFbXBsb3llZUlEIikpDQoNCmBgYA0KDQoNCmBgYHtyfQ0KIyBPYnNlcnZhdGlvbnMgZXQgdmlzdWFsaXNhdGlvbiBkZXMgdmFyaWFibGVzDQoNCmNvbFN1bXMoaXMubmEoZW1wbG95ZV9tYW5hZ2VyX2dlbmVyYWwpKQ0KDQojIFBvdXIgbGEgY29sb25uZSBFbnZpcm9ubmVtZW50U2F0aXNmYWN0aW9uLCBvbiByZW1wbGFjZSBwYXIgbGEgbcOpZGlhbmUNCg0KZW1wbG95ZV9tYW5hZ2VyX2dlbmVyYWwkRW52aXJvbm1lbnRTYXRpc2ZhY3Rpb25baXMubmEoZW1wbG95ZV9tYW5hZ2VyX2dlbmVyYWwkRW52aXJvbm1lbnRTYXRpc2ZhY3Rpb24pXSA8LSBtZWRpYW4oZW1wbG95ZV9tYW5hZ2VyX2dlbmVyYWwkRW52aXJvbm1lbnRTYXRpc2ZhY3Rpb24sIG5hLnJtID0gVFJVRSkNCg0KIyBQb3VyIGxhIGNvbG9ubmUgV29ya0xpZmVCYWxhbmNlLCBvbiByZW1wbGFjZSBwYXIgbGEgbcOpZGlhbmUNCg0KZW1wbG95ZV9tYW5hZ2VyX2dlbmVyYWwkV29ya0xpZmVCYWxhbmNlW2lzLm5hKGVtcGxveWVfbWFuYWdlcl9nZW5lcmFsJFdvcmtMaWZlQmFsYW5jZSldIDwtIG1lZGlhbihlbXBsb3llX21hbmFnZXJfZ2VuZXJhbCRXb3JrTGlmZUJhbGFuY2UsIG5hLnJtID0gVFJVRSkNCg0KIyBQb3VyIGxhIGNvbG9ubmUgSm9iU2F0aXNmYWN0aW9uLCBvbiByZW1wbGFjZSBwYXIgbGEgbcOpZGlhbmUNCg0KZW1wbG95ZV9tYW5hZ2VyX2dlbmVyYWwkSm9iU2F0aXNmYWN0aW9uW2lzLm5hKGVtcGxveWVfbWFuYWdlcl9nZW5lcmFsJEpvYlNhdGlzZmFjdGlvbildIDwtIG1lZGlhbihlbXBsb3llX21hbmFnZXJfZ2VuZXJhbCRKb2JTYXRpc2ZhY3Rpb24sIG5hLnJtID0gVFJVRSkNCg0KIyBQb3VyIGxhIGNvbG9ubmUgVG90YWxXb3JraW5nWWVhcnMsIG9uIHJlbXBsYWNlIHBhciBsYSBtb3llbm5lDQoNCmVtcGxveWVfbWFuYWdlcl9nZW5lcmFsJFRvdGFsV29ya2luZ1llYXJzW2lzLm5hKGVtcGxveWVfbWFuYWdlcl9nZW5lcmFsJFRvdGFsV29ya2luZ1llYXJzKV0gPC0gbWVhbihlbXBsb3llX21hbmFnZXJfZ2VuZXJhbCRUb3RhbFdvcmtpbmdZZWFycywgbmEucm0gPSBUUlVFKQ0KDQojIFBvdXIgbGEgY29sb25uZSBOdW1Db21wYW5pZXNXb3JrZWQsIG9uIHJlbXBsYWNlIHBhciBsYSBtb3llbm5lDQoNCmVtcGxveWVfbWFuYWdlcl9nZW5lcmFsJE51bUNvbXBhbmllc1dvcmtlZFtpcy5uYShlbXBsb3llX21hbmFnZXJfZ2VuZXJhbCROdW1Db21wYW5pZXNXb3JrZWQpXSA8LSBtZWFuKGVtcGxveWVfbWFuYWdlcl9nZW5lcmFsJE51bUNvbXBhbmllc1dvcmtlZCwgbmEucm0gPSBUUlVFKQ0KDQpjb2xTdW1zKGlzLm5hKGVtcGxveWVfbWFuYWdlcl9nZW5lcmFsKSkNCmBgYA0KDQpgYGB7cn0NCnN1bW1hcnkoZW1wbG95ZV9tYW5hZ2VyX2dlbmVyYWwpDQpgYGANCg0KT24gcmVtcGxhY2UgbGVzIHZhbGV1cnMgcXVhbGl0YXRpdmVzIHBhciBkZXMgdmFsZXVycyBxdWFudGl0YXRpdmVzIHBvdXIgcXVlIHBvdXZvaXIgdXRpbGlzZXIgbGVzIG1vZMOobGVzIGRlIE1MDQpgYGB7cn0NCiMgT24gYWZmaWNoZSBsZXMgZGlmZsOpcmVudGVzIHZhbGV1cnMgcXVhbGkgcG91ciBwb3V2b2lyIGxlcyByZW1wbGFjZXINCg0KdGFibGUoZW1wbG95ZV9tYW5hZ2VyX2dlbmVyYWwkR2VuZGVyKQ0KdGFibGUoZW1wbG95ZV9tYW5hZ2VyX2dlbmVyYWwkQXR0cml0aW9uKQ0KdGFibGUoZW1wbG95ZV9tYW5hZ2VyX2dlbmVyYWwkQnVzaW5lc3NUcmF2ZWwpDQp0YWJsZShlbXBsb3llX21hbmFnZXJfZ2VuZXJhbCREZXBhcnRtZW50KQ0KdGFibGUoZW1wbG95ZV9tYW5hZ2VyX2dlbmVyYWwkRWR1Y2F0aW9uRmllbGQpDQp0YWJsZShlbXBsb3llX21hbmFnZXJfZ2VuZXJhbCRKb2JSb2xlKQ0KdGFibGUoZW1wbG95ZV9tYW5hZ2VyX2dlbmVyYWwkTWFyaXRhbFN0YXR1cykNCnRhYmxlKGVtcGxveWVfbWFuYWdlcl9nZW5lcmFsJE92ZXIxOCkNCmBgYA0KYGBge3J9DQpsaWJyYXJ5KGRwbHlyKQ0KbGlicmFyeShwbHlyKQ0KYGBgDQoNCmBgYHtyfQ0KDQplbXBsb3llX21hbmFnZXJfZ2VuZXJhbCRHZW5kZXIgPC0gbWFwdmFsdWVzKGVtcGxveWVfbWFuYWdlcl9nZW5lcmFsJEdlbmRlciwgDQogICAgICAgICAgZnJvbT1jKCdGZW1hbGUnLCAnTWFsZScpLCANCiAgICAgICAgICB0bz1jKDEsMCkpDQplbXBsb3llX21hbmFnZXJfZ2VuZXJhbCRBdHRyaXRpb24gPC0gbWFwdmFsdWVzKGVtcGxveWVfbWFuYWdlcl9nZW5lcmFsJEF0dHJpdGlvbiwgDQogICAgICAgICAgZnJvbT1jKCdObycsICdZZXMnKSwgDQogICAgICAgICAgdG89YygxLDApKQ0KZW1wbG95ZV9tYW5hZ2VyX2dlbmVyYWwkQnVzaW5lc3NUcmF2ZWwgPC0gbWFwdmFsdWVzKGVtcGxveWVfbWFuYWdlcl9nZW5lcmFsJEJ1c2luZXNzVHJhdmVsLCANCiAgICAgICAgICBmcm9tPWMoJ05vbi1UcmF2ZWwnLCAnVHJhdmVsX0ZyZXF1ZW50bHknLCdUcmF2ZWxfUmFyZWx5JyksIA0KICAgICAgICAgIHRvPWMoMSwyLDMpKQ0KZW1wbG95ZV9tYW5hZ2VyX2dlbmVyYWwkRGVwYXJ0bWVudCA8LSBtYXB2YWx1ZXMoZW1wbG95ZV9tYW5hZ2VyX2dlbmVyYWwkRGVwYXJ0bWVudCwgDQogICAgICAgICAgZnJvbT1jKCdIdW1hbiBSZXNvdXJjZXMnLCAnUmVzZWFyY2ggJiBEZXZlbG9wbWVudCcsJ1NhbGVzJyksIA0KICAgICAgICAgIHRvPWMoMSwyLDMpKQ0KDQplbXBsb3llX21hbmFnZXJfZ2VuZXJhbCRFZHVjYXRpb25GaWVsZCA8LSBtYXB2YWx1ZXMoZW1wbG95ZV9tYW5hZ2VyX2dlbmVyYWwkRWR1Y2F0aW9uRmllbGQsIA0KICAgICAgICAgIGZyb209YygnSHVtYW4gUmVzb3VyY2VzJywgJ0xpZmUgU2NpZW5jZXMnLCAnTWFya2V0aW5nJywgJ01lZGljYWwnLCAnT3RoZXInLCAnVGVjaG5pY2FsIERlZ3JlZScpLCANCiAgICAgICAgICB0bz1jKDEsMiwzLDQsNSw2KSkNCmVtcGxveWVfbWFuYWdlcl9nZW5lcmFsJEpvYlJvbGUgPC0gbWFwdmFsdWVzKGVtcGxveWVfbWFuYWdlcl9nZW5lcmFsJEpvYlJvbGUsIA0KICAgICAgICAgIGZyb209YygnSGVhbHRoY2FyZSBSZXByZXNlbnRhdGl2ZScsICdIdW1hbiBSZXNvdXJjZXMnLCdMYWJvcmF0b3J5IFRlY2huaWNpYW4nLCdNYW5hZ2VyJywnTWFudWZhY3R1cmluZyBEaXJlY3RvcicsJ1Jlc2VhcmNoIERpcmVjdG9yJywnUmVzZWFyY2ggU2NpZW50aXN0JywnU2FsZXMgRXhlY3V0aXZlJywnU2FsZXMgUmVwcmVzZW50YXRpdmUnKSwgDQogICAgICAgICAgdG89YygxLDIsMyw0LDUsNiw3LDgsOSkpDQplbXBsb3llX21hbmFnZXJfZ2VuZXJhbCRNYXJpdGFsU3RhdHVzIDwtIG1hcHZhbHVlcyhlbXBsb3llX21hbmFnZXJfZ2VuZXJhbCRNYXJpdGFsU3RhdHVzLCANCiAgICAgICAgICBmcm9tPWMoJ0Rpdm9yY2VkJywgJ01hcnJpZWQnLCdTaW5nbGUnKSwgDQogICAgICAgICAgdG89YygxLDIsMykpDQplbXBsb3llX21hbmFnZXJfZ2VuZXJhbCRPdmVyMTggPC0gbWFwdmFsdWVzKGVtcGxveWVfbWFuYWdlcl9nZW5lcmFsJE92ZXIxOCwgDQogICAgICAgICAgZnJvbT1jKCdZJyksIA0KICAgICAgICAgIHRvPWMoMSkpDQoNCmBgYA0KDQoNCmBgYHtyfQ0KIyBPbiB2w6lyaWZpZQ0KDQp0YWJsZShlbXBsb3llX21hbmFnZXJfZ2VuZXJhbCRHZW5kZXIpDQp0YWJsZShlbXBsb3llX21hbmFnZXJfZ2VuZXJhbCRBdHRyaXRpb24pDQp0YWJsZShlbXBsb3llX21hbmFnZXJfZ2VuZXJhbCRCdXNpbmVzc1RyYXZlbCkNCnRhYmxlKGVtcGxveWVfbWFuYWdlcl9nZW5lcmFsJERlcGFydG1lbnQpDQp0YWJsZShlbXBsb3llX21hbmFnZXJfZ2VuZXJhbCRFZHVjYXRpb25GaWVsZCkNCnRhYmxlKGVtcGxveWVfbWFuYWdlcl9nZW5lcmFsJEpvYlJvbGUpDQp0YWJsZShlbXBsb3llX21hbmFnZXJfZ2VuZXJhbCRNYXJpdGFsU3RhdHVzKQ0KdGFibGUoZW1wbG95ZV9tYW5hZ2VyX2dlbmVyYWwkT3ZlcjE4KQ0KYGBgDQoNCmBgYHtyfQ0Kc2FwcGx5KGVtcGxveWVfbWFuYWdlcl9nZW5lcmFsLCBjbGFzcykNCiMgTGUgdHlwZSBkZXMgY29sb25uZXMgbidlc3QgcGFzIGJvbg0KYGBgDQpPbiBjaGFuZ2UgbGUgdHlwZSBkZXMgY29sb25uZXMgaGFyYWN0ZXIgZW4gbnVtZXJpYw0KYGBge3J9DQplbXBsb3llX21hbmFnZXJfZ2VuZXJhbCA8LSB0cmFuc2Zvcm0oZW1wbG95ZV9tYW5hZ2VyX2dlbmVyYWwsIEF0dHJpdGlvbiA9IGFzLm51bWVyaWMoQXR0cml0aW9uKSwgDQogICAgICAgICAgICAgICAgICAgIEJ1c2luZXNzVHJhdmVsID0gYXMubnVtZXJpYyhCdXNpbmVzc1RyYXZlbCksIERlcGFydG1lbnQgPSBhcy5udW1lcmljKERlcGFydG1lbnQpLCANCiAgICAgICAgICAgICAgICAgICAgRWR1Y2F0aW9uRmllbGQgPSBhcy5udW1lcmljKEVkdWNhdGlvbkZpZWxkKSwgR2VuZGVyID0gYXMubnVtZXJpYyhHZW5kZXIpLCANCiAgICAgICAgICAgICAgICAgICAgSm9iUm9sZSA9IGFzLm51bWVyaWMoSm9iUm9sZSksIE1hcml0YWxTdGF0dXMgPSBhcy5udW1lcmljKE1hcml0YWxTdGF0dXMpLCANCiAgICAgICAgICAgICAgICAgICAgT3ZlcjE4ID0gYXMubnVtZXJpYyhPdmVyMTgpKQ0KYGBgDQpPbiB2w6lyaWZpZQ0KYGBge3J9DQpzYXBwbHkoZW1wbG95ZV9tYW5hZ2VyX2dlbmVyYWwsIGNsYXNzKQ0KYGBgDQoNCmBgYHtyfQ0Kc3VtbWFyeShlbXBsb3llX21hbmFnZXJfZ2VuZXJhbCkNCg0KYGBgDQoNCk9uIHN1cHByaW1lIGxlcyBjb2xvbm5lcyBjb250ZW5hbnQgcXVlIGxlcyBtw6ptZXMgdmFsZXVycyAoc2VydCDDoCByaWVuKQ0KDQpgYGB7cn0NCmVtcGxveWVfbWFuYWdlcl9nZW5lcmFsICU+JSBzZWxlY3QoLWMoJ0VtcGxveWVlQ291bnQnLCAnT3ZlcjE4JywnU3RhbmRhcmRIb3VycycpKQ0KYGBgDQoNCmBgYHtyfQ0KIyBUZW50YXRpdmUgYWpvdXQgZGF0YWZyYW1lcyB0aW1lDQpkZl90ZXN0IDwtIGluX3RpbWUNCg0KDQpsaWJyYXJ5KGRwbHlyKQ0KZGZfdGVzdCA9IHJlbmFtZShkZl90ZXN0LGMoIlgiPSJFbXBsb3llZUlEIikpDQpvdXRfdGltZSA9IHJlbmFtZShvdXRfdGltZSxjKCJYIj0iRW1wbG95ZWVJRCIpKQ0KDQpgYGANCg0KDQpgYGB7cn0NCmNvbFN1bXMoaXMubmEoZGZfdGVzdCkpDQojIE9uIGNvbnN0YXRlIHF1ZSBkZXMgY29sb25uZXMgc29udCB0b3RhbGVtZW50IHZpZGVzIGV0IHF1J2VuIG1veWVubmVzIGlsIHkgYSAyNTAgdmFsZXVycyBtYW5xdWFudGVzIHBhciBjb2xvbm5lcw0KYGBgDQpgYGB7cn0NCiMgT24gc3VwcHJpbWUgbGVzIGNvbG9ubmVzIHF1aSBvbnQgZGVzIHZhbGV1cnMgbWFucXVhbnRlcyBzdXDDqXJpZXVyZXMgw6AgNTAlDQpkZl90ZXN0IDwtICBkZl90ZXN0Wywhc2FwcGx5KGRmX3Rlc3QsIGZ1bmN0aW9uKHgpIG1lYW4oaXMubmEoeCkpKT4wLjVdDQpkZl90ZXN0JE5iX2Fic2VuY2VfaW4gPC0gcm93U3Vtcyhpcy5uYShkZl90ZXN0KSkNCmhlYWQoZGZfdGVzdCkNCmBgYA0KYGBge3J9DQojIE9uIGZhaXQgbGEgbWVtZSBjaG9zZSBwb3VyIG91dF90aW1lDQpvdXRfdGltZSA8LSAgb3V0X3RpbWVbLCFzYXBwbHkob3V0X3RpbWUsIGZ1bmN0aW9uKHgpIG1lYW4oaXMubmEoeCkpKT4wLjVdDQpvdXRfdGltZSROYl9hYnNlbmNlX291dCA8LSByb3dTdW1zKGlzLm5hKG91dF90aW1lKSkNCmhlYWQob3V0X3RpbWUpDQpgYGANCmBgYHtyfQ0KIyBPbiBjcsOpZXIgdW4gbm91dmVhdSBkYXRhZnJhbWUgYXZlYyBsZXMgY29sb25uZXMgRW1wb2x5ZWVJRCwgTmJfYWJzZW5jZV9pbiANCmRmMSA8LSBkZl90ZXN0Wy1jKDI6MjUwKV0NCiNPbiBjcsOpZXIgdW4gbm91dmVhdSBkYXRhZnJhbWUgYXZlYyBsZXMgY29sb25uZXMgRW1wb2x5ZWVJRCwgTmJfYWJzZW5jZV9vdXQNCmRmMiA8LSBvdXRfdGltZVstYygyOjI1MCldIA0KaGVhZChkZjEpDQpoZWFkKGRmMikNCg0KYGBgDQpgYGB7cn0NCiMgT24gam9pbnQgbGVzIGRldXggZGF0YWZyYW1lcw0KZGYgPC0gZGYxICU+JQ0KICBpbm5lcl9qb2luKGRmMiwgYnkgPSBjKCJFbXBsb3llZUlEIiA9ICJFbXBsb3llZUlEIikpDQpoZWFkKGRmKQ0KYGBgDQoNCmBgYHtyfQ0KZGYkTmJfYWJzZW5jZSA8LSBpZmVsc2UoZGYkTmJfYWJzZW5jZV9pbiA+IGRmJE5iX2Fic2VuY2Vfb3V0LCBkZiROYl9hYnNlbmNlX2luLA0KICAgICAgICAgICAgICAgaWZlbHNlKGRmJE5iX2Fic2VuY2VfaW4gPCBkZiROYl9hYnNlbmNlX291dCwgZGYkTmJfYWJzZW5jZV9vdXQsIGRmJE5iX2Fic2VuY2Vfb3V0KSkNCmhlYWQoZGYpDQpgYGANCmBgYHtyfQ0KI09uIHN1cHByaW1lIGxlcyBjb2xvbm5lcyBOYl9hYnNlbmNlX2luIGV0IE5iX2Fic2VuY2Vfb3V0DQpkZiA8LSBkZlstYygyOjMpXQ0KaGVhZChkZikNCmBgYA0KIyMgT24gam9pbnMgY2UgZGF0YWZyYW1lIMOgIGNlbHVpIGRlIGVtcGxveWVlX21hbmFnZXJfZ2VuZXJhbA0KYGBge3J9DQplbXBsb3llX21hbmFnZXJfZ2VuZXJhbCA8LSBlbXBsb3llX21hbmFnZXJfZ2VuZXJhbCAlPiUNCiAgaW5uZXJfam9pbihkZiwgYnkgPSBjKCJFbXBsb3llZUlEIiA9ICJFbXBsb3llZUlEIikpDQpoZWFkKGVtcGxveWVfbWFuYWdlcl9nZW5lcmFsKQ0KYGBgDQpEJ2FwcsOocyBsJ2FuYWx5c2UgZGVzIGRvbm7DqWVzIHF1J2lsIHlhIGF2YWl0IHVuZSBmb3J0ZSBjb3Jyw6lsYXRpb24gZW50cmUgbGUgdGVtcHMgZGUgdHJhdmFpbCBtb3llbiBldCBsJ2F0dHJpdGlvbiwgbm91cyBhbGxvbnMgZG9uYyBsJ2Fqb3V0ZXIgw6Agbm90cmUgamV1IGRlIGRvbm7DqWVzDQpgYGB7cn0NCiNjcsOpYXRpb24gZGUgZGF0YWZyYW1lIHZpZGUgYXlhbnQgbGVzIG3Dqm1lcyBkaW1lbnNpb25zIHF1ZSAiaW5fdGltw6kiIGV0ICJvdXRfdGltZQ0KZGZfaW5fdGltZV9kYXRlX2Zvcm1hdCA8LSBkYXRhLmZyYW1lKG1hdHJpeChucm93PW5yb3coaW5fdGltZV8yKSxuY29sPW5jb2woaW5fdGltZV8yKSkpDQpkZl9vdXRfdGltZV9kYXRlX2Zvcm1hdCA8LSBkYXRhLmZyYW1lKG1hdHJpeChucm93PW5yb3cob3V0X3RpbWVfMiksbmNvbD1uY29sKG91dF90aW1lXzIpKSkNCg0KI2NoYXF1ZSBjb2xvbm5lcyBlc3QgY29udmVydGl0IGF1IGZyb21hdCBkJ3VuZSBkYXRhIGFmaW4gZGUgcG91dm9pciBmYWlyZSBkZXMgb3DDqXJhdGlvbnMgYXZlYyBsZXMgaGV1cmVzDQpmb3IgKGkgaW4gMTpuY29sKGluX3RpbWVfMikpew0KICBkZl9pbl90aW1lX2RhdGVfZm9ybWF0W2ldPC1hcy5QT1NJWGN0KGluX3RpbWVfMlssaV0sZm9ybWF0ID0iJVktJW0tJWQgJUg6JU06JVMiLG9yaWdpbj0nMTk3MC0wMS0wMScpDQogIGNvbG5hbWVzKGRmX2luX3RpbWVfZGF0ZV9mb3JtYXQpPC1uYW1lcyhpbl90aW1lXzIpDQp9DQoNCmZvciAoaSBpbiAxOm5jb2wob3V0X3RpbWVfMikpew0KICBkZl9vdXRfdGltZV9kYXRlX2Zvcm1hdFtpXTwtYXMuUE9TSVhjdChvdXRfdGltZV8yWyxpXSxmb3JtYXQgPSIlWS0lbS0lZCAlSDolTTolUyIsb3JpZ2luPScxOTcwLTAxLTAxJykNCiAgY29sbmFtZXMoZGZfb3V0X3RpbWVfZGF0ZV9mb3JtYXQpPC1uYW1lcyhvdXRfdGltZV8yKQ0KfQ0KDQojY3LDqWVyIHVuIG5vdXZlYXUgZGF0YWZyYW1lIGNvbnRlbmFudCBsYSBkaWZmw6lyZW5jZSBlbnRyZSBsZXMgaGV1cmVzIGQnYXJyaXbDqSBldCBkZSBzb3J0aWUgYWZpbiBkZSBjb25uYWl0cmUgbGUgdGVtcHMgZGUgdHJhdmFpbCBqb3VybmFsaWVyIA0KZGZfd29ya2luZ190aW1lX2J5X2RheSA8LSBkZl9vdXRfdGltZV9kYXRlX2Zvcm1hdCAtZGZfaW5fdGltZV9kYXRlX2Zvcm1hdA0KDQojcG91ciBjYWxjdWxlciBsYSBtb3llbm5lIGlsIGZhdXQgY29udmVydGlyZSBsZXMgdGVtcHMgZW4gaGV1cmUgZW4gbnVtw6lyaXF1ZSANCmZvciAoaSBpbiAxOm5jb2woZGZfd29ya2luZ190aW1lX2J5X2RheSkpew0KICBkZl93b3JraW5nX3RpbWVfYnlfZGF5W2ldPC1sYXBwbHkoZGZfd29ya2luZ190aW1lX2J5X2RheVtpXSwgYXMubnVtZXJpYykNCn0NCg0KI2NhbGN1bCBkZSBsYSBtb3llbm5lIA0KZGZfd29ya2luZ190aW1lX2J5X2RheSRhdmc8LXJvd01lYW5zKGRmX3dvcmtpbmdfdGltZV9ieV9kYXksbmEucm09VFJVRSkNCg0KI2Fqb3V0ZSBsYSBtb3llbm5lIGF1IGRhdGFmcmFtZSBkZXN0aW7DqSDDoCBsYSBjcsOpYXRpb24gZHUgbW9kw6hsZSANCmVtcGxveWVfbWFuYWdlcl9nZW5lcmFsJGF2ZyA8LSBkZl93b3JraW5nX3RpbWVfYnlfZGF5JGF2Zw0KDQpgYGANCg0KYGBge3J9DQojIE9uIHN1cHByaW1lIGxlcyBjb2xvbm5lcyDDoCB2YWxldXJzIHVuaXF1ZXMgc29pdCA6IEVtcGxveWVlQ291bnQsIE92ZXIxOCBldCBTdGFuZGFyZEhvdXJzDQplbXBsb3llX21hbmFnZXJfZ2VuZXJhbCA8LSBlbXBsb3llX21hbmFnZXJfZ2VuZXJhbCAlPiUgc2VsZWN0KC1jKCdFbXBsb3llZUNvdW50JywgJ092ZXIxOCcsICdTdGFuZGFyZEhvdXJzJykpDQpgYGANCmBgYHtyfQ0KIyBPbiB2b2l0IGxhIGNvcnJlbGF0aW9uIA0KY29yKGVtcGxveWVfbWFuYWdlcl9nZW5lcmFsWywxOjI3XSkNCmBgYA0KYGBge3J9DQojIiIiZW1wbG95ZV9tYW5hZ2VyX2dlbmVyYWxfcGNhIDwtIHByY29tcChlbXBsb3llX21hbmFnZXJfZ2VuZXJhbFssMToyN10sIGNlbnRlciA9IFQsIHNjYWxlID0gVCkgc3VtbWFyeShlbXBsb3llX21hbmFnZXJfZ2VuZXJhbF9wY2EpIiIiDQpgYGANCk9uIHPDqXBhcmUgbGVzIGRvbm7DqWVzIGVuIGpldSBkZSB0cmFpbiBldCBkZSB0ZXN0DQpgYGB7cn0NCmxpYnJhcnkodGlkeW1vZGVscykNCnNldC5zZWVkKDM2NCkNCg0KbiA8LW5yb3coZW1wbG95ZV9tYW5hZ2VyX2dlbmVyYWwpDQplbXBsb3llX3BhcnRzIDwtIGVtcGxveWVfbWFuYWdlcl9nZW5lcmFsICU+JQ0KICBpbml0aWFsX3NwbGl0KHByb3A9MC44KQ0KDQp0cmFpbiA8LWVtcGxveWVfcGFydHMgJT4lDQogIHRyYWluaW5nKCkNCg0KdGVzdCA8LWVtcGxveWVfcGFydHMgJT4lDQogIHRlc3RpbmcoKQ0KDQpsaXN0KHRyYWluLHRlc3QpICU+JQ0KICBtYXBfaW50KG5yb3cpDQpgYGANCg0KIyMgT24gZW50cmFpbmUgbGUgbW9kZWwgTG9naXN0aWMgUmVncmVzc2lvbiBhdmVjIHBvdXIgdmFyaWFibGUgY2libGUgQXR0cml0aW9uDQpgYGB7cn0NCiMgRml0IHRoZSBtb2RlbA0KbW9kZWwgPC0gZ2xtKEF0dHJpdGlvbiB+LixmYW1pbHk9Ymlub21pYWwobGluaz0nbG9naXQnKSxkYXRhPXRyYWluKQ0KDQpgYGANCg0KYGBge3J9DQpsaWJyYXJ5KGNhcmV0KQ0KdmFySW1wKG1vZGVsKQ0KYGBgDQojIE9uIG9ic2VydmUgcXVlIEpvYlNhdGlzZmFjdGlvbiBlc3QgbGUgZmVhdHVyZSBsZSBwbHVzIGltcG9ydGFudCwgc3VpdmkgcGFyIEVudmlyb25uZW1lbnRzYXRpc2ZhY3Rpb24sIFdvcmtMaWZlQmFsYW5jZSBldCBBZ2UNCg0KYGBge3J9DQojIE9uIGZhaXQgZHUgbG9ncmVnIGVuIHByZW5hbnQgY29tcHRlIGxlcyBmZWF0dXJlcyBpbXBvcnRhbmNlcw0KbG9naXN0aWMgPSBnbG0oQXR0cml0aW9uIH4gSm9iU2F0aXNmYWN0aW9uICsgRW52aXJvbm1lbnRTYXRpc2ZhY3Rpb24gKyBXb3JrTGlmZUJhbGFuY2UgKyBBZ2UsIGRhdGE9dHJhaW4sIGZhbWlseT1iaW5vbWlhbCkNCnN1bW1hcnkobG9naXN0aWMpDQojIFNlbWJsZSBib24gLS0+IGNlbnRyw6kgZW4gMCBldCBzZW1ibGUgw6AgcGV1IHByw6hzIHN5bcOpdHJpcXVlDQpgYGANCiMjIE9uIHRlc3RlIHVuZSB2aXN1YWxpc2F0aW9uIGRlcyBwcsOpZGljdGlvbnMNCmBgYHtyfQ0KcHJlZGljdGVkLmRhdGEgPC0gZGF0YS5mcmFtZSgNCiAgcHJvYmFiaWxpdHkub2YuQXR0cml0aW9uPWxvZ2lzdGljJGZpdHRlZC52YWx1ZXMsDQogIEF0dHJpdGlvbj10ZXN0JEF0dHJpdGlvbikNCmBgYA0KDQpgYGB7cn0NCiMgT24gb3Jkb25uZSDDoCBwYXJ0aXIgZGVzIHByb2JhYmlsaXTDqXMgYmFzc2VzIMOgIGhhdXRlcw0KcHJlZGljdGVkLmRhdGEgPC0gcHJlZGljdGVkLmRhdGFbDQogICsgb3JkZXIocHJlZGljdGVkLmRhdGEkcHJvYmFiaWxpdHkub2YuQXR0cml0aW9uLCBkZWNyZWFzaW5nID0gRkFMU0UpLA0KXQ0KIyBPbiBham91dGUgdW5lIGNvbG9ubmUgInJhbmsiIHBvdXIgY2hhcXVlIHNhbXBsZQ0KcHJlZGljdGVkLmRhdGEkcmFuayA8LSAxOm5yb3cocHJlZGljdGVkLmRhdGEpDQpgYGANCg0KYGBge3J9DQpsaWJyYXJ5KGdncGxvdDIpDQpsaWJyYXJ5KGNvd3Bsb3QpICNQZXJtZXQgZCdhdm9pciB1biBiZWwgYWZmaWNoYWdlDQpgYGANCmBgYHtyfQ0KZ2dwbG90KGRhdGEgPSBwcmVkaWN0ZWQuZGF0YSwgYWVzKHg9cmFuaywgeSA9cHJvYmFiaWxpdHkub2YuQXR0cml0aW9uKSkgKyBnZW9tX3BvaW50KGFlcyhjb2xvcj0gQXR0cml0aW9uKSwgYWxwaGEgPSAxLCBzaGFwZSA9NCwgc3Ryb2tlID0gMikgKyB4bGFiKCJJbmRleCIpICsgeWxhYigiUHJlZGljaXRlZCBwcm9iYWJpbGl0eSBvZiBkb2luZyBBdHRyaXRpb24iKQ0KYGBgDQpgYGB7cn0NCnRhYmxlKHRlc3QkQXR0cml0aW9uKQ0KYGBgDQoNCiMgQXV0cmUgdGVzdA0KDQpgYGB7cn0NCiNDaGVja2VyIGwnYWNjdXJhY3kgZHUgbW9kZWwNCmVtcGxveWVfbW9kZWxfbG9naXN0aWNfcm1zZV90cmFpbiA8LSB0cmFpbiAlPiUNCiAgbXV0YXRlKHByZWQucmVnLnRyYWluID0gcHJlZGljdChsb2dpc3RpYykpDQoNCnBsb3QoZW1wbG95ZV9tb2RlbF9sb2dpc3RpY19ybXNlX3RyYWluJEF0dHJpdGlvbiwgZW1wbG95ZV9tb2RlbF9sb2dpc3RpY19ybXNlX3RyYWluJHByZWQucmVnLnRyYWluKQ0KYGBgDQoNCmBgYHtyfQ0KbXNlIDwtIGVtcGxveWVfbW9kZWxfbG9naXN0aWNfcm1zZV90cmFpbiAlPiUNCiAgbXV0YXRlKGVycm9yID0gcHJlZC5yZWcudHJhaW4gLSBBdHRyaXRpb24sDQogICAgICAgICBzcS5lcnJvciA9IGVycm9yXjIpICU+JQ0KICBzdW1tYXJpc2UobXNlID0gbWVhbihzcS5lcnJvcikpDQpybXNlIDwtIHNxcnQobXNlKQ0Kcm1zZSAjIHRyYWluaW5nIHJtc2UgPSAxLjE2IC0tPiBSTVNFIGZhaWJsZSBjYXIgbW95ZW5uZSBkZXMgb2JzZXJ2YXRpb25zID0gMjk1OA0KYGBgDQojIyBPbiB2YSBsZSBmYWlyZSBzdXIgbGUgdGVzdCBtYWludGVuYW50DQpgYGB7cn0NCnByZWRfcmVnX3Rlc3QgPC0gcHJlZGljdChsb2dpc3RpYywgbmV3ZGF0YSA9IHRlc3QpDQpyZWdfcm1zZV90ZXN0IDwtIHNxcnQobWVhbihwcmVkX3JlZ190ZXN0IC0gdGVzdCRBdHRyaXRpb24pXjIpDQpyZWdfcm1zZV90ZXN0ICMgdGVzdCBybXNlID0gMC45IC0tPiBzaW1pbGFpcmUgw6AgcGV1IHByw6hzIGF1IHRyYWluDQpgYGANCg0KDQoNCg0KDQoNCg0KDQoNCg0KDQoNCg0KDQoNCg0KDQpSZXN0ZSDDoCBmYWlyZSA6DQotIFZpc3VhbGlzYXRpb24gZGVzIGRvbm7DqWVzDQotIE9uIGRvaXQgdm9pciBsZXMgZmVhdHVyZXMgaW1wb3J0YW5jZXMsDQotIEpldSBkZSB0cmFpbiBldCB0ZXN0LA0KLSBFbnRyYWluZW1lbnQgbW9kw6hsZQ0KDQoNCg0KDQoNCg0KDQoNCg0K</div>
 
 
 
@@ -2221,7 +2317,7 @@ $(document).ready(function () {
 <!-- code folding -->
 <script>
 $(document).ready(function () {
-  window.initializeSourceEmbed("Projet.Rmd");
+  window.initializeSourceEmbed("ML_Projet-copie.rmd");
   window.initializeCodeFolding("show" === "show");
 });
 </script>
